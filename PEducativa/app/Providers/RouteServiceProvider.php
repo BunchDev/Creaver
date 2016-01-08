@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-
+require app_path('Http/routes.php');
 class RouteServiceProvider extends ServiceProvider
 {
     /**

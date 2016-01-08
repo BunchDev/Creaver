@@ -11,9 +11,38 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+/*
+|--------------------------------------------------------------------------
+| Rutas para el profesor
+|--------------------------------------------------------------------------
+|
+| Se añaden las rutas que hacen referencia al profesor
+|
+*/
+
+ /* ----------------   CURSOS  ----------------*/
+Route::get('cursos', 'CursosController@listarCursos');
+
+/* ----------------- PERFIL  ------------------*/
+
+Route::get('perfil',function(){
+
+	return view('profesor/perfil');
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------

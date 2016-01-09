@@ -27,7 +27,7 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -59,7 +59,6 @@
 	{!! Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js')!!}
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/ripples.min.js')!!}
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/material.min.js')!!}
-
 
 <script type="text/javascript">
 	$(document).on('ready',function(){

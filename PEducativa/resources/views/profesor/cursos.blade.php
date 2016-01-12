@@ -5,6 +5,8 @@
 @section('content')
 
 
+
+
 <!-- Agrego un mensaje de informacion al entrar a este modulo -->
 <div class="jumbotron jumbotron-fluid">
 <h1 class="display-3">Cursos</h1>
@@ -21,12 +23,21 @@
 
 <br>
 <div id="curso" class="collapse">
-<button type="button">Boton1</button><br>
-<button type="button">Boton2</button><br>
-<button type="button">Boton3</button><br>
-<button type="button">Boton4</button><br>
-<button type="button">Boton5</button><br>
-<button type="button">Boton6</button><br>
+    <div class="table-responsive">
+<table class="table table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Curso</th>
+    </tr>
+  </thead>
+  <tbody id="tbody_ap" align= "center">
+    
+  </tbody>
+</table>
+    </div>
 </div>
 </div>
 <div class="poraprobar" align= "center">
@@ -53,4 +64,7 @@
 
 
 </div>
+<script type="text/javascript">
+setValidados(<?php echo json_encode( $datoscursos) ?>)
+</script>
 @endsection

@@ -1,10 +1,8 @@
 @extends('profesor.perfil')
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
 {!! Html::script('scripts/cursos.js')!!}
-
+{!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 @section('content')
-
-
 
 
 <!-- Agrego un mensaje de informacion al entrar a este modulo -->
@@ -13,6 +11,10 @@
 <br>
 <p class="lead"> Tus cursos aprobados y pendientes por aprobar se encuentran aquí
 </div>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarCurso()" class="btn btn-danger btn-fab" ><i class="material-icons">add</i></a>
+<br>
 
 <!-- Creo un form donde agrego los elementos del modulo como los botones de despliegue -->
 {!! Form:: open(['url' => '#','role' => 'form','class' => 'form-horizontal'])   !!}
@@ -23,21 +25,7 @@
 
 <br>
 <div id="curso" class="collapse">
-    <div class="table-responsive">
-<table class="table table-inverse">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Curso</th>
-    </tr>
-  </thead>
-  <tbody id="tbody_ap" align= "center">
     
-  </tbody>
-</table>
-    </div>
 </div>
 </div>
 <div class="poraprobar" align= "center">
@@ -45,12 +33,7 @@
 {!! Form:: button("Ver mis cursos por aprobar",array('class' => 'btn btn-raised btn-danger btn-lg','data-toggle' => 'collapse','data-target' => '#cursono','id' => 'pa')) !!}
 <br>
 <div id="cursono" class="collapse">
-<button type="button">Boton1</button><br>
-<button type="button">Boton2</button><br>
-<button type="button">Boton3</button><br>
-<button type="button">Boton4</button><br>
-<button type="button">Boton5</button><br>
-<button type="button">Boton6</button><br>
+<!-- To do not-->
 </div>
 
 
@@ -64,7 +47,56 @@
 
 
 </div>
+
+<!--  Formulario para agregar un nuevo curso-->
+
+<!-- Modal -->
+<div class="modal fade" id="nuevoCursoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo Curso</h4>
+      </div>
+      <div class="modal-body">
+       
+<!-- Cuerpo del form -->
+<div class="form-group">
+      <label class="col-md-2 control-label">Nombre</label>
+
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="nombreCurso">
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="descripcionCurso" class="col-md-2 control-label">Descripción</label>
+
+      <div class="col-md-10">
+  <label class="control-label" for="descripcionCurso">Escriba una descripción del curso (opcional)</label>
+   <textarea class="form-control" rows="3" id="descripcionCurso"></textarea>
+
+      </div>
+    </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar <i class="material-icons">clear</i></button>
+        <button type="button" class="btn btn-raised btn-danger">Guardar Curso <i class="material-icons">save</i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <script type="text/javascript">
 setValidados(<?php echo json_encode( $datoscursos) ?>)
 </script>
+
 @endsection

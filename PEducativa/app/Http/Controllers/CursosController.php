@@ -11,7 +11,7 @@ public function listarCursos()
 {
 	$cursos =  array();
 	
-for($i=0;$i<10;$i++){
+for($i=0;$i<0;$i++){
 	array_push($cursos,array('numero' => $i,'nombre' => 'Curso','descripcion' =>'Descripcion del curso'));
 
 }

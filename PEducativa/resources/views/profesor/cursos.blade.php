@@ -51,6 +51,7 @@
 <!--  Formulario para agregar un nuevo curso-->
 
 <!-- Modal -->
+
 <div class="modal fade" id="nuevoCursoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   
   <div class="modal-dialog" role="document">
@@ -64,11 +65,12 @@
       <div class="modal-body">
        
 <!-- Cuerpo del form -->
+<form action="./crearCurso" method="post">
 <div class="form-group">
       <label class="col-md-2 control-label">Nombre</label>
 
       <div class="col-md-10">
-        <input type="text" class="form-control" id="nombreCurso">
+        <input type="text" class="form-control" id="nombreCurso" name="nombre">
       </div>
 
     </div>
@@ -77,7 +79,7 @@
 
       <div class="col-md-10">
   <label class="control-label" for="descripcionCurso">Escriba una descripción del curso (opcional)</label>
-   <textarea class="form-control" rows="3" id="descripcionCurso"></textarea>
+   <textarea class="form-control" rows="3" id="descripcionCurso" name="descripcion"></textarea>
 
       </div>
     </div>
@@ -86,8 +88,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar <i class="material-icons">clear</i></button>
-        <button type="button" class="btn btn-raised btn-danger">Guardar Curso <i class="material-icons">save</i></button>
+        <button type="submit" class="btn btn-raised btn-danger">Guardar Curso <i class="material-icons">save</i></button>
       </div>
+      </form>
     </div>
   </div>
 </div>

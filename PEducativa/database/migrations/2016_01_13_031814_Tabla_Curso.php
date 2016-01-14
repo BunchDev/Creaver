@@ -15,6 +15,7 @@ class TablaCurso extends Migration
 Schema::create('curso', function (Blueprint $table) {
             $table->increments('idCurso');
             $table->string('Nombre');
+            $table->string('Descripcion');
             $table->integer('idCatedratico')->unsigned();
             $table->integer('Estatus');
             $table->timestamps();

@@ -2,6 +2,7 @@
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
 {!! Html::script('scripts/cursos.js')!!}
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
+{!! Html::style('css/adaptaciones.css') !!}
 @section('content')
 
 
@@ -18,7 +19,7 @@
 
 <!-- Creo un form donde agrego los elementos del modulo como los botones de despliegue -->
 {!! Form:: open(['url' => '#','role' => 'form','class' => 'form-horizontal'])   !!}
-
+<div id="tablasCursos">
 <div class="aprobados" align= "center">
 
 {!! Form:: button("Ver mis cursos",array('class' => 'btn btn-raised btn-success btn-lg','data-toggle' => 'collapse','data-target' => '#curso','id' => 'ap','aria-label' => 'Left Align')) !!}
@@ -40,7 +41,7 @@
 
 </div>
 
-
+</div>
 
 
 {!! Form:: close() !!}
@@ -60,12 +61,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Nuevo Curso</h4>
+        <h3 class="modal-title" id="myModalLabel">Nuevo Curso</h3>
       </div>
       <div class="modal-body">
        
 <!-- Cuerpo del form -->
-<form action="./crearCurso" method="post">
+<form action="./crearCurso" method="post" id='formCrearCurso'>
+  <div id="avisos"></div>
 <div class="form-group">
       <label class="col-md-2 control-label">Nombre</label>
 
@@ -88,7 +90,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar <i class="material-icons">clear</i></button>
-        <button type="submit" class="btn btn-raised btn-danger">Guardar Curso <i class="material-icons">save</i></button>
+        <button type="button" onclick="enviarDatosServidor()" class="btn btn-raised btn-danger">Guardar Curso <i class="material-icons">save</i></button>
       </div>
       </form>
     </div>
@@ -97,9 +99,9 @@
 
 
 
-
+<!-- Se mandan los datos que se recibe en la vista al script para su posterior ordenamiento -->
 <script type="text/javascript">
-setValidados(<?php echo json_encode( $datoscursos) ?>)
+mostrarCursos(<?php echo json_encode( $datoscursos) ?>)
 </script>
 
 @endsection

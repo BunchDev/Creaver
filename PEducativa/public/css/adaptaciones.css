@@ -1,0 +1,52 @@
+
+.table td {
+   text-align: center;  
+
+}
+.table th {
+   text-align: center;  
+   
+}
+.table tr {
+   text-align: center;  
+   
+}
+
+.tablaestilo{
+
+	border: 1px solid #ddd;
+}
+
+
+.thwnumero {
+	text-align: center;  
+	width: 10%; 
+}
+.thwnombre {
+	  text-align: center;  
+	  width: 30%; 
+}
+.thwdescripcion {
+	  text-align: center;  
+	  width: 40%; 
+}
+.thwcurso {
+	text-align: center;  
+	width: 30%; 
+}
+.thwinumero {
+	text-align: center;  
+	  width: 10%; 
+}
+.trwinombre {
+
+	  width: 30%; 
+}
+.trwidescripcion {
+
+	  width: 40%; 
+}
+.trwiopciones {
+
+	  width: 30%; 
+}

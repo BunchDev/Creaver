@@ -10,7 +10,9 @@
 	
 	{!! Html::style('bower_components/bootstrap-material-design/dist/css/ripples.min.css') !!}
 	{!! Html::style('bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css') !!}
+	{!! Html::style('bower_components/sweetalert/dist/sweetalert.css') !!}
 
+	{!! Html::style('css/adaptaciones.css') !!}
 
 
 
@@ -25,7 +27,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body>
+<body >
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -58,6 +60,8 @@
 	{!! Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js')!!}
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/ripples.min.js')!!}
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/material.min.js')!!}
+	{!! Html::script('bower_components/sweetalert/dist/sweetalert.min.js')!!}
+	{!! Html::script('bower_components/jquery-validation/dist/jquery.validate.min.js')!!}
 
 <script type="text/javascript">
 	$(document).on('ready',function(){

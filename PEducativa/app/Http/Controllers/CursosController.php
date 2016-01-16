@@ -9,13 +9,15 @@ class CursosController extends Controller {
 
 public function listarCursos()
 {
-
+	$cursosBD = Curso::where('idCatedratico',0)
+				->get();
+	
 	$cursos =  array();
 	
 
-for($i=1;$i<=40;$i++){
-	array_push($cursos,array('numero' => $i,'nombre' => 'Curso','descripcion' =>'Descripcion del curso'));
 
+foreach($cursosBD as $dato){
+	array_push($cursos,array('numero' => $dato->idCurso,'nombre' => $dato->Nombre,'descripcion' =>$dato->Descripcion,'estatus' => $dato->Estatus));
 }
 	return view('profesor/cursos')->with('datoscursos',$cursos);
 }
@@ -23,22 +25,32 @@ for($i=1;$i<=40;$i++){
 
 public function store()
 {
-$datos = Request::all();
-if(empty($datos)) 
-{
-	return Redirect::back();
-}
 
-else
-{
-	$curso = new Curso;
-	$curso->nombre = $datos['nombre'];
-	$curso->descripcion = $datos['descripcion'];
 
-	$curso->save();
+	if(Request::ajax()) 
+	{
+		$data = Request::all();
 
-	return Redirect::back();
-}
+		if(empty($data)) 
+		{
+
+			return Redirect::back();
+		}
+		else{
+			$curso = new Curso;
+			$curso->nombre = $data['nombre'];
+			$curso->Descripcion = $data['descripcion'];
+			$curso->Estatus = 0;
+
+			$saved = $curso->save();
+			return Redirect::back();
+		 	
+			}
+	}
+
+ 
+
+
 
 }
 

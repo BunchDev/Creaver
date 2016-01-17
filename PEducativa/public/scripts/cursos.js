@@ -3,12 +3,6 @@ $(document).on('ready',function(){
         $("#ap").append(' <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>');
         $("#pa").append(' <span class="glyphicon glyphicon-time" aria-hidden="true"></span>');
 
-    
-
-
-
-
-
     });
 /*
 @param datos , contiene la informacion que se mostrara en la tabla 
@@ -50,7 +44,7 @@ else {
 		var numero = "<th scope='ro' class='thwi'>"+datos[i].numero+"</th>";
 		var nombre = "<td class='tdwinombre'>"+datos[i].nombre+"</td>";
 		var descripcion = "<td class='tdwidescripcion'>"+datos[i].descripcion+"</td>";
-		var opciones ="<td class='tdwiopciones'>"+getButtonsTag()+"</td>"
+		var opciones ="<td class='tdwiopciones'>"+getButtonsTag(datos[i])+"</td>"
 		var etiqueta ="";
 		etiqueta = etiqueta.concat(numero,nombre,descripcion,opciones);
 		var trid = "#"+trow+datos[i].numero;
@@ -78,10 +72,13 @@ crearElementos(naprobados,2);
 
 }
 
-function getButtonsTag(){
-	var ir= "<button type='button' class='btn btn-success-outline btn-sm'>Ir al Curso <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></span></button>"
-	var editar = "<button type='button' class='btn btn-success-outline btn-sm'>Editar Curso <span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button>"
-	return ir+editar;
+function getButtonsTag(dato){
+	var formInicio = "<form action='./rutaTadeo' method='post'>";
+	var hidden = "<input type='hidden' value='"+dato['numero']+"' name='numero'/>";
+	var ir= "<button type='submit' class='btn btn-success-outline btn-sm'>Ir al Curso <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></span></button>"
+	//var editar = "<button type='submit' class='btn btn-success-outline btn-sm'>Editar Curso <span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button>"
+	var formFinal = "</form>";
+	return formInicio + hidden + ir + formFinal;
 }
 
 function mostrarFormAgregarCurso()

@@ -24,11 +24,10 @@ foreach($cursosBD as $dato){
 
 
 public function store()
-{
 
 
-	if(Request::ajax()) 
-	{
+
+	if(Request::ajax()){
 		$data = Request::all();
 
 		if(empty($data)) 

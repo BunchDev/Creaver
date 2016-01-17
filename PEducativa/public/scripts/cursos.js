@@ -111,7 +111,7 @@ $('#nuevoCursoModal').on('hidden.bs.modal', function (e) {
 /*
 @param cursos, contiene los datos de todos los cursos sin ordenar
 el metodo ordCursos ordena los cursos dependiendo su estatus, al final retorna 
-una lista con 2 grupos distintos de cursos.
+una lista con 2 grupos distintos de cursos: aprobados y no aprobados.
 */
 function ordCursos(cursos)
 {

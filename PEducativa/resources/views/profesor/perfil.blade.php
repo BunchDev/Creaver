@@ -27,6 +27,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
+<!--oncontextmenu="return false"-->
 <body >
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">

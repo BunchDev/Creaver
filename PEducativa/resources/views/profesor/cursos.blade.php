@@ -1,4 +1,4 @@
-@extends('profesor.perfil')
+/@extends('profesor.perfil')
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
 {!! Html::script('scripts/cursos.js')!!}
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}

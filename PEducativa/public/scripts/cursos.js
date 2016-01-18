@@ -17,7 +17,6 @@ tbody = "";
 if(datos.length == 0)
 {
 
-
 if (tipo == 1)$("#curso").append("<div class='alert alert-warning' role='alert'>No tienes cursos en este apartado para mostrar</div>")
 else $("#cursono").append("<div class='alert alert-warning' role='alert'>No tienes cursos en este apartado para mostrar</div>") 
 }	
@@ -71,7 +70,7 @@ crearElementos(aprobados,1);
 crearElementos(naprobados,2);
 
 }
-
+// se crea aca mismo el form para acceder a la pagina y los datos se mandan por post
 function getButtonsTag(dato){
 	var formInicio = "<form action='./rutaTadeo' method='post'>";
 	var hidden = "<input type='hidden' value='"+dato['numero']+"' name='numero'/>";
@@ -182,7 +181,7 @@ $.ajax({
 
 }
 
-
+// en esta funcion obtengo los datos de las entradas y verifico si se cumplen las reglas de tamaño y contenido.
 function validarEntradas()
 {
 

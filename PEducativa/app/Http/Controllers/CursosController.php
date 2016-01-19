@@ -25,12 +25,18 @@ foreach($cursosBD as $dato){
 
 /*Este metodo store guarda los datos que se pasan por post desde la vista*/
 public function store()
+{
 
 	// si la peticion viene de un ajax ... 
 
 
 
 	if(Request::ajax()){
+
+	if(Request::ajax()) 
+	{
+		$data = Request::all();
+
 
 	if(Request::ajax()) 
 	{

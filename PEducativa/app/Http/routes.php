@@ -32,7 +32,8 @@ Route::get('perfil',function(){
 	return view('profesor/perfil');
 });
 
-
+/* --------------------  ABP  ----------------- */
+Route::get('actividad/abp','AbpProfesorController@show');
 
 
 

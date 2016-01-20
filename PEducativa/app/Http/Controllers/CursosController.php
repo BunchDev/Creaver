@@ -30,7 +30,7 @@ public function store(){
 
 
 
-	if(Request::ajax()){
+
 
 	if(Request::ajax()) 
 	{
@@ -62,7 +62,7 @@ public function store(){
 	}
 
 
-}
+
 }
 }
 ?>

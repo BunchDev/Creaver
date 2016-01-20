@@ -16,22 +16,26 @@ public function listarCursos()
 	$cursos =  array();
 	
 
-/* Recorro todos los datos obtenidos de la consulta y lo paso a un array de arrays asocitativos*/ 
-foreach($cursosBD as $dato){
-	array_push($cursos,array('numero' => $dato->idCurso,'nombre' => $dato->Nombre,'descripcion' =>$dato->Descripcion,'estatus' => $dato->Estatus));
-}
+	/* Recorro todos los datos obtenidos de la consulta y lo paso a un array de arrays asocitativos*/ 
+	foreach($cursosBD as $dato){
+		array_push($cursos,array('numero' => $dato->idCurso,'nombre' => $dato->Nombre,'descripcion' =>$dato->Descripcion,'estatus' => $dato->Estatus));
+	}
 	return view('profesor/cursos')->with('datoscursos',$cursos);
 }
 
 /*Este metodo store guarda los datos que se pasan por post desde la vista*/
-public function store()
-{
+public function store(){
 
 	// si la peticion viene de un ajax ... 
+
+
+
+	if(Request::ajax()){
 
 	if(Request::ajax()) 
 	{
 		// obtengo todos los datos que se pasan por post mediante el formulario
+
 		$data = Request::all();
 		// si lo que viene de post está vacío ... 
 		if(empty($data)) 
@@ -57,19 +61,8 @@ public function store()
 			}
 	}
 
- 
-
-
 
 }
-
-
-
-
-
-
 }
-
-
-
+}
 ?>

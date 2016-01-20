@@ -1,8 +1,12 @@
 @extends('profesor.perfil')
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
 {!! Html::script('scripts/cursos.js')!!}
+
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
+
+
+  
 @section('content')
 
 
@@ -16,6 +20,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarCurso()" class="btn btn-danger btn-fab" ><i class="material-icons">add</i></a>
 <br>
+
 
 <!-- Creo un form donde agrego los elementos del modulo como los botones de despliegue -->
 {!! Form:: open(['url' => '#','role' => 'form','class' => 'form-horizontal'])   !!}
@@ -72,16 +77,20 @@
       <label class="col-md-2 control-label">Nombre</label>
 
       <div class="col-md-10">
+        <div id="status">
         <input type="text" class="form-control" id="nombreCurso" name="nombre">
+        </div>
       </div>
 
     </div>
     <div class="form-group">
       <label for="descripcionCurso" class="col-md-2 control-label">Descripción</label>
 
-      <div class="col-md-10">
+      <div class="col-md-11">
   <label class="control-label" for="descripcionCurso">Escriba una descripción del curso (opcional)</label>
+  <div id="statusTArea">
    <textarea class="form-control" rows="3" id="descripcionCurso" name="descripcion"></textarea>
+   </div>
 
       </div>
     </div>
@@ -101,6 +110,7 @@
 
 <!-- Se mandan los datos que se recibe en la vista al script para su posterior ordenamiento -->
 <script type="text/javascript">
+
 mostrarCursos(<?php echo json_encode( $datoscursos) ?>)
 </script>
 

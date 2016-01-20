@@ -13,6 +13,7 @@
 	{!! Html::style('bower_components/sweetalert/dist/sweetalert.css') !!}
 
 	{!! Html::style('css/adaptaciones.css') !!}
+	
 
 
 
@@ -62,7 +63,7 @@
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/ripples.min.js')!!}
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/material.min.js')!!}
 	{!! Html::script('bower_components/sweetalert/dist/sweetalert.min.js')!!}
-	{!! Html::script('bower_components/jquery-validation/dist/jquery.validate.min.js')!!}
+	
 
 <script type="text/javascript">
 	$(document).on('ready',function(){

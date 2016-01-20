@@ -191,26 +191,33 @@ $("#avisos").empty();
 if(nombre.length > 0 && descripcion.length < 60) return true;
 else {
 	$("#avisos").append("<div class='alert alert-dismissible alert-danger' id='msjserror'><strong>¡Ups,ocurrió un problema!</strong></div>");
-	
+	$("#statusicon").remove();
 	if(nombre.length == 0)
 	{
 		$("#msjserror").append( "<br><a class='alert-link'>El campo nombre está vacío</a>");
+		$("#status").addClass('form-group has-error label-floating is-empty');
+		$(".col-md-10").append('<span class="glyphicon glyphicon-remove form-control-feedback" id="statusicon"></span>');
+		
 
-		$("#nombreCurso").css("border", "1px solid red");
+
 	}
 	else {
 		
 		$("#nombreCurso").css("border", "1px solid green");
+		$(".col-md-10").append('<span class="glyphicon glyphicon-ok form-control-feedback"></span>');
 	}
 
 	if(descripcion.length > 60)
 	{
 		$("#msjserror").append("<br><a class='alert-link'>La descripción es muy larga, máximo 60 caracteres</a>");
-		$("#descripcionCurso").css("border", "1px solid red");
+		$("#statusTArea").addClass('form-group has-error label-floating is-empty');
+
+		$(".col-md-11").append('<span class="glyphicon glyphicon-remove form-control-feedback" id="statusicon"></span>');
+
 	}
 	if (descripcion.length <60 && nombre.length == 0)
 	{
-		$("#descripcionCurso").css("border", "1px solid green");
+
 
 	}
 	

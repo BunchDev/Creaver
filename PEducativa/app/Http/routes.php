@@ -34,6 +34,7 @@ Route::get('perfil',function(){
 
 /* --------------------  ABP  ----------------- */
 Route::get('actividad/abp','AbpProfesorController@show');
+Route::post('actividad/abp/store','AbpProfesorController@store');
 
 
 

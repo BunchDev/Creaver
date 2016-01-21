@@ -7,16 +7,20 @@
 @section('content')
 <script type="text/javascript">
 	$(document).ready(function(){
+
+    function remove(){
+      alert("hola");
+      $($this).remove();
+    }
+
    	 	$("#AgregarPersonaje").click(function(){
      	var nuevoPersonaje=$("#NuevoPersonaje").val();
-      
-     	$(".Personajes-Agregados").append('<span class="tag label label-info "><span>'+nuevoPersonaje+'</span><a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>')
-		$("#NuevoPersonaje").val('');
+      ///variable con un hidden input con el valor del personaje agreagado.
+      var hiddenP="<input type='hidden' name='Personajes[]' value="+nuevoPersonaje+">"
+     	$(".Personajes-Agregados").append('<span onclick="remove()" value='+nuevoPersonaje+'class="tag label label-info"> '+hiddenP+'<span>'+nuevoPersonaje+'</span><a><i  class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>')
+		  $("#NuevoPersonaje").val('');
     	});
-    	$(".personaje-agregado").click(function(){
-    		alert("hola");
-    		$(".personaje-agregado").remove();
-        });
+    	
     });
 </script>
  
@@ -27,7 +31,8 @@
 </div>
   <div class="col-lg-4 col-lg-offset-4">
     <div id="formularioAbpProfesor" align="center" class="form-group" >
-   {!!Form::open() !!}
+
+          {!!Form::open(array('action' => 'AbpProfesorController@store')) !!}
           <div id="contextodiv" class="form-group">
 
           {!! Form::label('contexto','Contexto',array('class'=>'control-label','for'=>'contexto')) !!}
@@ -65,13 +70,15 @@
               </br>
          
           </br>
+          <div class="Personajes-Agregados">
+
+          </div>
+ {!!Form::submit('guardar',['class'=>'Guardar','id'=>'Guardar'])!!} 
     {!! Form::close() !!}
     </div>
     </div>
 
-<div class="Personajes-Agregados">
 
-</div>
 
 
 

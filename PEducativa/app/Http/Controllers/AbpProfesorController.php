@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 
 class AbpProfesorController extends Controller
@@ -37,7 +37,8 @@ class AbpProfesorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          $input = Input::all();
+        dd($input);
     }
 
     /**

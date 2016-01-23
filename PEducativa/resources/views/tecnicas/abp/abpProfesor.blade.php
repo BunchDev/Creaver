@@ -40,7 +40,7 @@
            <div class="fa fa-spin fa-pulse circularIcono">
           <i class="material-icons">public</i>
           </div>
-          {!! Form::text("contexto",'',["name" => "contexto",'class'=>'form-control input-lg','placeholder'=>'Añade un contexto'])     !!}
+          {!! Form::text("contexto",'',["name" => "Contexto",'class'=>'form-control input-lg','placeholder'=>'Añade un contexto'])     !!}
           </div>
           <br>
           <div id="problematicadiv" class="form-group">

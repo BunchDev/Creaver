@@ -60,9 +60,11 @@ else {
 el metodo mostrarCursos llama a la funcion ordCursos y manda a llamar al metodo necesario para crear 
 los elementos dependiendo el estatus del curso
 */
+
+var misdatos;
 function mostrarCursos(datos){
 
-
+misdatos = datos;
 datos = ordCursos(datos);
 aprobados = datos[0];
 naprobados = datos[1];
@@ -72,7 +74,7 @@ crearElementos(naprobados,2);
 }
 // se crea aca mismo el form para acceder a la pagina y los datos se mandan por post
 function getButtonsTag(dato){
-	var formInicio = "<form action='./irCurso' method='post'>";
+	var formInicio = "<form action='irCurso/"+dato['numero']+"' method='post'>";
 	var hidden = "<input type='hidden' value='"+dato['numero']+"' name='numero'/>";
 	var ir= "<button type='submit' class='btn btn-success-outline btn-sm'>Ir al Curso <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></span></button>"
 	//var editar = "<button type='submit' class='btn btn-success-outline btn-sm'>Editar Curso <span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button>"

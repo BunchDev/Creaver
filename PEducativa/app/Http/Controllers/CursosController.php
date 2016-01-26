@@ -64,9 +64,11 @@ public function store(){
 
 
 }
-public function irCurso(){
-
-	return view('profesor/irCurso');
+public function irCurso($id){
+	//dd($id);
+	$db=Curso::find($id);
+	//dd($db);
+	return view('profesor/irCurso')->with('DatosCurso',$db);
 }
 }
 ?>

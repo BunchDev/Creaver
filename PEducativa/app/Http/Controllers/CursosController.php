@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use Request;
+
 use App\Curso;
 
 class CursosController extends Controller {

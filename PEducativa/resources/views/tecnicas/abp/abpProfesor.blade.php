@@ -17,7 +17,7 @@
      	var nuevoPersonaje=$("#NuevoPersonaje").val();
       ///variable con un hidden input con el valor del personaje agreagado.
       var hiddenP="<input type='hidden' name='Personajes[]' value="+nuevoPersonaje+">"
-     	$(".Personajes-Agregados").append('<span onclick="remove()" value='+nuevoPersonaje+'class="tag label label-info"> '+hiddenP+'<span>'+nuevoPersonaje+'</span><a><i  class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>')
+     	$(".Personajes-Agregados").append('<span onclick="remove()" value='+nuevoPersonaje+' class="tag label label-info"> '+hiddenP+'<span>'+nuevoPersonaje+'</span><a><i  class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a></span><br><br>')
 		  $("#NuevoPersonaje").val('');
     	});
     	

@@ -84,7 +84,7 @@
 
     </div>
     <div class="form-group">
-      <label for="descripcionCurso" class="col-md-2 control-label">Descripción</label>
+ 
 
       <div class="col-md-11">
   <label class="control-label" for="descripcionCurso">Escriba una descripción del curso (opcional)</label>

@@ -64,5 +64,9 @@ public function store(){
 
 
 }
+public function irCurso(){
+
+	return view('profesor/irCurso');
+}
 }
 ?>

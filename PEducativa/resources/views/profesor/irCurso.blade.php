@@ -1,6 +1,6 @@
 @extends('profesor.perfil')
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
-{!! Html::script('scripts/cursos.js')!!}
+{!! Html::script('scripts/actividades.js')!!}
 
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
@@ -15,7 +15,21 @@
 {{$DatosCurso->Descripcion}}
 </div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn btn-danger btn-fab" ><i class="material-icons">add</i></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn  btn-fab" id="addAct" ><i class="material-icons">add</i></a>
 <br>
 
 {!! Form:: open(['url' => '#','role' => 'form','class' => 'form-horizontal'])   !!}
@@ -32,4 +46,76 @@
 </div>
 
 {!! Form:: close() !!}
+
+
+<!-- MODAL PARA LA ACTIVIDAD -->
+<div class="modal fade" id="nuevaActividadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">Nueva Actividad</h3>
+      </div>
+      <div class="modal-body">
+       
+<!-- Cuerpo del form -->
+<form action="./crearCurso" method="post" id='formCrearCurso'>
+  <div id="avisos"></div>
+<div class="form-group">
+      <label class="col-md-2 control-label">Nombre</label>
+
+      <div class="col-md-10">
+        <div id="status">
+        <input type="text" class="form-control" id="nombreCurso" name="nombre">
+        </div>
+      </div>
+
+    </div>
+
+<!-- Selector de tecnicas -->
+<div class="form-group">
+      <label class="col-md-2 control-label">Técnica de enseñanza</label>
+
+      <div class="col-md-10" id= "tecnicas">
+        <div id="status">
+        <select class="selectpicker" data-width="100%">
+  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-action-primary'><img class='circle' src='../images/tecnicas/abp.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>ABP</h4><p class='list-group-item-text'>Aprendizaje Basado en Problemas</p></div></div></div>"></option>
+  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/caso.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>DC</h4><p class='list-group-item-text'>Diseño de Caso</p></div></div></div>"></option>
+  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/ai.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>AI</h4><p class='list-group-item-text'>Aula Invertida</p></div></div></div>"></option>
+</select>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="form-group">
+<div class="col-md-11">
+  <label class="control-label" for="descripcionCurso">Escriba una descripción de la actividad (opcional)</label>
+  <div id="statusTArea">
+   <textarea class="form-control" rows="3" id="descripcionCurso" name="descripcion"></textarea>
+   </div>
+
+      </div>
+    </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar <i class="material-icons">clear</i></button>
+        <button type="button" onclick="enviarDatosServidor()" class="btn btn-raised btn-danger">Guardar Curso <i class="material-icons">save</i></button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
 @endsection

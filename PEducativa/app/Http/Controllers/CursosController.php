@@ -70,5 +70,13 @@ public function irCurso($id){
 	//dd($db);
 	return view('profesor/irCurso')->with('DatosCurso',$db);
 }
+
+
+public function irCursoAprobar($id){
+	//dd($id);
+	$db=Curso::find($id);
+	//dd($db);
+	return view('profesor/irCursoAprobar')->with('DatosCurso',$db);
+}
 }
 ?>

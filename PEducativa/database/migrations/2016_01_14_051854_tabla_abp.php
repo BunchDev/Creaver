@@ -12,12 +12,7 @@ class TablaAbp extends Migration
      */
     public function up()
     {
-         Schema::create('abp', function (Blueprint $table) {
-            $table->increments('idABP');
-            $table->string('Contexto');
-            $table->string('problematica');
-            $table->timestamps();
-            }); 
+       
    }
 
     /**

@@ -28,10 +28,6 @@ public function store(){
 
 	// si la peticion viene de un ajax ... 
 
-
-
-
-
 	if(Request::ajax()) 
 	{
 		// obtengo todos los datos que se pasan por post mediante el formulario

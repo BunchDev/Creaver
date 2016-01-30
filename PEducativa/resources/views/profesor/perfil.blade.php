@@ -13,6 +13,7 @@
 	{!! Html::style('bower_components/sweetalert/dist/sweetalert.css') !!}
 
 	{!! Html::style('css/adaptaciones.css') !!}
+	{!! Html::style('bower_components/bootstrap-select/dist/css/bootstrap-select.min.css') !!}
 	
 
 
@@ -49,7 +50,8 @@
 			</div>
 		</div>
 	</nav>
-
+	
+</body>
 	@yield('content')
 
 	<!-- Scripts -->
@@ -58,8 +60,7 @@
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/ripples.min.js')!!}
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/material.min.js')!!}
 	{!! Html::script('bower_components/sweetalert/dist/sweetalert.min.js')!!}
-	
-
+	{!! Html::script('scripts/actividades.js')!!}
 <script type="text/javascript">
 	$(document).on('ready',function(){
 

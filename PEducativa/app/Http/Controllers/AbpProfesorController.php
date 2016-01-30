@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
+use App\Abp;
 
 class AbpProfesorController extends Controller
 {
@@ -38,7 +39,10 @@ class AbpProfesorController extends Controller
     public function store(Request $request)
     {
           $input = Input::all();
-        dd($input);
+          $inputPersonajes = Input::get('Personajes');
+          $Abp= Abp::create($input);
+          $Abp->AgregarPersonajes($inputPersonajes,$Abp->idABP);
+          return redirect('actividad/abp');
     }
 
     /**

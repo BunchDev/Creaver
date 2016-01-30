@@ -25,7 +25,9 @@
  /* ----------------   CURSOS  ----------------*/
 Route::get('cursos', 'CursosController@listarCursos');
 Route::post('crearCurso', 'CursosController@store');
+Route::post('crearActividad', 'ActividadController@store');
 Route::post('irCurso/{id}', 'CursosController@irCurso');
+
 /* ----------------- PERFIL  ------------------*/
 
 Route::get('perfil',function(){

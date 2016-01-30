@@ -1,6 +1,6 @@
 @extends('profesor.perfil')
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
-{!! Html::script('scripts/actividades.js')!!}
+
 
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
@@ -13,10 +13,11 @@
 <p class="lead"> Detalles del curso seleccionado:
 	{{$DatosCurso->Nombre}}
 {{$DatosCurso->Descripcion}}
+
 </div>
 
 
-
+{{$id = $DatosCurso->idCurso}}
 
 
 
@@ -79,12 +80,12 @@
 <div class="form-group">
       <label class="col-md-2 control-label">Técnica de enseñanza</label>
 
-      <div class="col-md-10" id= "tecnicas">
+      <div class="col-md-10">
         <div id="status">
-        <select class="selectpicker" data-width="100%">
-  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-action-primary'><img class='circle' src='../images/tecnicas/abp.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>ABP</h4><p class='list-group-item-text'>Aprendizaje Basado en Problemas</p></div></div></div>"></option>
-  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/caso.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>DC</h4><p class='list-group-item-text'>Diseño de Caso</p></div></div></div>"></option>
-  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/ai.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>AI</h4><p class='list-group-item-text'>Aula Invertida</p></div></div></div>"></option>
+        <select class="selectpicker" data-width="100%" id="tecnicas">
+  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-action-primary'><img class='circle' src='../images/tecnicas/abp.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>ABP</h4><p class='list-group-item-text'>Aprendizaje Basado en Problemas</p></div></div></div>">1</option>
+  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/caso.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>DC</h4><p class='list-group-item-text'>Diseño de Caso</p></div></div></div>">2</option>
+  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/ai.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>AI</h4><p class='list-group-item-text'>Aula Invertida</p></div></div></div>">3</option>
 </select>
         </div>
       </div>
@@ -108,12 +109,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar <i class="material-icons">clear</i></button>
-        <button type="button" onclick="enviarDatosServidor()" class="btn btn-raised btn-danger">Guardar Curso <i class="material-icons">save</i></button>
+        <button type="button" onclick="guardar(1)" class="btn btn-raised btn-danger" id="guardarActividad">Guardar Actividad <i class="material-icons">save</i></button>
       </div>
       </form>
     </div>
   </div>
 </div>
+	{!! Html::script('bower_components/bootstrap-select/dist/js/bootstrap-select.min.js')!!}
 
 
 

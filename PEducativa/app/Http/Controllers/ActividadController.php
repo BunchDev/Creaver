@@ -12,7 +12,7 @@ class ActividadController extends Controller
 {
     public function store()
     {
-    	echo "hola";
+    	
     	$datos = Request::all();
     	switch ($datos['tecnica']) {
     		case 1:

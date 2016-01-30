@@ -7,6 +7,7 @@
 
 
 @section('content')
+<div class="se-pre-con-irCurso"></div>
 <div class="jumbotron jumbotron-fluid">
 <h1 class="display-3">Curso seleccionado</h1>
 <br>
@@ -15,19 +16,6 @@
 {{$DatosCurso->Descripcion}}
 
 </div>
-
-
-{{$id = $DatosCurso->idCurso}}
-
-
-
-
-
-
-
-
-
-
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn  btn-fab" id="addAct" ><i class="material-icons">add</i></a>
@@ -109,7 +97,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar <i class="material-icons">clear</i></button>
-        <button type="button" onclick="guardar(1)" class="btn btn-raised btn-danger" id="guardarActividad">Guardar Actividad <i class="material-icons">save</i></button>
+        <button type="button" onclick="guardar({{$DatosCurso->idCurso}})" class="btn btn-raised btn-danger" id="guardarActividad">Guardar Actividad <i class="material-icons">save</i></button>
       </div>
       </form>
     </div>

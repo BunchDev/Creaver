@@ -8,7 +8,7 @@
 
   
 @section('content')
-
+<div class="se-pre-con-curso"></div>
 
 <!-- Agrego un mensaje de informacion al entrar a este modulo -->
 <div class="jumbotron jumbotron-fluid">

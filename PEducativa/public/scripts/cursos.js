@@ -1,3 +1,9 @@
+$(window).load(function() {
+		
+		$(".se-pre-con-curso").fadeOut("slow");;
+	});
+
+
 $(document).on('ready',function(){
 
         $("#ap").append(' <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>');

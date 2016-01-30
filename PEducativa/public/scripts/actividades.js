@@ -1,3 +1,9 @@
+$(window).load(function() {
+		
+		$(".se-pre-con-irCurso").fadeOut("slow");;
+	});
+
+
 function mostrarFormAgregarActividad()
 {
 	limpiarForm();

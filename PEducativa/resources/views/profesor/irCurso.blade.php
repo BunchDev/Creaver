@@ -7,18 +7,7 @@
 
 
 @section('content')
-<<<<<<< HEAD
-	<div class="jumbotron jumbotron-fluid">
-		<h1 class="display-3">Curso seleccionado</h1>
-		<br>
-		<p class="lead"> Detalles del curso seleccionado:
-		{{$DatosCurso->Nombre}}<br>
-		{{$DatosCurso->Descripcion}}
-	</div>
 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn btn-danger btn-fab" ><i class="material-icons">add</i></a>
-	<br>
-=======
 <div class="se-pre-con-irCurso"></div>
 <div class="jumbotron jumbotron-fluid">
 <h1 class="display-3">Curso seleccionado</h1>
@@ -32,7 +21,6 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn  btn-fab" id="addAct" ><i class="material-icons">add</i></a>
 <br>
->>>>>>> origin/master
 
 	{!! Form:: open(['url' => '#','role' => 'form','class' => 'form-horizontal'])   !!}
 	<div id="tablaActividades">
@@ -47,9 +35,7 @@
 		</div>
 	</div>
 
-<<<<<<< HEAD
-	{!! Form:: close() !!}
-=======
+
 {!! Form:: close() !!}
 
 
@@ -123,6 +109,4 @@
 
 
 
-
->>>>>>> origin/master
 @endsection

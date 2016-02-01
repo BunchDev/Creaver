@@ -7,7 +7,7 @@ use Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use App\Abp;
-
+use App\Actividad;
 class AbpProfesorController extends Controller
 {
     /**
@@ -54,7 +54,11 @@ class AbpProfesorController extends Controller
     public function show()
     {     
 		$data = Request::all();
-		$datos = array('nombre' => 'Inteligencia Artificial','id' =>0 );
+		
+       // $actividad = Actividad::where('idActividad',$data->idActividad)->get();
+        $datos = array('nombre' => 'Inteligencia Artificial','id' =>0);
+                //$datos = array('nombre' => $actividad->Nombre,'id' =>$data->idActividad);
+
 		return view('tecnicas/abp/abpProfesor')->with('datos',$datos);
     }
 

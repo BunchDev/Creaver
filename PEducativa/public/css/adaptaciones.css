@@ -118,3 +118,9 @@ background-color: #2966B8;
 	z-index: 9999;
 	background: url(http://localhost:8080/PlataformaEducativa/loader/128x128/Preloader_4.gif) center no-repeat #fff;
 }
+#actividadesList{
+	width: 60%;
+}
+#done{
+	color: #2DC800;
+}

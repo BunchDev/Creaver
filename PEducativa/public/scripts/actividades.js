@@ -35,13 +35,13 @@ mediante una petición ajax de tipo POST.
 */
 function guardar(id)
 {
-//if(validarEntradas() == false) return;
+if(validarEntradas() == false) return;
 
 $.ajax({
    type:'post',
    url :"../crearActividad",
    
-   data: {'nombre':$("#nombreCurso").val(),'descripcion': $("#descripcionCurso").val(),'tecnica': $('select[id=tecnicas]').val(),'idcurso':id,'_token': $('input[name=_token]').val()},
+   data: {'nombre':$("#nombreActividad").val(),'descripcion': $("#descripcionActividad").val(),'tecnica': $('select[id=tecnicas]').val(),'idcurso':id,'_token': $('input[name=_token]').val()},
    
    success: function(data) {
        $('#nuevaActividadModal').modal('hide');
@@ -55,8 +55,15 @@ $.ajax({
           confirmButtonText: 'Ok',   
           closeOnConfirm: true },
         function() {   
-
-        	location.reload();
+        	/*
+       	var url = '../actividad/abp';
+		var form = $('<form action="' + url + '" method="post">' +
+  		'<input type="text" name="api_url" value="' + data.idActividad + '" />' +
+  		'</form>');
+$('body').append(form);
+form.submit();
+*/
+        window.location.replace("../actividad/abp");
          });
 
 
@@ -73,8 +80,8 @@ $.ajax({
 function validarEntradas()
 {
 
-nombre = $("#nombreCurso").val();
-descripcion = $("#descripcionCurso").val();
+nombre = $("#nombreActividad").val();
+descripcion = $("#descripcionActividad").val();
 $("#avisos").empty();
 if(nombre.length > 0 && descripcion.length < 60) return true;
 else {
@@ -82,9 +89,9 @@ else {
 	$("#statusicon").remove();
 	if(nombre.length == 0)
 	{
-		$("#msjserror").append( "<br><a class='alert-link'>El campo nombre está vacío</a>");
+		$("#msjserror").append( "<br><a class='alert-link'>No has puesto el nombre de la actividad</a>");
 		$("#status").addClass('form-group has-error label-floating is-empty');
-		$(".col-md-10").append('<span class="glyphicon glyphicon-remove form-control-feedback" id="statusicon"></span>');
+		$("#actividad").append('<span class="glyphicon glyphicon-remove form-control-feedback" id="statusicon"></span>');
 		
 
 
@@ -95,9 +102,9 @@ else {
 		$(".col-md-10").append('<span class="glyphicon glyphicon-ok form-control-feedback"></span>');
 	}
 
-	if(descripcion.length > 60)
+	if(descripcion.length > 150)
 	{
-		$("#msjserror").append("<br><a class='alert-link'>La descripción es muy larga, máximo 60 caracteres</a>");
+		$("#msjserror").append("<br><a class='alert-link'>La descripción es muy larga, máximo 150 caracteres</a>");
 		$("#statusTArea").addClass('form-group has-error label-floating is-empty');
 
 		$(".col-md-11").append('<span class="glyphicon glyphicon-remove form-control-feedback" id="statusicon"></span>');
@@ -122,5 +129,38 @@ alert($('select[id=tecnicas]').val());
 
 }
 
+function listarActividades(actividades)
+{
+	console.log(actividades);
+	$.each(actividades, function(key,value) {   
+     	
+        if(value.status == 0){icotext = "update"; idico="waiting"}
+     	else {icotext="done"; idico="done"}
+     	lgi = $("<div></div>").addClass("list-group-item").attr("id",value.idActividad);
+    	rap = $("<div></div>").addClass("row-action-primary");
+    	ico = $("<i></i>").addClass("material-icons").text(icotext).attr("id",idico);
+    	rc = $("<div></div>").addClass("row-content");
+    	lc = $("<div></div>").addClass("least-content").append(value.updated_at);
+    	h4 = $("<h4></h4>").addClass("list-group-item-heading").append(value.Nombre);
+    	p = $("<p></p>").addClass("list-group-item-text").append(value.Descripcion);
+    	sep = $("<div></div>").addClass("list-group-separator");
 
 
+    	lgi.append(rap);
+    	rap.append(ico);
+    	lgi.append(rc);
+    	rc.append(lc);
+    	rc.append(h4);
+    	rc.append(p);
+    	lgi.append(sep);
+
+    	$(".list-group").append(lgi);
+
+
+
+        
+      
+	});
+
+
+}

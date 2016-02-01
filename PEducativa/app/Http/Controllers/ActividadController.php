@@ -34,5 +34,6 @@ class ActividadController extends Controller
 		$actividad->tipo_tecnica = $datos['tecnica'];   
 		$actividad->save(); 	
 
+        return $actividad->idActividad;
     }
 }

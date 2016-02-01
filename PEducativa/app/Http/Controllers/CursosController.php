@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Request;
 use App\Curso;
-
+use App\Actividad;
 class CursosController extends Controller {
 /* listarCursos retorna la vista del curso con los datos obtenidos y filtados de la BD */
 public function listarCursos()
@@ -64,7 +64,10 @@ public function irCurso($id){
 	//dd($id);
 	$db=Curso::find($id);
 	//dd($db);
-	return view('profesor/irCurso')->with('DatosCurso',$db);
+	/*Obtengo todas las actividades de ese curso*/
+	$actividades = Actividad::where('fk_idCurso',$id)->get();
+	
+	return view('profesor/irCurso')->with('DatosCurso',$db)->with('actividades',$actividades);
 }
 
 

@@ -37,7 +37,7 @@
 
           {!! Form::label('contexto','Contexto',array('class'=>'control-label','for'=>'contexto')) !!}
           <br>
-           <div class="fa fa-spin fa-pulse circularIcono">
+           <div class="fa  fa-pulse circularIcono">
           <i class="material-icons">public</i>
           </div>
           {!! Form::text("contexto",'',["name" => "Contexto",'class'=>'form-control input-lg','placeholder'=>'Añade un contexto'])     !!}
@@ -46,7 +46,7 @@
           <div id="problematicadiv" class="form-group">
           {!! Form::label('problematica','Problemática',array('class'=>'problematica control-label')) !!}
           <br>
-           <div class="fa fa-spin fa-pulse circularIcono">
+           <div class="fa  fa-pulse circularIcono">
           <i class="material-icons">info outline</i>
           </div>
           {!! Form::textarea('problematica','',array('class'=>'form-control input-lg','placeholder'=>'Añade una problemática'))!!}
@@ -56,7 +56,7 @@
           {!! Form::label('NuevoPersonaje','Personajes') !!}
           
           <br>
-           <div class="fa fa-spin fa-pulse circularIcono">
+           <div class="fa  fa-pulse circularIcono">
           <i class="material-icons">mood</i>
           </div>
           <br>

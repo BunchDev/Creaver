@@ -31,8 +31,16 @@
 </div>
   <div class="col-lg-4 col-lg-offset-4">
     <div id="formularioAbpProfesor" align="center" class="form-group" >
+          @if(isset($personajes))
+            @if(count($personajes)> 0)
 
-          {!!Form::open(array('action' => 'AbpProfesorController@store')) !!}
+              {!!Form::open(array('action' => 'AbpProfesorController@update')) !!}
+               <input type="hidden" name="idAbp" value="{{$personajes[0]->fk_idABP}}">
+            @else
+              {!!Form::open(array('action' => 'AbpProfesorController@store')) !!}
+            @endif
+          @endif
+          
           <div id="contextodiv" class="form-group">
 
           {!! Form::label('contexto','Contexto',array('class'=>'control-label','for'=>'contexto')) !!}
@@ -40,16 +48,29 @@
            <div class="fa  fa-pulse circularIcono">
           <i class="material-icons">public</i>
           </div>
-          {!! Form::text("contexto",'',["name" => "Contexto",'class'=>'form-control input-lg','placeholder'=>'Añade un contexto'])     !!}
+          @if(isset($abp->Contexto))
+            {!! Form::text("contexto",$abp->Contexto,["name" => "Contexto",'class'=>'form-control input-lg','placeholder'=>'Añade un contexto'])     !!}
+         
+          @else
+            {!! Form::text("contexto",'',["name" => "Contexto",'class'=>'form-control input-lg','placeholder'=>'Añade un contexto'])     !!}
+
+          @endif
+
           </div>
           <br>
           <div id="problematicadiv" class="form-group">
+      
           {!! Form::label('problematica','Problemática',array('class'=>'problematica control-label')) !!}
           <br>
            <div class="fa  fa-pulse circularIcono">
           <i class="material-icons">info outline</i>
           </div>
-          {!! Form::textarea('problematica','',array('class'=>'form-control input-lg','placeholder'=>'Añade una problemática'))!!}
+           @if(isset($abp->problematica))
+            {!! Form::textarea('problematica',$abp->problematica,array('class'=>'form-control input-lg','placeholder'=>'Añade una problemática'))!!}
+          @else
+            {!! Form::textarea('problematica','',array('class'=>'form-control input-lg','placeholder'=>'Añade una problemática'))!!}
+
+          @endif
           </div>
           <br>
           <div id="personajesdiv" class="form-group">
@@ -71,9 +92,28 @@
          
           </br>
           <div class="Personajes-Agregados">
+           @if(isset($personajes))
+              @foreach($personajes as $personaje)
+                @if(isset($personaje->Nombre))
+                  <script type="text/javascript">
+                    var hiddenP="<input type='hidden' name='Personajes[]' value='{{$personaje->Nombre}}'>"
+                    $(".Personajes-Agregados").append("<span onclick='remove()' value='{{$personaje->Nombre}}' class='tag label label-info'> "+hiddenP+"<span>{{$personaje->Nombre}}</span><a><i  class='remove glyphicon glyphicon-remove-sign glyphicon-white'></i></a></span><br><br>")
+                  </script>
+                @endif
+              @endforeach
+           @else
 
+           @endif
           </div>
- {!!Form::submit('guardar',['class'=>'Guardar','id'=>'Guardar'])!!} 
+@if(isset($personajes))
+  @if(count($personajes)> 0)
+     {!!Form::submit('Actualizar',['class'=>'Actualizar','id'=>'Actualizar'])!!} 
+  @else
+     {!!Form::submit('guardar',['class'=>'Guardar','id'=>'Guardar'])!!} 
+  @endif
+
+@endif
+
     {!! Form::close() !!}
     </div>
     </div>

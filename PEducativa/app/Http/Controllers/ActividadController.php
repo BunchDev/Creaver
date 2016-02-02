@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Support\Facades\Redirect;
 
 use Request;
 use App\Http\Controllers\Controller;
 use App\Actividad;
 use App\Abp;
+
 class ActividadController extends Controller
 {
     public function store()
@@ -36,4 +38,23 @@ class ActividadController extends Controller
 
         return $actividad->idActividad;
     }
+
+    public function show()
+    {
+
+        $datos = Request::all();
+        $actividad = Actividad::find($datos['idActividad']);
+        if($actividad->tipo_tecnica==1)
+        {
+            return redirect()->action('AbpProfesorController@show');
+        }
+
+
+    }
+
+    public function edit()
+    {
+        
+    }
+
 }

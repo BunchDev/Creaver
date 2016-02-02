@@ -26,9 +26,10 @@
 Route::get('cursos', 'CursosController@listarCursos');
 Route::post('crearCurso', 'CursosController@store');
 Route::post('crearActividad', 'ActividadController@store');
-Route::post('irCurso/{id}', 'CursosController@irCurso');
-
+Route::get('irCurso/{id}', 'CursosController@irCurso');
+Route::post('irActividad','ActividadController@show');
 Route::post('irCursoAprobar/{id}', 'CursosController@irCursoAprobar');
+
 
 /* ----------------- PERFIL  ------------------*/
 
@@ -40,7 +41,9 @@ Route::get('perfil',function(){
 /* --------------------  ABP  ----------------- */
 Route::get('actividad/abp','AbpProfesorController@show');
 Route::post('actividad/abp/store','AbpProfesorController@store');
-
+Route::post('actividad/abp/update','AbpProfesorController@update');
+Route::get('editarActividadABP/{id}', 'AbpProfesorController@edit');
+Route::post('eliminarActividadABP/{id}', 'AbpProfesorController@delete');
 
 
 

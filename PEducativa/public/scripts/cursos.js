@@ -81,14 +81,14 @@ crearElementos(naprobados,2);
 // se crea aca mismo el form para acceder a la pagina y los datos se mandan por post
 function getButtonsTag(dato){
 	if (dato['estatus'] == 1){
-		var formInicio = "<form action='irCurso/"+dato['numero']+"' method='post'>";
+		var formInicio = "<form action='irCurso/"+dato['numero']+"' method='get'>";
 		var hidden = "<input type='hidden' value='"+dato['numero']+"' name='numero'/>";
 		var ir= "<button type='submit' class='btn btn-success-outline btn-sm'>Ir a detalles del Curso <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></span></button>"
 		//var editar = "<button type='submit' class='btn btn-success-outline btn-sm'>Editar Curso <span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button>"
 		var formFinal = "</form>";
 		return formInicio + hidden + ir + formFinal;
 	}else {
-		var formInicio = "<form action='irCursoAprobar/"+dato['numero']+"' method='post'>";
+		var formInicio = "<form action='irCursoAprobar/"+dato['numero']+"' method='get'>";
 		var hidden = "<input type='hidden' value='"+dato['numero']+"' name='numero'/>";
 		var ir= "<button type='submit' class='btn btn-success-outline btn-sm'>Enviar propuesta<span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></span></button>"
 		//var editar = "<button type='submit' class='btn btn-success-outline btn-sm'>Editar Curso <span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button>"

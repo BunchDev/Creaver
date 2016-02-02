@@ -55,15 +55,15 @@ $.ajax({
           confirmButtonText: 'Ok',   
           closeOnConfirm: true },
         function() {   
-        	/*
-       	var url = '../actividad/abp';
+        	alert(data);
+       	var url = '../irActividad';
 		var form = $('<form action="' + url + '" method="post">' +
-  		'<input type="text" name="api_url" value="' + data.idActividad + '" />' +
+  		'<input type="text" name="idActividad" value="' + data + '" />' +
   		'</form>');
-$('body').append(form);
+$('#ir').append(form);
 form.submit();
-*/
-        window.location.replace("../actividad/abp");
+
+     
          });
 
 
@@ -140,26 +140,24 @@ function listarActividades(actividades)
     	rap = $("<div></div>").addClass("row-action-primary");
     	ico = $("<i></i>").addClass("material-icons").text(icotext).attr("id",idico);
     	rc = $("<div></div>").addClass("row-content");
-    	lc = $("<div></div>").addClass("least-content").append(value.updated_at);
+    	lc = $("<div></div>").addClass("least-content");
     	h4 = $("<h4></h4>").addClass("list-group-item-heading").append(value.Nombre);
     	p = $("<p></p>").addClass("list-group-item-text").append(value.Descripcion);
     	sep = $("<div></div>").addClass("list-group-separator");
-
-
+    //	btnedit = $("<ul class='dropdown-menu'><li><a href='javascript:void(0)'>Editar Actividad</a></li><li><a href='javascript:void(0)''>Another action</a></li><li class='divider'></li><li><a href='javascript:void(0)'>Eliminar Actividad</a></li></ul>")
+      if(value.tipo_tecnica == 1 ) urledit = "../editarActividadABP/"+value.idTecnica;
     	lgi.append(rap);
     	rap.append(ico);
     	lgi.append(rc);
     	rc.append(lc);
     	rc.append(h4);
     	rc.append(p);
-    	lgi.append(sep);
-
+    	lc.append("<div class='dropdown'><button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>Opciones <span class='caret'></span></button><ul class='dropdown-menu' role='menu' ><li class='dropdown'><a href='"+urledit+"'><i class='material-icons'>mode_edit</i>Editar</a></li><li class='dropdown'><a href='warga/delete/<?php echo $a->id;?>'><i class='material-icons'>delete</i>Borrar</a></li></ul>");
+    	lgi.append("<br><br><br>");
+      lgi.append(sep);
+    
     	$(".list-group").append(lgi);
-
-
-
-        
-      
+  
 	});
 
 

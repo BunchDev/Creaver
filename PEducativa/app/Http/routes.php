@@ -46,11 +46,18 @@ Route::get('editarActividadABP/{id}', 'AbpProfesorController@edit');
 Route::post('eliminarActividadABP/{id}', 'AbpProfesorController@delete');
 
 
+/* -------Comentario Propuesta------------*/
+Route::post('nuevoComentario', 'ComentarioController@store');
+//
+
 //Alumnos
 
 /* -----------------------------------------------/*
 
+//
 
+//
+Route::post('crearActividad', 'ActividadController@store');
 
 
 

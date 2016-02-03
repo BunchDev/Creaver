@@ -25,7 +25,7 @@ class TablaActividad extends Migration
             $table->integer('fk_idCurso')->unsigned();
             $table->integer('idTecnica')->length(10)->unsigned();
             $table->integer('tipo_tecnica');
-            $table->intval('status');
+           // $table->intval('status');
             $table->timestamps();
         });
 

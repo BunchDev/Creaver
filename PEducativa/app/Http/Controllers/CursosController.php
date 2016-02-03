@@ -75,7 +75,9 @@ public function irCursoAprobar($id){
 	//dd($id);
 	$db=Curso::find($id);
 	//dd($db);
-	return view('profesor/irCursoAprobar')->with('DatosCurso',$db);
+	$comentarios=$db->comentarios();
+	dd($comentarios);
+	return view('profesor/irCursoAprobar')->with('DatosCurso',$db)->with('comentarios',$comentarios);
 }
 }
 ?>

@@ -12,5 +12,9 @@ protected $primaryKey = 'idCurso';
 
 
 
-
+public function Comentarios()
+    {
+     // return "hgoa";
+      return $this->hasMany('App\ComentarioPropuesta','fk_idPropuesta');
+   }
 }

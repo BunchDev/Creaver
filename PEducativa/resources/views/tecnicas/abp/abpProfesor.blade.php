@@ -106,13 +106,14 @@
            @endif
           </div>
 
-     {!!Form::submit('guardar',['class'=>'Guardar','id'=>'Guardar'])!!} 
+     {!!Form::submit('guardar',['class'=>'btn btn-raised btn-success','id'=>'Guardar'])!!} 
 
 
     {!! Form::close() !!}
     <br>
     <ul class="pager">
-  <li class="previous"><a href="javascript:void(0)"><i class="material-icons">keyboard_return</i> Regresar a las Actividades</a></li>
+    
+  <li class="previous"><a href="{{$url = '../irCurso/'.$cursoid}}"><i class="material-icons">keyboard_return</i> Regresar a las Actividades</a></li>
 </ul>
     </div>
     </div>

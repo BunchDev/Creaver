@@ -19,6 +19,11 @@ class TablaPersonajesABP extends Migration
             $table->timestamps();
 
         });
+
+      Schema::table('personajes_ABP', function($table) {
+       $table->foreign('fk_idABP')->references('idABP')->on('abp')->onDelete('cascade');
+     
+   });    
     }
 
     /**

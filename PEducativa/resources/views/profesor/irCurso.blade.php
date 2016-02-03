@@ -18,10 +18,8 @@
 </div>
 <div id="ir"></div>
 
-        
- 
-
-
+   
+   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn  btn-fab" id="addAct" ><i class="material-icons">add</i></a>
 <br>
 

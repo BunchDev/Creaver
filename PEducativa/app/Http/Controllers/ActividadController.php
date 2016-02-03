@@ -14,29 +14,33 @@ class ActividadController extends Controller
 {
     public function store()
     {
-    	
-    	$datos = Request::all();
-        $id = 0;
-    	switch ($datos['tecnica']) {
-    		case 1:
-    			$abp = new Abp();
-    			$abp->save();
-                $id = $abp->idABP;
 
-    			break;
-    		
-    		default:
-    			echo "default";
-    			break;
-    	}
+        $datos = Request::all();
+        $id = 0;
 
     	$actividad = new Actividad();
     	$actividad->Nombre = $datos['nombre'];
     	$actividad->Descripcion = $datos['descripcion'];
     	$actividad->fk_idCurso = $datos['idcurso'];
-		$actividad->idTecnica = $id;
 		$actividad->tipo_tecnica = $datos['tecnica'];   
-		$actividad->save(); 	
+		$actividad->save(); 
+
+        
+        switch ($datos['tecnica']) {
+            case 1:
+                $abp = new Abp();
+                $abp->fk_idActividad = $actividad->idActividad;
+                $abp->save();
+                $id = $abp->idABP;
+                $actividad->idTecnica = $id;
+                $actividad->save();
+
+                break;
+            
+            default:
+                echo "default";
+                break;
+        }	
 
         return $actividad->idActividad;
     }

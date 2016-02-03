@@ -31,15 +31,11 @@
 </div>
   <div class="col-lg-4 col-lg-offset-4">
     <div id="formularioAbpProfesor" align="center" class="form-group" >
-          @if(isset($personajes))
-            @if(count($personajes)> 0)
+          
 
               {!!Form::open(array('action' => 'AbpProfesorController@update')) !!}
-               <input type="hidden" name="idAbp" value="{{$personajes[0]->fk_idABP}}">
-            @else
-              {!!Form::open(array('action' => 'AbpProfesorController@store')) !!}
-            @endif
-          @endif
+               <input type="hidden" name="idAbp" value="{{$abp->idABP}}">
+
           
           <div id="contextodiv" class="form-group">
 
@@ -109,14 +105,9 @@
 
            @endif
           </div>
-@if(isset($personajes))
-  @if(count($personajes)> 0)
-     {!!Form::submit('Actualizar',['class'=>'Actualizar','id'=>'Actualizar'])!!} 
-  @else
-     {!!Form::submit('guardar',['class'=>'Guardar','id'=>'Guardar'])!!} 
-  @endif
 
-@endif
+     {!!Form::submit('guardar',['class'=>'Guardar','id'=>'Guardar'])!!} 
+
 
     {!! Form::close() !!}
     </div>

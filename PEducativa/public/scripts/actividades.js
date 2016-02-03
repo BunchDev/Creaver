@@ -55,10 +55,10 @@ $.ajax({
           confirmButtonText: 'Ok',   
           closeOnConfirm: true },
         function() {   
-        	alert(data);
+        
        	var url = '../irActividad';
 		var form = $('<form action="' + url + '" method="post">' +
-  		'<input type="text" name="idActividad" value="' + data + '" />' +
+  		'<input type="hidden" name="idActividad" value="' + data->idActividad + '" />' +
   		'</form>');
 $('#ir').append(form);
 form.submit();

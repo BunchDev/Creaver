@@ -16,10 +16,12 @@ class ActividadController extends Controller
     {
     	
     	$datos = Request::all();
+        $id = 0;
     	switch ($datos['tecnica']) {
     		case 1:
     			$abp = new Abp();
     			$abp->save();
+                $id = $abp->idABP;
 
     			break;
     		
@@ -32,7 +34,7 @@ class ActividadController extends Controller
     	$actividad->Nombre = $datos['nombre'];
     	$actividad->Descripcion = $datos['descripcion'];
     	$actividad->fk_idCurso = $datos['idcurso'];
-		$actividad->idTecnica = $abp->idABP;
+		$actividad->idTecnica = $id;
 		$actividad->tipo_tecnica = $datos['tecnica'];   
 		$actividad->save(); 	
 
@@ -46,7 +48,7 @@ class ActividadController extends Controller
         $actividad = Actividad::find($datos['idActividad']);
         if($actividad->tipo_tecnica==1)
         {
-            return redirect()->action('AbpProfesorController@show');
+            return redirect('editarActividadABP/'.$actividad->idTecnica);
         }
 
 
@@ -54,7 +56,7 @@ class ActividadController extends Controller
 
     public function edit()
     {
-        
+
     }
 
 }

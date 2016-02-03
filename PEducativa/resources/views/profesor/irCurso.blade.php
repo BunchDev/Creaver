@@ -5,7 +5,6 @@
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
 
-
 @section('content')
 
 <div class="se-pre-con-irCurso"></div>

@@ -15,7 +15,6 @@
 		{{$DatosCurso->Descripcion}}
 	</div>
 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn btn-danger btn-fab" ><i class="material-icons">add</i></a>
 	<br>
 
 	

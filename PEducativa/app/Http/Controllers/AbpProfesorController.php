@@ -54,13 +54,7 @@ class AbpProfesorController extends Controller
      */
     public function show()
     {     
-		$data = Request::all();
 		
-       // $actividad = Actividad::where('idActividad',$data->idActividad)->get();
-        $datos = array('nombre' => 'Inteligencia Artificial','id' =>0);
-                //$datos = array('nombre' => $actividad->Nombre,'id' =>$data->idActividad);
-
-		return view('tecnicas/abp/abpProfesor')->with('datos',$datos);
     }
 
 
@@ -74,14 +68,17 @@ class AbpProfesorController extends Controller
    public function edit($id)
     {
         /*Busco el objeto ABP relacionado a la actividad*/
-        $actividad = Abp::find($id);
+        $abp = Abp::find($id);
         /*Obtengo todos los personajes relacionado a la actividad ABP*/
-        $personajes = PersonajesABP::where('fk_idABP',$actividad->idABP)->get();
-      
-        $datos = array('nombre' => 'Inteligencia Artificial','id' =>0);
+        $personajes = PersonajesABP::where('fk_idABP',$abp->idABP)->get();
+        $actividad = Actividad::where('tipo_tecnica',1)
+                        ->where('idTecnica',$abp->idABP)
+                        ->get();
+              
+        $datos = array('nombre' => $actividad->first()->Nombre,'id' => $actividad->first()->idActividad);
         /*Mando a la vista todos los datos obtenidos para mostrarlos y realizar las modificaciones necesarias respeco al DOM*/
         return view('tecnicas/abp/abpProfesor')
-                ->with('abp',$actividad)
+                ->with('abp',$abp)
                 ->with('datos',$datos)
                 ->with('personajes',$personajes);
 

@@ -96,13 +96,15 @@ class AbpProfesorController extends Controller
     {
           $input = Input::all();
           $inputPersonajes = Input::get('Personajes');
-         
+          $inputPersonajesEliminados = Input::get('Eliminados');
          foreach ($inputPersonajes as $personaje) {
                 $personajeabp = PersonajesABP::firstOrNew(array('Nombre' => $personaje,'fk_idABP' => $input['idAbp']));
                 $personajeabp->Nombre = $personaje;
                 $personajeabp->fk_idABP = $input['idAbp'];
                 $personajeabp->save();
                 }
+        if(isset($inputPersonajesEliminados))foreach ($inputPersonajesEliminados as $id) PersonajesABP::destroy($id);
+                
          
          $abp = Abp::find($input['idAbp']);
          $abp->Contexto = $input['Contexto'];
@@ -112,6 +114,8 @@ class AbpProfesorController extends Controller
 
 
     }
+
+   
 
     /**
      * Remove the specified resource from storage.

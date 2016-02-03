@@ -38,13 +38,18 @@ Route::get('perfil',function(){
 	return view('profesor/perfil');
 });
 
-/* --------------------  ABP  ----------------- */
+/* --------------------  ABP ----------------- */
+//Profesores
 Route::get('actividad/abp','AbpProfesorController@show');
 Route::post('actividad/abp/store','AbpProfesorController@store');
 Route::post('actividad/abp/update','AbpProfesorController@update');
 Route::get('editarActividadABP/{id}', 'AbpProfesorController@edit');
 Route::post('eliminarActividadABP/{id}', 'AbpProfesorController@delete');
 
+
+//Alumnos
+
+/* -----------------------------------------------/*
 
 
 

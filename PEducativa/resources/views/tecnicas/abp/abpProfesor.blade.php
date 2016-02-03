@@ -8,8 +8,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-    function remove(){
-      alert("hola");
+    function eliminar(){
+      
       $($this).remove();
     }
 
@@ -17,7 +17,7 @@
      	var nuevoPersonaje=$("#NuevoPersonaje").val();
       ///variable con un hidden input con el valor del personaje agreagado.
       var hiddenP="<input type='hidden' name='Personajes[]' value="+nuevoPersonaje+">"
-     	$(".Personajes-Agregados").append('<span onclick="remove()" value='+nuevoPersonaje+' class="tag label label-info"> '+hiddenP+'<span>'+nuevoPersonaje+'</span><a><i  class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a></span><br><br>')
+     	$(".Personajes-Agregados").append('<span onclick="eliminar()" value='+nuevoPersonaje+' class="tag label label-info"> '+hiddenP+'<span>'+nuevoPersonaje+'</span><a><i  class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a></span><br><br>')
 		  $("#NuevoPersonaje").val('');
     	});
     	
@@ -92,12 +92,16 @@
          
           </br>
           <div class="Personajes-Agregados">
+            
+          <script src="../scripts/abpProfesor.js" type="text/javascript"></script>
            @if(isset($personajes))
               @foreach($personajes as $personaje)
                 @if(isset($personaje->Nombre))
                   <script type="text/javascript">
+
+              
                     var hiddenP="<input type='hidden' name='Personajes[]' value='{{$personaje->Nombre}}'>"
-                    $(".Personajes-Agregados").append("<span onclick='remove()' value='{{$personaje->Nombre}}' class='tag label label-info'> "+hiddenP+"<span>{{$personaje->Nombre}}</span><a><i  class='remove glyphicon glyphicon-remove-sign glyphicon-white'></i></a></span><br><br>")
+                    $(".Personajes-Agregados").append("<span id='{{$personaje->idPersonajesABP}}' onclick='eliminar({{$personaje->idPersonajesABP}})' value='{{$personaje->Nombre}}' class='tag label label-info'> "+hiddenP+"<span>{{$personaje->Nombre}}</span><a><i  class='remove glyphicon glyphicon-remove-sign glyphicon-white'></i></a></span><br><br>")
                   </script>
                 @endif
               @endforeach

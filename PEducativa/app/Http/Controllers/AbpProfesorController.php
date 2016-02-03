@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Redirect;
 use Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
@@ -86,11 +86,9 @@ class AbpProfesorController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update Actualiza los cambios ocurridos en la actividad.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
@@ -110,9 +108,14 @@ class AbpProfesorController extends Controller
          $abp->Contexto = $input['Contexto'];
          $abp->Problematica = $input['problematica'];
          $abp->save();
-          return 1;
+         $actividad = Actividad::where('tipo_tecnica',1)
+                        ->where('idTecnica',$input['idAbp'])
+                        ->select(array('idActividad', 'status'))
 
-
+                        ->get();
+         $actividad->first()->status = 1;
+         $actividad->first()->save();
+         return redirect('./irCurso/'.$actividad->first()->idActividad)->with('updated', 'ready');
     }
 
    

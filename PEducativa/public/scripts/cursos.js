@@ -42,18 +42,22 @@ else {
 		}
 	for (var i = 0; i < datos.length; i++) {
 
-		var tr = "<tr id='"+trow+datos[i].numero+"'></tr>"
+		var tr = $("<tr id='"+trow+datos[i].numero+"'></tr>");
 		
 		$(tbody).append(tr);
 		
-		var numero = "<th scope='ro' class='thwi'>"+datos[i].numero+"</th>";
-		var nombre = "<td class='tdwinombre'>"+datos[i].nombre+"</td>";
-		var descripcion = "<td class='tdwidescripcion'>"+datos[i].descripcion+"</td>";
-		var opciones ="<td class='tdwiopciones'>"+getButtonsTag(datos[i])+"</td>"
-		var etiqueta ="";
-		etiqueta = etiqueta.concat(numero,nombre,descripcion,opciones);
+		var numero = $("<th scope='ro' class='thwi'>"+datos[i].numero+"</th>");
+		var nombre = $("<td class='tdwinombre'></td>");
+		//nombre.text(datos[i].nombre);
+		var descripcion = $("<td class='tdwidescripcion'></td>");
+		var opciones = $("<td class='tdwiopciones'>"+getButtonsTag(datos[i])+"</td>");
+		nombre.text(datos[i].nombre);
+		descripcion.text(datos[i].descripcion);
 		var trid = "#"+trow+datos[i].numero;
-		$(trid).append(etiqueta);
+		$(trid).append(numero);
+		$(trid).append(nombre);
+		$(trid).append(descripcion);
+		$(trid).append(opciones);
 	};
 
 }

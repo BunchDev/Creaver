@@ -140,8 +140,8 @@ function listarActividades(actividades)
     	ico = $("<i></i>").addClass("material-icons").text(icotext).attr("id",idico);
     	rc = $("<div></div>").addClass("row-content");
     	lc = $("<div></div>").addClass("least-content");
-    	h4 = $("<h4></h4>").addClass("list-group-item-heading").append(value.Nombre);
-    	p = $("<p></p>").addClass("list-group-item-text").append(value.Descripcion);
+    	h4 = $("<h4></h4>").addClass("list-group-item-heading").text(value.Nombre);
+    	p = $("<p></p>").addClass("list-group-item-text").text(value.Descripcion);
     	sep = $("<div></div>").addClass("list-group-separator");
     //	btnedit = $("<ul class='dropdown-menu'><li><a href='javascript:void(0)'>Editar Actividad</a></li><li><a href='javascript:void(0)''>Another action</a></li><li class='divider'></li><li><a href='javascript:void(0)'>Eliminar Actividad</a></li></ul>")
       if(value.tipo_tecnica == 1 ) urledit = "../editarActividadABP/"+value.idTecnica;

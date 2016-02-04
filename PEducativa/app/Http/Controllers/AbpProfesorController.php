@@ -80,7 +80,8 @@ class AbpProfesorController extends Controller
         return view('tecnicas/abp/abpProfesor')
                 ->with('abp',$abp)
                 ->with('datos',$datos)
-                ->with('personajes',$personajes);
+                ->with('personajes',$personajes)
+                ->with('cursoid',$actividad->first()->fk_idCurso);
 
     }
 
@@ -128,7 +129,7 @@ class AbpProfesorController extends Controller
          else $actividad->first()->status = 0;
 
          $actividad->first()->save();
-         return redirect('./irCurso/'.$actividad->first()->fk_idCurso)->with('updated', 'ready');
+         return redirect('./irCurso/'.$actividad->first()->fk_idCurso);
     }
 
    

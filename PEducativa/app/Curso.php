@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
+use App\Quotation;
 
 class Curso extends Model
 {
@@ -12,9 +14,11 @@ protected $primaryKey = 'idCurso';
 
 
 
-public function Comentarios()
+public function Comentarios($idPropuesta)
     {
      // return "hgoa";
-      return $this->hasMany('App\ComentarioPropuesta','fk_idPropuesta');
+    	$Comentarios = DB::table('comentario_propuesta')->where('fk_idPropuesta', '=', $idPropuesta)->get();
+
+      return $Comentarios;
    }
 }

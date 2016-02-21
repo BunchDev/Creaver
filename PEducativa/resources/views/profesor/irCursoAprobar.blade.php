@@ -16,14 +16,20 @@
 	</div>
 
 	<br>
-	just changed ths
+	<h2><span class="label label-success">Seccion de Comentarios</span></h2>
+	<br>
 	@foreach ($comentarios as $data)
-    <p> comentario {{ $data->Contenido }}</p>
+	
+	
+   <p>  <span class="label label-default">{{ $data->Contenido }}</span></p>
+  
 	@endforeach
 
 	  {!!Form::open(array('action' => 'ComentarioController@store')) !!}
+
 		<div class="form-group">
   			<label for="comment">Comentario:</label>
+
   			<textarea name="Contenido"class="form-control" rows="5" id="comment"></textarea>
 		</div>
 		<input type="hidden" name="fk_idPropuesta" value="{{$DatosCurso->idCurso}}">

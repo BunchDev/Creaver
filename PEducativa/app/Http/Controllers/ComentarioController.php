@@ -39,10 +39,9 @@ class ComentarioController extends Controller
     public function store(Request $request)
     {
          $input = Input::all();
-       	 //dd($input);
-         $Abp= ComentarioPropuesta::create($input);
+       	  $Abp= ComentarioPropuesta::create($input);
          
-          //return redirect('actividad/abp');
+          return redirect('irCursoAprobar/'.$input['fk_idPropuesta']);
     }
 
     /**

@@ -7,15 +7,13 @@
 	<title>Profesor</title>
 
 	{!! Html::style('bower_components/bootstrap/dist/css/bootstrap.min.css') !!}
-	
 	{!! Html::style('bower_components/bootstrap-material-design/dist/css/ripples.min.css') !!}
 	{!! Html::style('bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css') !!}
 	{!! Html::style('bower_components/sweetalert/dist/sweetalert.css') !!}
-
 	{!! Html::style('css/adaptaciones.css') !!}
 	{!! Html::style('bower_components/bootstrap-select/dist/css/bootstrap-select.min.css') !!}
+	{!! Html::style('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') !!}
 	
-
 
 
 
@@ -26,7 +24,7 @@
 </head>
 <!--oncontextmenu="return false"-->
 <body >
-	<nav class="navbar navbar-inverse" role="navigation">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -52,6 +50,8 @@
 	</nav>
 	
 </body>
+
+
 	@yield('content')
 
 	<!-- Scripts -->
@@ -60,6 +60,9 @@
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/ripples.min.js')!!}
 	{!! Html::script('bower_components/bootstrap-material-design/dist/js/material.min.js')!!}
 	{!! Html::script('bower_components/sweetalert/dist/sweetalert.min.js')!!}
+	{!! Html::script('bower_components/moment/min/moment.min.js')!!}
+	{!! Html::script('bower_components/moment/locale/es.js')!!}
+	{!! Html::script('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')!!}
 	
 <script type="text/javascript">
 	$(document).on('ready',function(){

@@ -1,8 +1,45 @@
+var nactividad,dactividad,factividad;
 $(window).load(function() {
 		
 		$(".se-pre-con-irCurso").fadeOut("slow");;
 	});
 
+$(document).ready(function(){
+configurarValidaciones();
+});
+
+function configurarValidaciones()
+{
+
+    nactividad =  $("#nombreActividad").JQBConfig({
+
+     required : true,
+                maxLen : 255,
+                minLen : 1,
+                messageError: "El nombre es requerido",
+                messageSuccess: ""
+   });
+
+    dactividad = $("#descripcionActividad").JQBConfig({
+
+     required : true,
+                maxLen : 255,
+                minLen : 1,
+                messageError: "La descripcion es requerida",
+                messageSuccess: ""
+   });
+
+   factividad = $("#fechaVencimiento").JQBConfig({
+
+     required : true,
+                maxLen : 255,
+                minLen : 1,
+                messageError: "Se requiere una fecha de entrega",
+                messageSuccess: ""
+   }); 
+
+
+}
 
 function mostrarFormAgregarActividad()
 {
@@ -10,6 +47,7 @@ function mostrarFormAgregarActividad()
 	$('#nuevaActividadModal').modal('show');
 
 }
+
 
 
 /*Limpia el form donde se añaden los datos de un nuevo curso*/
@@ -35,15 +73,17 @@ mediante una petición ajax de tipo POST.
 */
 function guardar(id)
 {
-if(validarEntradas() == false) return;
+if( (nactividad.validateInputText() & dactividad.validateInputText() & factividad.validateInputText()) == false) return;
 
 $.ajax({
    type:'post',
    url :"../crearActividad",
    
-   data: {'nombre':$("#nombreActividad").val(),'descripcion': $("#descripcionActividad").val(),'tecnica': $('select[id=tecnicas]').val(),'idcurso':id,'_token': $('input[name=_token]').val()},
+   data: {'nombre':$("#nombreActividad").val(),'descripcion': $("#descripcionActividad").val(),
+          'tecnica': $('select[id=tecnicas]').val(),'idcurso':id,'vencimiento':$("#fechaVencimiento").val(),'_token': $('input[name=_token]').val()},
    
    success: function(data) {
+      alert($("#fechaVencimiento").val());
        $('#nuevaActividadModal').modal('hide');
        $('#guardarActividad').attr('disabled',true);
        swal({   title: 'Actividad Añadida exitosamente',  
@@ -71,54 +111,10 @@ $.ajax({
    error:function(exception){swal("¡Ups!, ocurrió un error al crear la actividad", "Intenta de nuevo", "error")}
 });
 
-
-
 }
 
-// en esta funcion obtengo los datos de las entradas y verifico si se cumplen las reglas de tamaño y contenido.
-function validarEntradas()
-{
-
-nombre = $("#nombreActividad").val();
-descripcion = $("#descripcionActividad").val();
-$("#avisos").empty();
-if(nombre.length > 0 && descripcion.length < 60) return true;
-else {
-	$("#avisos").append("<div class='alert alert-dismissible alert-danger' id='msjserror'><strong>¡Ups,ocurrió un problema!</strong></div>");
-	$("#statusicon").remove();
-	if(nombre.length == 0)
-	{
-		$("#msjserror").append( "<br><a class='alert-link'>No has puesto el nombre de la actividad</a>");
-		$("#status").addClass('form-group has-error label-floating is-empty');
-		$("#actividad").append('<span class="glyphicon glyphicon-remove form-control-feedback" id="statusicon"></span>');
-		
 
 
-	}
-	else {
-		
-		$("#nombreCurso").css("border", "1px solid green");
-		$(".col-md-10").append('<span class="glyphicon glyphicon-ok form-control-feedback"></span>');
-	}
-
-	if(descripcion.length > 150)
-	{
-		$("#msjserror").append("<br><a class='alert-link'>La descripción es muy larga, máximo 150 caracteres</a>");
-		$("#statusTArea").addClass('form-group has-error label-floating is-empty');
-
-		$(".col-md-11").append('<span class="glyphicon glyphicon-remove form-control-feedback" id="statusicon"></span>');
-
-	}
-	if (descripcion.length <60 && nombre.length == 0)
-	{
-
-
-	}
-	
-
-	return false;
-}
-}
 
 function mostrar(id)
 {

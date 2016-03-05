@@ -3,8 +3,11 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Request;
+use Illuminate\Support\Facades\Input;
 use App\Curso;
 use App\Actividad;
+use App\Propuesta;
+use FTP;
 class CursosController extends Controller {
 /* listarCursos retorna la vista del curso con los datos obtenidos y filtados de la BD */
 public function listarCursos()
@@ -60,6 +63,7 @@ public function store(){
 
 
 }
+
 public function irCurso($id){
 	//dd($id);
 	$db=Curso::find($id);
@@ -77,7 +81,90 @@ public function irCursoAprobar($id){
 	//dd($db);
 	$comentarios=$db->comentarios($id);
 	//dd($comentarios);
-	return view('profesor/irCursoAprobar')->with('DatosCurso',$db)->with('comentarios',$comentarios);
+	$propuesta = Propuesta::where('fk_idCurso',$id)->get();
+	//echo $propuesta;
+	return view('profesor/irCursoAprobar')
+	->with('DatosCurso',$db)
+	->with('comentarios',$comentarios)
+	->with('propuesta',$propuesta);
 }
+
+
+public function guardarArchivo(Request $request)
+{
+  //Direccion local del archivo que queremos subir
+        $fileLocal = Input::file("archivo");
+        $id = Input::get('id');
+        /*Direccion remota donde queremos subir el archivo
+        En este caso seria a la raiz del servidor*/
+       
+        $fileRemote = Input::file('archivo')->getClientOriginalName();
+ 
+        $mode = 'FTP_BINARY';
+ 		$conexion = FTP::connection();
+ 		$statusMD = $conexion->makeDir("propuesta_".$id);
+ 		$statusCD = $conexion->changeDir("propuesta_".$id);
+        //Hacemos el upload
+        $status = $conexion->uploadFile($fileLocal,$fileRemote,$mode);
+ 		$conexion->disconnect();
+
+ 		$propuesta = new Propuesta();
+ 		$propuesta->fk_idCurso = $id;
+ 		$propuesta->Version = 1;
+ 		$propuesta->save();
+ 		if($status == true) return "Ok";
+
+ 		else return "Failed";
+      
+ 		
+}
+public function actualizarArchivo(Request $request)
+{
+  //Direccion local del archivo que queremos subir
+        $fileLocal = Input::file("archivo");
+        $id = Input::get('id');
+        $propuesta = Propuesta::where('fk_idCurso',$id)->first();
+        /*Direccion remota donde queremos subir el archivo
+        En este caso seria a la raiz del servidor*/
+       
+        $fileRemote = "propuesta_v".($propuesta->Version+1).".".Input::file('archivo')->getClientOriginalExtension();;
+       
+ 
+        $mode = 'FTP_BINARY';
+ 		$conexion = FTP::connection();
+ 		
+ 		$statusCD = $conexion->changeDir("propuesta_".$id);
+ 		$truncar = $conexion->truncateDir(".");
+        //Hacemos el upload
+
+        $status = $conexion->uploadFile($fileLocal,$fileRemote,$mode);
+ 		$conexion->disconnect();
+
+ 		
+ 		$propuesta->Version = $propuesta->Version +1;
+ 		$propuesta->save();
+ 		if($status == true) return "Ok";
+
+ 		else return "Failed";
+      
+ 		
+}
+
+public function descargarPropuesta()
+{
+
+$id = Input::get('id');
+$mode= "FTP_BINARY";
+$conexion = FTP::connection();
+$statusCD = $conexion->changeDir("propuesta_".$id);
+$propuesta = Propuesta::where('fk_idCurso',$id)->first();
+$archivo = $conexion->getDirListing("",null);
+$archivoRemoto = $archivo[0];
+
+$conexion->downloadFile($archivoRemoto,"descargado_".$archivoRemoto,$mode);
+
+}
+
+
 }
 ?>

@@ -29,8 +29,9 @@ Route::post('crearActividad', 'ActividadController@store');
 Route::get('irCurso/{id}', 'CursosController@irCurso');
 Route::post('irActividad','ActividadController@show');
 Route::get('irCursoAprobar/{id}', 'CursosController@irCursoAprobar');
-
-
+Route::post('subirArchivo', 'CursosController@guardarArchivo');
+Route::post('actualizarArchivo', 'CursosController@actualizarArchivo');
+Route::post('descargarPropuesta', 'CursosController@descargarPropuesta');
 /* ----------------- PERFIL  ------------------*/
 
 Route::get('perfil',function(){
@@ -45,6 +46,12 @@ Route::post('actividad/abp/update','AbpProfesorController@update');
 Route::get('editarActividadABP/{id}', 'AbpProfesorController@edit');
 Route::post('eliminarActividadABP/{id}', 'AbpProfesorController@delete');
 
+
+/*------------------- AULA INVERTIDA -----------*/
+
+Route::get('actividad/ai/{id}','AiProfesorController@show');
+Route::post('actividad/ai/getToken','AiProfesorController@getToken');
+Route::post('actividad/ai/guardarAi','AiProfesorController@store');
 
 /* -------Comentario Propuesta------------*/
 Route::post('nuevoComentario', 'ComentarioController@store');

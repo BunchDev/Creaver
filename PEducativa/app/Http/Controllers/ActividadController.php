@@ -9,7 +9,7 @@ use Request;
 use App\Http\Controllers\Controller;
 use App\Actividad;
 use App\Abp;
-
+use App\AulaInvertida;
 class ActividadController extends Controller
 {
     public function store()
@@ -22,9 +22,10 @@ class ActividadController extends Controller
     	$actividad->Nombre = $datos['nombre'];
     	$actividad->Descripcion = $datos['descripcion'];
     	$actividad->fk_idCurso = $datos['idcurso'];
-		$actividad->tipo_tecnica = $datos['tecnica'];   
+		$actividad->tipo_tecnica = $datos['tecnica']; 
+        $actividad->vencimiento = $datos['vencimiento'];   
 		$actividad->save(); 
-
+  
         
         switch ($datos['tecnica']) {
             case 1:
@@ -35,6 +36,16 @@ class ActividadController extends Controller
                 $actividad->idTecnica = $id;
                 $actividad->save();
 
+                break;
+
+            case 3:
+                $ai = new AulaInvertida();
+                $ai->fk_idActividad = $actividad->idActividad;
+                $ai->instruccion = $actividad->Descripcion;
+                $ai->save();
+                $id = $ai->idAi;
+                $actividad->idTecnica = $id;
+                $actividad->save();
                 break;
             
             default:
@@ -50,11 +61,17 @@ class ActividadController extends Controller
 
         $datos = Request::all();
         $actividad = Actividad::find($datos['idActividad']);
-        if($actividad->tipo_tecnica==1)
+        
+        if($actividad->tipo_tecnica== 1)
         {
             return redirect('editarActividadABP/'.$actividad->idTecnica);
         }
-
+        if($actividad->tipo_tecnica==3)
+        {
+         
+         
+        return redirect('./actividad/ai/'.$actividad->idTecnica);
+        }
 
     }
 

@@ -74,7 +74,7 @@
 <form action="./crearCurso" method="post" id='formCrearCurso'>
   <div id="avisos"></div>
 <div class="form-group">
-      <label class="col-md-2 control-label">Nombre</label>
+      <label class="col-md-2 control-label" for="nombreCurso">Nombre</label>
 
       <div class="col-md-10">
         <div id="status">
@@ -86,10 +86,11 @@
     <div class="form-group">
  
 
-      <div class="col-md-11">
+      <div class="col-md-11 ">
   <label class="control-label" for="descripcionCurso">Escriba una descripción del curso (opcional)</label>
   <div id="statusTArea">
    <textarea class="form-control" rows="3" id="descripcionCurso" name="descripcion"></textarea>
+
    </div>
 
       </div>
@@ -106,12 +107,23 @@
   </div>
 </div>
 
+  {!! Html::script('scripts/validatorJQB.js')!!}
+  {!! Html::script('bower_components/lightslide/src/js/lightslider.js')!!}
+<script>
 
-
-<!-- Se mandan los datos que se recibe en la vista al script para su posterior ordenamiento -->
-<script type="text/javascript">
-
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+// Se mandan los datos que se recibe en la vista al script para su posterior ordenamiento
 mostrarCursos(<?php echo json_encode( $datoscursos) ?>)
 </script>
+<script>
+$(document).ready(function(){
 
+ lol();
+
+
+
+});
+</script>
 @endsection

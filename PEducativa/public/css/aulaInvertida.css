@@ -1,0 +1,19 @@
+#instrucciondiv{
+	width: 50%;
+	height: 80%;
+}
+ #drop_zone {
+      border: 2px dashed #bbb;
+      -moz-border-radius: 7px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      padding: 55px;
+      text-align: center;
+      font: 20pt bold 'Helvetica';
+      color: #bbb;
+      width: 60%;
+    }
+
+#aviso{
+	width: 50%;
+}

@@ -1,15 +1,44 @@
+var ncurso,dcurso;
+
 $(window).load(function() {
 		
 		$(".se-pre-con-curso").fadeOut("slow");;
 	});
 
 
+
+
 $(document).on('ready',function(){
 
         $("#ap").append(' <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>');
         $("#pa").append(' <span class="glyphicon glyphicon-time" aria-hidden="true"></span>');
-
+        configurarValidaciones();
     });
+
+function configurarValidaciones()
+{
+
+    ncurso =  $("#nombreCurso").JQBConfig({
+
+     required : true,
+                maxLen : 255,
+                minLen : 1,
+                messageError: "El nombre es requerido",
+                messageSuccess: ""
+   });
+
+    dcurso = $("#descripcionCurso").JQBConfig({
+
+     required : true,
+                maxLen : 255,
+                minLen : 1,
+                messageError: "Se requiere",
+                messageSuccess: ""
+   });
+
+
+}
+
 /*
 @param datos , contiene la informacion que se mostrara en la tabla 
 @param tipo, 1 o 0 el cual representa el estatus del curso 1= aprobado y 0 = inactivo o no aprobado
@@ -159,7 +188,9 @@ mediante una petición ajax de tipo POST.
 */
 function enviarDatosServidor()
 {
-if(validarEntradas() == false) return;
+
+if ( (ncurso.validateInputText() & dcurso.validateInputText()) == false)return;
+
 
 swal({   title: "Mensaje de Confirmación",
 	text: "¿Estás seguro que deseas crear este curso?",   
@@ -252,5 +283,174 @@ else {
 
 
 
- 
+function enviarArchivo()
+{
+MAX_MB = 5;
+var file_data = $('#a_propuesta').prop('files')[0];   
+    var form_data = new FormData();                  
+    form_data.append('archivo', file_data);
+    form_data.append('id',$("#idCurso").val());
+    
+   	var size = ($('#a_propuesta').prop('files')[0].size/1024/1024).toFixed(2);
+   	$("#anuncios").empty();
+	if(size > MAX_MB) 
+	{
+
+		$("#anuncios").append("El archivo rebasa los 5 MB");
+		return;
+	}
+    $.ajax({
+    		xhr: function () {
+        	var xhr = new window.XMLHttpRequest();
+        	xhr.upload.addEventListener("progress", function (evt) {
+            	if (evt.lengthComputable) {
+                	var percentComplete = evt.loaded / evt.total;
+                	console.log(percentComplete);
+                	$('.progress').css({
+                    	width: percentComplete * 100 + '%'
+                	});
+                	if (percentComplete === 1) {
+                    	$('.progress').addClass('hide');
+                	}
+            	}
+        	}, false);
+        	xhr.addEventListener("progress", function (evt) {
+            	if (evt.lengthComputable) {
+                	var percentComplete = evt.loaded / evt.total;
+                	console.log(percentComplete);
+                	$('.progress').css({
+                    	width: percentComplete * 100 + '%'
+                	});
+            	}
+        		}, false);
+        		return xhr;
+    			},
+                url: '../subirArchivo', // point to server-side PHP script 
+                dataType: 'text',  // what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,                         
+                type: 'post',
+                success: function(data){
+                if(data == "Ok")
+                {
+                	swal({   title: "¡La propuesta se ha enviado exitosamente!", 
+                	  text: "Espere ...",
+                	  type: "success" ,  
+                	  showConfirmButton: true
+                	},
+                	function(isConfirm){
+                		    location.reload();
+                	}
+                	  );
+            
+                }
+                else{
+                swal("Error", "La propuesta no pudo ser enviada, intenta de nuevo", "error");	
+                }
+               
+
+
+                }
+                ,
+             error:function(exception){swal("Error", "La propuesta no pudo ser enviada, intenta de nuevo", "error");}
+     });
+
+
+}
+
+function actualizarArchivo()
+{
+var file_data = $('#a_propuesta').prop('files')[0];   
+    var form_data = new FormData();                  
+    form_data.append('archivo', file_data);
+    form_data.append('id',$("#idCurso").val());
+    
+   	var size = ($('#a_propuesta').prop('files')[0].size/1024/1024).toFixed(2);
+   	$("#anuncios").empty();
+	if(size > 5) 
+	{
+
+		$("#anuncios").append("El archivo rebasa los 5 MB");
+		return;
+	}
+    $.ajax({
+    		xhr: function () {
+        	var xhr = new window.XMLHttpRequest();
+        	xhr.upload.addEventListener("progress", function (evt) {
+            	if (evt.lengthComputable) {
+                	var percentComplete = evt.loaded / evt.total;
+                	console.log(percentComplete);
+                	$('.progress').css({
+                    	width: percentComplete * 100 + '%'
+                	});
+                	if (percentComplete === 1) {
+                    	$('.progress').addClass('hide');
+                	}
+            	}
+        	}, false);
+        	xhr.addEventListener("progress", function (evt) {
+            	if (evt.lengthComputable) {
+                	var percentComplete = evt.loaded / evt.total;
+                	console.log(percentComplete);
+                	$('.progress').css({
+                    	width: percentComplete * 100 + '%'
+                	});
+            	}
+        		}, false);
+        		return xhr;
+    			},
+                url: '../actualizarArchivo', // point to server-side PHP script 
+                dataType: 'text',  // what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,                         
+                type: 'post',
+                success: function(data){
+                if(data == "Ok")
+                {
+                	swal({   title: "¡La propuesta se ha enviado exitosamente!", 
+                	  text: "Espere ...",
+                	  type: "success" ,  
+                	  showConfirmButton: true
+                	},
+                	function(isConfirm){
+                		    location.reload();
+                	}
+                	  );
+            
+                }
+                else{
+                swal("Error", "La propuesta no pudo ser enviada, intenta de nuevo", "error");	
+                }
+               
+
+
+                }
+                ,
+             error:function(exception){swal("Error", "La propuesta no pudo ser enviada, intenta de nuevo", "error");}
+     });
+
+
+}
+
+function descargarPropuesta()
+{
+
+$.ajax({
+   type:'post',
+   url :"../descargarPropuesta",
+   
+   data: {'id':$("#idCurso").val(),'_token': $('input[name=_token]').val()},
+   
+   success: function(data) {
+       console.log("Descargado");
+
+   },
+   error:function(exception){swal("¡Ups!, ocurrió un error al descargar la propuesta", "Intenta de nuevo", "error")}
+});
+
+}
    

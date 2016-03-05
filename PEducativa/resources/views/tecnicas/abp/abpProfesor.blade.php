@@ -45,6 +45,13 @@
            <div class="fa  fa-pulse circularIcono">
           <i class="material-icons">public</i>
           </div>
+          <br>
+       <button type="button" id ="ayuda" class="btn btn-raised btn-info btn-xs" 
+          data-container="body" data-toggle="popover" 
+          data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Ayuda
+     </button>
+
           @if(isset($abp->Contexto))
             {!! Form::text("contexto",$abp->Contexto,["name" => "Contexto",'class'=>'form-control input-lg','placeholder'=>'Añade un contexto'])     !!}
          
@@ -62,6 +69,12 @@
            <div class="fa  fa-pulse circularIcono">
           <i class="material-icons">info outline</i>
           </div>
+          <br>
+       <button type="button" id ="ayuda" class="btn btn-raised btn-info btn-xs" 
+          data-container="body" data-toggle="popover" 
+          data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          Ayuda
+     </button>
            @if(isset($abp->problematica))
             {!! Form::textarea('problematica',$abp->problematica,array('class'=>'form-control input-lg','placeholder'=>'Añade una problemática'))!!}
           @else
@@ -77,7 +90,12 @@
            <div class="fa  fa-pulse circularIcono">
           <i class="material-icons">mood</i>
           </div>
-          <br>
+           <br>
+       <button type="button" id ="ayuda" class="btn btn-raised btn-info btn-xs" 
+       data-container="body" data-toggle="popover" 
+       data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+       Ayuda
+     </button>
            <div id="agregarPersonajediv" class="form-group">
          {!! Form::text('Personaje','',['class'=>'form-control input-lg','id'=>'NuevoPersonaje','placeholder'=>'Agregar un personaje'])!!}
 
@@ -122,5 +140,9 @@
 
 
 
-
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
 @endsection

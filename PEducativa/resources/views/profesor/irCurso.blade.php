@@ -74,7 +74,7 @@
         <select class="selectpicker" data-width="100%" id="tecnicas">
   <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-action-primary'><img class='circle' src='../images/tecnicas/abp.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>ABP</h4><p class='list-group-item-text'>Aprendizaje Basado en Problemas</p></div></div></div>">1</option>
   <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/caso.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>DC</h4><p class='list-group-item-text'>Diseño de Caso</p></div></div></div>" disabled>2</option>
-  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/ai.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>AI</h4><p class='list-group-item-text'>Aula Invertida</p></div></div></div>" disabled>3</option>
+  <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/ai.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>AI</h4><p class='list-group-item-text'>Aula Invertida</p></div></div></div>">3</option>
 </select>
         </div>
       </div>
@@ -97,6 +97,24 @@
 
       </div>
 
+      <!--Date Picker-->
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+              <label class="col-md-4 control-label">Fecha de Vencimiento</label>
+                <div class='input-group date' id='fecha'>
+                    <input type='text' class="form-control" id="fechaVencimiento">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
     <!-- Boton Guardar-->  
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar <i class="material-icons">clear</i></button>
@@ -107,7 +125,11 @@
   </div>
 </div>
 	{!! Html::script('bower_components/bootstrap-select/dist/js/bootstrap-select.min.js')!!}
+    {!! Html::script('scripts/validatorJQB.js')!!}
   {!! Html::script('scripts/actividades.js')!!}
+  {!! Html::script('scripts/fecha.js')!!}
+
+
 <script type="text/javascript">
 listarActividades(<?php echo json_encode($actividades)?>);
 </script>

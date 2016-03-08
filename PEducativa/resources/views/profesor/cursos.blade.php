@@ -117,13 +117,5 @@ $(document).ready(function(){
 // Se mandan los datos que se recibe en la vista al script para su posterior ordenamiento
 mostrarCursos(<?php echo json_encode( $datoscursos) ?>)
 </script>
-<script>
-$(document).ready(function(){
 
- lol();
-
-
-
-});
-</script>
 @endsection

@@ -42,6 +42,7 @@ class ActividadController extends Controller
                 $ai = new AulaInvertida();
                 $ai->fk_idActividad = $actividad->idActividad;
                 $ai->instruccion = $actividad->Descripcion;
+                $ai->nombreVideo = $actividad->Nombre;
                 $ai->save();
                 $id = $ai->idAi;
                 $actividad->idTecnica = $id;

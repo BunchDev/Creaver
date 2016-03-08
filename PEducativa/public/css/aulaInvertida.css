@@ -17,3 +17,65 @@
 #aviso{
 	width: 50%;
 }
+
+#wall{
+      width: 80%;
+      margin: auto;
+
+}
+.item{
+      background: rgb(135,199,135);
+      
+}
+  #container2 {
+      width: 80%;
+      margin: auto;
+    }
+    .item2 {
+      background: rgb(135, 199, 135);
+      width: 320px;
+      height: 320px;
+    }
+
+.free-wall {
+                        margin: 15px;
+                  }
+
+.grid-item { 
+      width: 300px;
+      
+ 
+   
+       
+             
+             }
+.grid-item--width2 { width: 400px; }
+
+.capa{
+      background-color: rgba(255, 0, 0, 0.5);
+}
+
+.checkbox{
+
+   position: absolute; 
+   top: 50px; 
+   left: 0; 
+   width: 100%; 
+   
+}
+
+#ver_video{
+      position: absolute; 
+      top: 80px; 
+      left: 35%;
+      
+      
+}
+.modal-backdrop
+{
+    background-color: #000000;
+  
+}
+#g_material{
+  display: none;
+}

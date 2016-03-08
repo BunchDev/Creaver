@@ -1,10 +1,5 @@
-function lol()
-{
-
-    console.log("JAJAJAJAJAJAAJAJA PENDEJOO ");
-}
 $(document).ready(function(){
-(function ($) {
+(function ($, undefined) {
     'use strict';
     var defaults = {
         item: 3,
@@ -51,13 +46,6 @@ $(document).ready(function(){
         onBeforePrevSlide: function ($el, scene) {}
         /* jshint ignore:end */
     };
-
-
-    $.fn.cris = function () {
-        console.log("SOY CRIS");
-        
-        }
-
     $.fn.lightSlider = function (options) {
         if (this.length === 0) {
             return this;
@@ -1152,4 +1140,6 @@ $(document).ready(function(){
     };
 }(jQuery));
 
+
+    
 });

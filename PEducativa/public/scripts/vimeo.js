@@ -1,6 +1,10 @@
 var circle;
 var startColor = '#FC5B3F';
 var endColor = '#6FD57F';
+var videoData = {
+          name: 'Default Name',
+          description: ''
+        };
 $(document).ready(function(){
 
 
@@ -27,8 +31,13 @@ $(document).ready(function(){
 });
 
 
-
+//Vimeo modal listener
+$('#videoModal').on('hide.bs.modal', function () {
+$("#reproductor").vimeo("unload");
+})
 });
+
+
 
 
 
@@ -134,13 +143,16 @@ function subirVideo()
 function prepareFiletoUpload(accessToken)
 {
 
+    alert($("#nombreAi").val());
 	  var file_data = $('#fl').prop('files')[0];   
     var form_data = new FormData();                  
     form_data.append('archivo', file_data);
+    videoData.name = $("#nombreAi").val();
       $("#progress").show();
       var uploader = new MediaUploader({
              file: file_data,
              token: accessToken,
+             videoData: videoData,
              onError: function(data) {
                 $("#progress").hide();
                  var errorResponse = JSON.parse(data);
@@ -218,10 +230,11 @@ function uploadFile(files,accessToken)
 
          // Rest the progress bar
          updateProgress(0);
-
+         videoData.name = $("#nombreAi").val();
          var uploader = new MediaUploader({
              file: files[0],
              token: accessToken,
+             videoData: videoData,
              onError: function(data) {
                   $("#progress").hide();
 
@@ -311,19 +324,54 @@ function showSucessMessage()
 
 //test
 
-function vimeoLoadingThumb(id){    
-    var url = "http://vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";
+function vimeoLoadingThumb(id){ 
+    console.log("ID: "+id);   
+    var url = "http://vimeo.com/api/v2/video/" + id + ".json";
+   return $.getJSON( url, function() {
+  console.log( "success" );
+})
+  .done(function(data) {
+   showThumb(data);
+  })
+  .fail(function() {
+    console.log( "error" );
+  })
+  .always(function() {
+    console.log( "complete" );
+  });
+    //var id_img = "#vimeo-" + id;
 
-    var id_img = "#vimeo-" + id;
+   // var script = document.createElement( 'script' );
+   // script.src = url;
 
-    var script = document.createElement( 'script' );
-    script.src = url;
-
-    $(id_img).before(script);
+   // $(id_img).before(script);
 }
 
 
 function showThumb(data){
-    var id_img = "#vimeo-" + data[0].id;
-    $(id_img).attr('src',data[0].thumbnail_medium);
+ 
+    var img = $("<img></img>")
+    img.attr('src',data[0].thumbnail_medium);
+    $("#div_"+data[0].id).append(img);
+ //   $("#div_"+data[0].id).not(".checkbox").css('opacity', '0.8');
+  
+
 }
+
+function verVideo(id)
+{
+
+//https://player.vimeo.com/video/76979871?api=1&player_id=player1
+urlPlayer = "https://player.vimeo.com/video/"+id+"?api=1&player_id=player1";
+//This modal review
+
+$("#reproductor").attr('src',urlPlayer);
+$('#videoModal').modal('show');
+
+
+}
+
+
+
+
+

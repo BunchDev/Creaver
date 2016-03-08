@@ -1,9 +1,17 @@
 @extends('profesor.perfil')
 
 @section('content')
-{!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
 
-<script src="https://f.vimeocdn.com/js/froogaloop2.min.js"></script>
+{!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
+{!! Html::script('scripts/vimeoJquery.js')!!}
+{!! Html::script('scripts/masonry.pkgd.min.js')!!}
+
+{!! Html::script('bower_components/lightslide/src/js/lightslider.js')!!}
+
+
+
+{!! Html::script('scripts/vimeo.js')!!}
+{!! Html::script('scripts/aulainvertida.js')!!}
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 {!! Html::style('bower_components/lightslide/dist/css/lightslider.min.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
@@ -17,12 +25,12 @@
 <div id="all" align="center"  >
 
 <!--Area de pruebas-->
-<img id="vimeo-157320165" src="" alt="ALONE" />
 
 
 
 <!--Fin de area de prueba-->
-<input type="hidden" id="idAi" value="{{$datos->idAi}}">
+<input type="hidden" id="idAi" value="{{$datos->idAi}}" readonly>
+<input type="hidden" id="nombreAi" value="{{$datos->nombreVideo}}">
 <input type="hidden" id="idVideo" value="">
 <input type="hidden" id="idCurso" value="{{$idCurso}}">
 <br>
@@ -37,6 +45,7 @@
 </div>
 
 <div class="alert alert-dismissible alert-warning" id="aviso">
+		<button type="button" class="close" data-dismiss="alert">×</button>
 		<strong>Aviso: </strong>
 		<p>Puedes seleccionar un archivo manualmente,arrastrarlo y soltarlo en el área marcada o activar la selección de "Ver mis videos cargados" para seleccionar un video de tu lista</p>
 	</div>
@@ -103,34 +112,122 @@
 
 </div>
 
+<!-- Slide para los thumbnails-->
+<div id="lista_videos" hidden>
 
 
+	@if(count($urls) > 0)
+	
+	<div class="grid">
+		
+		
+
+		@foreach($urls as $urln)
+    		
+  			<div id="div_{{$urln->url}}" class="grid-item">
+  				<input type="hidden" id="id" value="{{$urln->url}}">
+  				<div class="checkbox" id="check_video">
+ 					<label>
+            			<input type="checkbox" id="check"> Seleccionar
+          			</label>
+
+    			</div>
+
+    			<button id="ver_video" onClick="verVideo({{$urln->url}})" class="btn btn-raised btn-info btn-xs">Ver video</button>
+  			</div>
+  		
+  			<script type="text/javascript">
+				$.when(vimeoLoadingThumb("{{$urln->url}}")).done(function(){
+					console.log("He pasado por aquí y el objeto es: "+msnry);
+					msnry.layout();
+
+
+				});
+				
+			</script>
+  		@endforeach
+  	</div>
+
+	@else
+		<div class="alert alert-dismissible alert-warning" id="aviso">
+			<strong>Sin videos: </strong>
+			<p>No tienes videos disponibles para elegir</p>
+		</div>
+
+
+	@endif
+
+</div>
+ 
 <button type="button" class="btn btn-raised btn-success btn-lg" id="g_material" onClick="guardar()">
 	Guardar Material 
 	<i class="material-icons">save</i>
 </button>
-<!-- Slide para los thumbnails-->
-
-<ul id= "videos_slide">
-  <li data-thumb="https://41.media.tumblr.com/d0b99569ff3ef1d06d171c939d044a9c/tumblr_o3g2e7na0l1sllhwxo1_540.jpg" data-src="https://41.media.tumblr.com/d0b99569ff3ef1d06d171c939d044a9c/tumblr_o3g2e7na0l1sllhwxo1_540.jpg">
-    <img src="https://41.media.tumblr.com/d0b99569ff3ef1d06d171c939d044a9c/tumblr_o3g2e7na0l1sllhwxo1_540.jpg" />
-  </li>
-  <li data-thumb="https://41.media.tumblr.com/e2bd33c143b2967d87fc2d188818d6c3/tumblr_o3erj5oYkA1sllhwxo1_540.jpg" data-src="img/largeImage1.jpg">
-    <img src="https://41.media.tumblr.com/e2bd33c143b2967d87fc2d188818d6c3/tumblr_o3erj5oYkA1sllhwxo1_540.jpg" />
-  </li>
-</ul>
 
 
+
+<!--Fin del contenedor super parent-->
+</div>
+
+<!-- Modal para mostrar video -->
+
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">Video</h3>
+      </div>
+      <div class="modal-body">
+      	<iframe id="reproductor" 
+      		src="" 
+      		width="100%" height="354" frameborder="0" webkitallowfullscreen 
+      		mozallowfullscreen allowfullscreen>
+
+      	</iframe>
+      </div>
 
 </div>
+
+
 
 <!-- Script Section, When I wrote this tags I was really happy and tired at the same time
 hahahahaha by: Cristian Michel (I dunno why I'm doing this coments ._. I need to sleep -->
 {!! Html::script('bower_components/progressbar.js/dist/progressbar.min.js')!!}
 {!! Html::script('scripts/upload.js')!!}
-{!! Html::script('scripts/vimeo.js')!!}
-{!! Html::script('bower_components/lightslide/src/js/lightslider.js')!!}
-{!! Html::script('scripts/aulainvertida.js')!!}
+{!! Html::script('scripts/freewall.js')!!}
 
+<script type="text/javascript">
+var msnry;
+$(document).ready(function() {
+
+    var container = document.querySelector('.grid');
+    msnry = new Masonry( container, {
+        itemSelector: '.grid-item',
+        isFitWidth: true,
+        columnWidth: 100
+    });
+
+//agrega el listener que escucha cuando el elemento frame se ha cargado
+$("#reproductor").load(function(){
+   $("#reproductor").vimeo("play");
+});
+
+
+});
+
+//aplica un reacomodo de los elementos del Masonry cuando la pagina ha cargado por completo
+
+$(window).bind("load", function() {
+msnry.layout();
+  
+});
+
+
+
+</script>
 
 @endsection

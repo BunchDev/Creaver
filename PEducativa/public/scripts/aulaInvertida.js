@@ -1,19 +1,16 @@
 $(document).ready(function(){
    activarCheckedListener();
-  activarSlideThumbNail();
+   activarCheckedListenerVideo();
+//  activarSlideThumbNail();
    console.log("Its ok");
 });
 
 function activarSlideThumbNail()
 {
+  console.log("Entro aca");
  $('#videos_slide').lightSlider({
-        gallery:true,
-                item:1,
-                thumbItem:9,
-                slideMargin: 0,
-                speed:500,
-                auto:true,
-                loop:true,
+        loop:true,
+        keyPress:true
     });  
 
 
@@ -27,16 +24,60 @@ $('#lista_check').change(function(){
     
  if ($("#checkbutton").is(':checked')) {
       $("#nuevoVideo").hide();
+      $("#lista_videos").show();
+      msnry.layout();
   } else {
       $("#nuevoVideo").show();
+      $("#lista_videos").hide();
   }
 });
 
 
 }
+function activarCheckedListenerVideo()
+{
+$(".checkbox").change(function(){
+  
+ if ($("input[id='check']").is(':checked')) {
+    console.log($(this).parent());
+    var siblings = $(this).parent().siblings(".grid-item");
+    /*IMPORTANTE: 
+      Si el input hidden que está antes del checkbox cambia de posición 
+      deberá modificarse la siguiente linea de código, ya que idVideo obtiene el valor 
+      del hermano previo (el input hidden).
+    */
 
+    var idVideo = $(this).prev().val();
+    //se asigna el valor url del video seleccionado al div dedicado a almacenar 
+    // el id para posteriormente mandarlo al servidor cuando se seleccione la opción de 
+    // guardar material
+    $("#idVideo").attr('value',idVideo);
+    $("#g_material").show();
+      $.each(siblings,function(key,value){
+        $(value).hide();
+        msnry.layout();
+     
+      });
+     
+  } else {
+    $("#g_material").hide();
+     console.log($(this).parent());
+    var siblings = $(this).parent().siblings(".grid-item");
+      $.each(siblings,function(key,value){
+        $(value).show();
+        msnry.layout();
+        
+      });
+      
+  }
+});
+
+
+}
 function guardar()
 {
+
+//if($("#idVideo").val() != "")
   
 $("#g_material").attr('disable',true);
 $.ajax({
@@ -66,4 +107,12 @@ function showSucess()
 		text: "El material multimedia se guardó correctamente",  
 		 timer: 2000,   
 		 showConfirmButton: false });
+}
+
+function selectVideo()
+{
+
+$('.grid').masonry( 'hide', $('#container ul li').eq(2) ).masonry();
+
+
 }

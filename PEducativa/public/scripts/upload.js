@@ -4,6 +4,7 @@
  *
  * @constructor
  */
+
 var RetryHandler = function() {
   this.interval = 1000; // Start at one second
   this.maxInterval = 60 * 1000; // Don't wait longer than a minute
@@ -83,6 +84,7 @@ var MediaUploader = function(options) {
     'title': this.file.name,
     'mimeType': this.contentType
   };
+  this.videoData = options.videoData;
   this.token = options.token;
   this.upgrade_to_1080 = options.upgrade_to_1080;
   this.onComplete = options.onComplete || noop;
@@ -222,6 +224,7 @@ MediaUploader.prototype.complete_ = function() {
       var video_id = location.split('/').pop();
 
       this.onComplete(video_id);
+      this.onUpdateVideoData_(video_id);
 
     } else {
       this.onCompleteError_(e);
@@ -231,6 +234,23 @@ MediaUploader.prototype.complete_ = function() {
   xhr.onerror = this.onCompleteError_.bind(this);
   xhr.send();
 };
+
+/**
+ * Update the Video Data
+ *
+ * @private
+ * @param {string} [id] Video Id
+ */
+MediaUploader.prototype.onUpdateVideoData_ = function(video_id) {
+  var url = this.buildUrl_(video_id, [], 'https://api.vimeo.com/videos/');
+  var httpMethod = 'PATCH';
+  var xhr = new XMLHttpRequest();
+
+  xhr.open(httpMethod, url, true);
+  console.log("TOKEN UPDATE: "+ this.token);
+  xhr.setRequestHeader('Authorization', 'Bearer ' + this.token);
+  xhr.send(this.buildQuery_(this.videoData));
+}
 
 /**
  * Handle successful responses for uploads. Depending on the context,
@@ -296,6 +316,8 @@ MediaUploader.prototype.onUploadError_ = function(e) {
  * @param {object} [params] Key/value pairs for query string
  * @return {string} query string
  */
+
+
 MediaUploader.prototype.buildQuery_ = function(params) {
   params = params || {};
   return Object.keys(params).map(function(key) {

@@ -1,6 +1,38 @@
 body { 
     padding-top: 65px; 
+background-color: #343945;
+background-image: url("http://www.transparenttextures.com/patterns/triangles.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+          
 }
+body,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4 {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 300;
+  color: white;
+}
+h1{ font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-size: 70;}
+h5,
+h6 {
+  font-weight: 400;
+}
+
+nav {
+background-color: #343945;
+background-image: url("http://www.transparenttextures.com/patterns/triangles.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  
+}
+
 .table td {
    text-align: center;  
 

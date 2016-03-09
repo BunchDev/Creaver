@@ -16,14 +16,10 @@ public function listarCursos()
 	$cursosBD = Curso::where('idCatedratico',0)
 				->get();
 	
-	$cursos =  array();
+	
 	
 
-	/* Recorro todos los datos obtenidos de la consulta y lo paso a un array de arrays asocitativos*/ 
-	foreach($cursosBD as $dato){
-		array_push($cursos,array('numero' => $dato->idCurso,'nombre' => $dato->Nombre,'descripcion' =>$dato->Descripcion,'estatus' => $dato->Estatus));
-	}
-	return view('profesor/cursos')->with('datoscursos',$cursos);
+	return view('profesor/cursos')->with('datoscursos',$cursosBD);
 }
 
 /*Este metodo store guarda los datos que se pasan por post desde la vista*/
@@ -53,6 +49,9 @@ public function store(){
 			$curso->nombre = $data['nombre'];
 			$curso->Descripcion = $data['descripcion'];
 			$curso->Estatus = 0;
+			// si el cliente eligió un avar se almacena 
+			if($data['avatar'] != "") $curso->avatar = $data['avatar'];
+			
 			// el objeto creado se le invoca su metodo save que guarda en la base de datos dicho objeto
 			$curso->save();
 			return Redirect::back();

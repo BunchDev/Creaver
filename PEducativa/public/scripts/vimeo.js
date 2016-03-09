@@ -1,6 +1,8 @@
 var circle;
 var startColor = '#FC5B3F';
 var endColor = '#6FD57F';
+var circle;
+var urls = new Array();
 var videoData = {
           name: 'Default Name',
           description: ''
@@ -9,7 +11,19 @@ $(document).ready(function(){
 
 
 
-  circle = new ProgressBar.Circle('#progress', {
+
+//Vimeo modal listener
+$('#videoModal').on('hide.bs.modal', function () {
+$("#reproductor").vimeo("unload");
+})
+});
+
+
+
+function createCircleProgress()
+{
+  $("#progress").empty();
+ circle =  new ProgressBar.Circle('#progress', {
     color: startColor,
     trailColor: '#eee',
     trailWidth: 1,
@@ -29,17 +43,7 @@ $(document).ready(function(){
         circle.path.setAttribute('stroke', state.color);
     }
 });
-
-
-//Vimeo modal listener
-$('#videoModal').on('hide.bs.modal', function () {
-$("#reproductor").vimeo("unload");
-})
-});
-
-
-
-
+}
 
     /**
         * Called when files are dropped on to the drop target. For each file,
@@ -74,6 +78,7 @@ $("#reproductor").vimeo("unload");
 
          $.when(getTokenVimeo()).done(function(respuestaToken){
          	uploadFile(files,respuestaToken);
+          createCircleProgress();
          });
 				
 			}
@@ -127,14 +132,15 @@ function subirVideo()
    	    
 		return;
 	}
-
+  $("#checkbutton").prop("disabled",true);
 	$("#drop_zone").hide();
- 
-  	$("#archivos_contenedor").hide();
+  $("#cancelarSubida").show();
+  $("#archivos_contenedor").hide();
   $("#progress").show();
   
 	$.when(getTokenVimeo()).done(function(respuestaToken){
          	prepareFiletoUpload(respuestaToken);
+          createCircleProgress();
          });
 
 
@@ -143,7 +149,6 @@ function subirVideo()
 function prepareFiletoUpload(accessToken)
 {
 
-    alert($("#nombreAi").val());
 	  var file_data = $('#fl').prop('files')[0];   
     var form_data = new FormData();                  
     form_data.append('archivo', file_data);
@@ -166,16 +171,13 @@ function prepareFiletoUpload(accessToken)
              },
              onProgress: function(data) {
                 updateProgress(data.loaded / data.total);
+          
              },
              onComplete: function(videoId) {
                  $("#progress").hide();
-                 showSucessMessage();
-                 $("#g_material").show();
                  $("#idVideo").attr('value',videoId);
-                 console.log(videoId);
-                console.log("ok2 " + $("#idVideo").val());
-
-
+                  guardar();
+               
              }
          });
     uploader.upload();
@@ -218,11 +220,12 @@ function validarVideo(tipo)
 }		
 function uploadFile(files,accessToken)
 {
-
+    $("#checkbutton").prop('disabled',true);
 		$("#drop_zone").hide();
    	
    	$("#archivos_contenedor").hide();
     $("#progress").show();
+    $("#cancelarSubida").show();
  
          // Clear the results div
          var node = document.getElementById('results');
@@ -253,13 +256,13 @@ function uploadFile(files,accessToken)
              onComplete: function(videoId) {
                 $("#progress").hide();
 
-				      showSucessMessage();
+				      
               $("#idVideo").attr('value',videoId);
 
 				        
-              $("#g_material").show();
+           
 
-
+              guardar();
 
              }
          });
@@ -371,7 +374,17 @@ $('#videoModal').modal('show');
 
 }
 
-
+//verifica si los datos en las etiquetas hide fueron alteradas
+// manualmente por el usuario ¬¬
+function verificarAlteracion()
+{
+  var supuesto = $("#idVideo").val();
+  for (var i = urls.length - 1; i >= 0; i--) 
+  {
+      if(supuesto == urls[i]) return true;
+  }
+  return false;
+}
 
 
 

@@ -23,8 +23,8 @@ class AulaInvertida extends Model
    
    $urls = AulaInvertida::whereIn('fk_idActividad',$actividades)
    						  ->where('url',"<>","")
-   						  ->select('url')
-                       ->distinct('url')
+   						  ->select('url','nombreVideo')
+                       ->groupBy('url')
    						  ->get();
    		  
    return $urls;

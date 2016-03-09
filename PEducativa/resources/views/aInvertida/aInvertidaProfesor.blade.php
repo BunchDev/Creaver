@@ -22,14 +22,14 @@
  
 </div>
 
-<div id="all" align="center"  >
+<div id="all" align="center" >
 
 <!--Area de pruebas-->
 
 
 
 <!--Fin de area de prueba-->
-<input type="hidden" id="idAi" value="{{$datos->idAi}}" readonly>
+<input type="hidden" id="idAi" value="{{$datos->idAi}}">
 <input type="hidden" id="nombreAi" value="{{$datos->nombreVideo}}">
 <input type="hidden" id="idVideo" value="">
 <input type="hidden" id="idCurso" value="{{$idCurso}}">
@@ -80,7 +80,7 @@
 		
 	
 	</div>
-	<button class="btn btn-raised btn-info btn-lg" onClick="subirVideo()"  id="subir_video">Subir Video
+	<button class="btn btn-raised btn-info btn-lg" onClick="subirVideo()"  id="subir_video">Subir Material
 			&nbsp;&nbsp;<i class="material-icons">cloud_upload</i>
 	</button>
 
@@ -120,11 +120,14 @@
 	
 	<div class="grid">
 		
-		
-
 		@foreach($urls as $urln)
     		
   			<div id="div_{{$urln->url}}" class="grid-item">
+  				
+  				<strong>
+        			{{$urln->nombreVideo}}
+    			 </strong>
+    			 <br>
   				<input type="hidden" id="id" value="{{$urln->url}}">
   				<div class="checkbox" id="check_video">
  					<label>
@@ -143,6 +146,8 @@
 
 
 				});
+			//agrego la url real en una pila	
+			urls.push("{{$urln->url}}");
 				
 			</script>
   		@endforeach
@@ -158,7 +163,10 @@
 	@endif
 
 </div>
- 
+<button type="button" class="btn btn-raised btn-danger btn-lg" id="cancelarSubida" onClick="cancelarSubidaVideo()" style="display:none" >
+	Cancelar
+	<i class="material-icons">cancel</i>
+</button> 
 <button type="button" class="btn btn-raised btn-success btn-lg" id="g_material" onClick="guardar()">
 	Guardar Material 
 	<i class="material-icons">save</i>

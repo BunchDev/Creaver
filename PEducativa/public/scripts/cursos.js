@@ -13,8 +13,28 @@ $(document).on('ready',function(){
         $("#ap").append(' <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>');
         $("#pa").append(' <span class="glyphicon glyphicon-time" aria-hidden="true"></span>');
         configurarValidaciones();
+        $('.grid-item').hover(function () {
+  $(this).addClass('magictime puffIn');
+});
     });
 
+function irCurso(id,status)
+{
+   switch(status)
+   {
+    case 0:
+        window.location.assign("./irCursoAprobar/"+id);
+        break;
+    case 1:
+        window.location.assign("./irCurso/"+id);
+        break;
+    default:
+        return;
+        break;
+
+   }
+    
+}
 function configurarValidaciones()
 {
 
@@ -201,12 +221,13 @@ swal({   title: "Mensaje de Confirmación",
 	   showLoaderOnConfirm: true, }, 
 	function(){  
 
-
+alert($('select[id=avatar]').val());
 $.ajax({
    type:'post',
    url :"./crearCurso",
    
-   data: {'nombre':$("#nombreCurso").val(),'descripcion': $("#descripcionCurso").val(),'_token': $('input[name=_token]').val()},
+   data: {'nombre':$("#nombreCurso").val(),'descripcion': $("#descripcionCurso").val(),
+          'avatar': $('select[id=avatar]').val(),'_token': $('input[name=_token]').val()},
    
    success: function(data) {
        $('#nuevoCursoModal').modal('hide');

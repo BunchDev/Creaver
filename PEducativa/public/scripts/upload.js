@@ -10,7 +10,7 @@ var RetryHandler = function() {
   this.maxInterval = 60 * 1000; // Don't wait longer than a minute
 };
 
-/**
+/*
  * Invoke the function after waiting
  *
  * @param {function} fn Function to invoke
@@ -125,6 +125,7 @@ MediaUploader.prototype.upload = function() {
       this.ticket_id = response.ticket_id;
       this.complete_url = "https://api.vimeo.com"+response.complete_uri;
       this.sendFile_();
+
     } else {
       this.onUploadError_(e);
     }
@@ -143,6 +144,7 @@ MediaUploader.prototype.upload = function() {
  *
  * @private
  */
+ var xhr;
 MediaUploader.prototype.sendFile_ = function() {
   var content = this.file;
   var end = this.file.size;
@@ -155,13 +157,14 @@ MediaUploader.prototype.sendFile_ = function() {
     content = content.slice(this.offset, end);
   }
 
-  var xhr = new XMLHttpRequest();
+  xhr = new XMLHttpRequest();
   xhr.open('PUT', this.url, true);
   xhr.setRequestHeader('Content-Type', this.contentType);
   // xhr.setRequestHeader('Content-Length', this.file.size);
   xhr.setRequestHeader('Content-Range', "bytes " + this.offset + "-" + (end - 1) + "/" + this.file.size);
 
   if (xhr.upload) {
+
     xhr.upload.addEventListener('progress', this.onProgress);
   }
   xhr.onload = this.onContentUploadSuccess_.bind(this);
@@ -247,7 +250,6 @@ MediaUploader.prototype.onUpdateVideoData_ = function(video_id) {
   var xhr = new XMLHttpRequest();
 
   xhr.open(httpMethod, url, true);
-  console.log("TOKEN UPDATE: "+ this.token);
   xhr.setRequestHeader('Authorization', 'Bearer ' + this.token);
   xhr.send(this.buildQuery_(this.videoData));
 }

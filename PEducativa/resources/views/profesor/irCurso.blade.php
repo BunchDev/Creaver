@@ -8,14 +8,14 @@
 @section('content')
 
 <div class="se-pre-con-irCurso"></div>
-<div class="jumbotron jumbotron-fluid">
-<h1 class="display-3">Actividades del Curso</h1>
+
+<h1>Actividades del Curso</h1>
 <br>
-<p class="lead"> Detalles del curso seleccionado:
+<p > Detalles del curso seleccionado:
 	{{$DatosCurso->Nombre}}
 {{$DatosCurso->Descripcion}}
 
-</div>
+
 <div id="ir"></div>
 
    

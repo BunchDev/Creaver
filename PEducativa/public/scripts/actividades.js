@@ -141,6 +141,7 @@ function listarActividades(actividades)
     	sep = $("<div></div>").addClass("list-group-separator");
     //	btnedit = $("<ul class='dropdown-menu'><li><a href='javascript:void(0)'>Editar Actividad</a></li><li><a href='javascript:void(0)''>Another action</a></li><li class='divider'></li><li><a href='javascript:void(0)'>Eliminar Actividad</a></li></ul>")
       if(value.tipo_tecnica == 1 ) urledit = "../editarActividadABP/"+value.idTecnica;
+      if(value.tipo_tecnica == 3 ) urledit = "../editarActividadABP/"+value.idTecnica;
     	lgi.append(rap);
     	rap.append(ico);
     	lgi.append(rc);

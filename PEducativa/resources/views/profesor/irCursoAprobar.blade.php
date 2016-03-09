@@ -7,14 +7,14 @@
 
 @section('content')
 
-	<div class="jumbotron jumbotron-fluid">
-		<h1 class="display-3">Curso seleccionado</h1>
+	
+		<h1 >Curso seleccionado</h1>
 		<br>
-		<p class="lead"> Detalles del curso por aprobar:
+		<p > Detalles del curso por aprobar:
 		{{$DatosCurso->Nombre}}<br>
 		{{$DatosCurso->Descripcion}}
 		
-	</div>
+
 
 		<br>
 
@@ -147,7 +147,9 @@
 
 
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
+{!! Html::script('scripts/validatorJQB.js')!!}
 {!! Html::script('scripts/cursos.js')!!}
 {!! Html::script('scripts/fileUpload.js')!!}
+
 
 @endsection

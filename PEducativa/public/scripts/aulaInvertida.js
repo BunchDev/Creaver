@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
    activarCheckedListener();
    activarCheckedListenerVideo();
@@ -78,7 +79,11 @@ function guardar()
 {
 
 //if($("#idVideo").val() != "")
-  
+if(verificarAlteracion() == false)
+{
+  swal("¡Error!,", "No se pudo procesar la elección", "error")
+  return;
+}
 $("#g_material").attr('disable',true);
 $.ajax({
    type:'post',
@@ -115,4 +120,27 @@ function selectVideo()
 $('.grid').masonry( 'hide', $('#container ul li').eq(2) ).masonry();
 
 
+}
+
+function cancelarSubidaVideo()
+{
+  xhr.abort();
+  $("#cancelarSubida").hide();
+  swal(
+    { 
+    title: "Subida Cancelada",   
+    text: "Puedes subir otro video o escoger alguno de tu lista",   
+    type: "warning",  
+    showCancelButton: false, 
+    confirmButtonColor: "#DD6B55",
+    timer: 2000,  
+    showConfirmButton: false
+    
+  }
+ );
+  $("#checkbutton").prop("disabled",false);
+  $("#drop_zone").show();
+ 
+  $("#archivos_contenedor").show();
+  $("#progress").hide();
 }

@@ -11,6 +11,7 @@
 	{!! Html::style('bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css') !!}
 	{!! Html::style('bower_components/sweetalert/dist/sweetalert.css') !!}
 	{!! Html::style('css/adaptaciones.css') !!}
+	{!! Html::style('css/magic.css') !!}
 	{!! Html::style('bower_components/bootstrap-select/dist/css/bootstrap-select.min.css') !!}
 	{!! Html::style('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') !!}
 	

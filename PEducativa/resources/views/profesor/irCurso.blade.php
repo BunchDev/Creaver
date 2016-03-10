@@ -1,10 +1,8 @@
 @extends('profesor.perfil')
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
-
-
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
-
+{!! Html::style('css/actividades.css') !!}
 @section('content')
 
 <div class="se-pre-con-irCurso"></div>
@@ -25,16 +23,31 @@
 
 
 	<div id="listaActividades" align="center">
-	
+	  <div class="list-group" id="actividadesList">
+    @foreach($actividades as $actividad)
+   
+		
+        <div class="list-group-item" id="items" onClick="irActividad({{$actividad->tipo_tecnica}},{{$actividad->idActividad}})">
+          <div class="row-picture">
+            @if($actividad->tipo_tecnica == 1)
+              <img class="circle" src="../images/tecnicas/abp.png" alt="icon">
+            @endif
+            @if($actividad->tipo_tecnica == 3)
+              <img class="circle" src="../images/tecnicas/ai.png" alt="icon">
+            @endif
 
-      <button class="btn btn-raised btn-success btn-lg" data-toggle="collapse" data-target="#actividadesLista" id="actlist" aria-label="Left Align">Ver mis Actividades</button>
-		  <br>
-			<div id="actividadesLista" class="collapse">
-    
-		      <div class="list-group" id="actividadesList"></div>
-		  </div>
-	</div>
-
+            
+          </div>
+          <div class="row-content">
+            <h4 class="list-group-item-heading">{{$actividad->Nombre}}</h4>
+            <p class="list-group-item-text">{{$actividad->Descripcion}}</p>
+          </div>
+        </div>
+      
+      <div class="list-group-separator"></div>
+		@endforeach
+    </div>
+  </div>
 
 
 
@@ -125,14 +138,12 @@
   </div>
 </div>
 	{!! Html::script('bower_components/bootstrap-select/dist/js/bootstrap-select.min.js')!!}
-    {!! Html::script('scripts/validatorJQB.js')!!}
+  {!! Html::script('scripts/validatorJQB.js')!!}
   {!! Html::script('scripts/actividades.js')!!}
   {!! Html::script('scripts/fecha.js')!!}
 
+{{$actividades}}
 
-<script type="text/javascript">
-listarActividades(<?php echo json_encode($actividades)?>);
-</script>
 
 @endsection
 

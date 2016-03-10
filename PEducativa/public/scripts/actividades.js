@@ -83,7 +83,7 @@ $.ajax({
           'tecnica': $('select[id=tecnicas]').val(),'idcurso':id,'vencimiento':$("#fechaVencimiento").val(),'_token': $('input[name=_token]').val()},
    
    success: function(data) {
-      alert($("#fechaVencimiento").val());
+   
        $('#nuevaActividadModal').modal('hide');
        $('#guardarActividad').attr('disabled',true);
        swal({   title: 'Actividad Añadida exitosamente',  
@@ -157,4 +157,20 @@ function listarActividades(actividades)
 	});
 
 
+}
+function irActividad(tecnica,id)
+{
+ switch(tecnica)
+   {
+    case 1:
+        window.location.assign("../actividad/abp/"+id);
+        break;
+    case 3:
+        window.location.assign("../actividad/ai/"+id);
+        break;
+    default:
+        return;
+        break;
+
+   }
 }

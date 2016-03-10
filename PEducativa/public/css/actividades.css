@@ -1,0 +1,13 @@
+#items{
+	border: 2px dashed #bbb;
+      -moz-border-radius: 7px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      padding: 30px;
+      text-align: center;
+      
+      color: #bbb;
+      width: 100%;	 
+	
+}
+

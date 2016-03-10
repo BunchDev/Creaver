@@ -8,6 +8,7 @@
 
 	{!! Html::style('bower_components/bootstrap/dist/css/bootstrap.min.css') !!}
 	{!! Html::style('bower_components/bootstrap-material-design/dist/css/ripples.min.css') !!}
+	{!! Html::style('bower_components/font-awesome/css/font-awesome.min.css') !!}
 	{!! Html::style('bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css') !!}
 	{!! Html::style('bower_components/sweetalert/dist/sweetalert.css') !!}
 	{!! Html::style('css/adaptaciones.css') !!}

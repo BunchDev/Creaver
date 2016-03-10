@@ -12,13 +12,15 @@ use App\PersonajesABP;
 class AbpProfesorController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index get the value of the id Activity and return an edit view or complete view show
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $actividad = Actividad::find($id);
+        if($actividad->status == 0) return $this->edit($actividad->idTecnica);
+        if($actividad->status == 1) return $this->show($actividad->idTecnica);  
     }
 
     /**
@@ -52,9 +54,11 @@ class AbpProfesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {     
-		
+    $abp = Abp::find($id);
+    $personajes = PersonajesABP::where('fk_idABP',$id)->get();
+   	return view('tecnicas.abp.abpProfesorShow')->with('abp',$abp)->with('personajes',$personajes);
     }
 
 

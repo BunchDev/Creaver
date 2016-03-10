@@ -1,20 +1,21 @@
 body { 
-    padding-top: 65px; 
+padding-top: 65px; 
 background-color: #343945;
 background-image: url("http://www.transparenttextures.com/patterns/triangles.png");
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
           
 }
-body,
+
+h1,
 h2,
 h3,
 h4,
 h5,
 h6,
 .h1,
-.h2,
 .h3,
-.h4 {
+.h4,
+p{
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 300;
   color: white;
@@ -31,6 +32,9 @@ background-color: #343945;
 background-image: url("http://www.transparenttextures.com/patterns/triangles.png");
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   
+}
+.c_contexto,.c_problematica{
+    color: white;
 }
 
 .table td {
@@ -252,4 +256,55 @@ background-color: #2966B8;
 #progress{
   width: 15%;
   height: 15%;
+}
+.problematica{
+
+  width: 50%;
+}
+.contexto{
+
+  width: 50%;
+}
+.personajes{
+
+  width: 50%;
+}
+
+
+#p_problematica{
+  font-family: "Philosopher",Arial, serif;
+  font-weight: 300; 
+  font-size: 30px;
+}
+.fa{
+  color: white;
+}
+#p_contexto{
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300; 
+  font-size: 30px;
+}
+#p_personaje{
+  font-family: 'Roboto Slab', serif;
+ 
+  font-size: 25px;
+}
+.p_problematica{
+  font-family: "Roboto",Arial, serif;
+  font-weight: 300; 
+  font-size: 20px;
+  color: #2897B7;
+}
+
+.p_contexto{
+   font-family: "Roboto",Arial, serif;
+  font-weight: 300; 
+  font-size: 20px;
+  color: #2897B7;
+}
+.p_personajes{
+   font-family: "Roboto",Arial, serif;
+  font-weight: 300; 
+  font-size: 20px;
+  color: #2897B7;
 }

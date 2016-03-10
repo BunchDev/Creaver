@@ -41,7 +41,7 @@ Route::get('perfil',function(){
 
 /* --------------------  ABP ----------------- */
 //Profesores
-Route::get('actividad/abp','AbpProfesorController@show');
+Route::get('actividad/abp/{id}','AbpProfesorController@index');
 Route::post('actividad/abp/update','AbpProfesorController@update');
 Route::get('editarActividadABP/{id}', 'AbpProfesorController@edit');
 Route::post('eliminarActividadABP/{id}', 'AbpProfesorController@delete');

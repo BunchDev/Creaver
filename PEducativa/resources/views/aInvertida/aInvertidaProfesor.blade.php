@@ -5,23 +5,11 @@
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
 {!! Html::script('scripts/vimeoJquery.js')!!}
 {!! Html::script('scripts/masonry.pkgd.min.js')!!}
-
-{!! Html::script('bower_components/lightslide/src/js/lightslider.js')!!}
-
-
-
 {!! Html::script('scripts/vimeo.js')!!}
 {!! Html::script('scripts/aulainvertida.js')!!}
-{!! Html::script('bower_components/video.js/dist/video.min.js')!!}
-{!! Html::script('bower_components/recordrtc/RecordRTC.js')!!}
-{!! Html::script('bower_components/videojs-record/src/js/videojs.record.js')!!}
-
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
-{!! Html::style('bower_components/lightslide/dist/css/lightslider.min.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
 {!! Html::style('css/aulaInvertida.css') !!}
-{!! Html::style('bower_components/video.js/dist/video-js.css') !!}
-{!! Html::style('bower_components/videojs-record/src/css/videojs.record.css') !!}
 
 
 <div>
@@ -210,7 +198,6 @@
 hahahahaha by: Cristian Michel (I dunno why I'm doing this coments ._. I need to sleep -->
 {!! Html::script('bower_components/progressbar.js/dist/progressbar.min.js')!!}
 {!! Html::script('scripts/upload.js')!!}
-{!! Html::script('scripts/freewall.js')!!}
 
 <script type="text/javascript">
 var msnry;

@@ -16,6 +16,11 @@ class AiProfesorController extends Controller
         $USER_ID = 0;
         $datos = AulaInvertida::find($id);
         $actividad = Actividad::find($datos->fk_idActividad);
+        if($actividad->status == 1 )
+        {
+            return view('aInvertida.aInvertidaProfesorPreview')->with('aula',$datos)->with('curso',$actividad->fk_idCurso);
+        }
+        else{
         $videos_url = AulaInvertida::getUrls($USER_ID);
         
     	return view('aInvertida/aInvertidaProfesor')
@@ -23,7 +28,7 @@ class AiProfesorController extends Controller
                 ->with('idCurso',$actividad->fk_idCurso)
                 ->with('urls',$videos_url);
         
-
+        }
     }
 
     public function getToken()
@@ -37,9 +42,12 @@ class AiProfesorController extends Controller
         
     	$idAi = $datos['id'];
     	$Ai = AulaInvertida::find($idAi);
+        $actividad = Actividad::find($Ai->fk_idActividad);
     	$Ai->url = $datos['url'];
     	$Ai->instruccion = $datos['instruccion'];
+        $actividad->status = 1; 
     	$Ai->save();
+        $actividad->save();
 
 
     }

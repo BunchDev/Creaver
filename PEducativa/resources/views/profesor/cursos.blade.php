@@ -45,7 +45,6 @@
 
                 <h4 class="list-group-item-heading">{{$curso->Nombre}}</h4>
 
-                  <p class="list-group-item-text">{{$curso->Descripcion}}</p>
             </div>
           </div>
         </div>

@@ -142,7 +142,7 @@
   {!! Html::script('scripts/actividades.js')!!}
   {!! Html::script('scripts/fecha.js')!!}
 
-{{$actividades}}
+
 
 
 @endsection

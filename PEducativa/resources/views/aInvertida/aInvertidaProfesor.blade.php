@@ -12,10 +12,16 @@
 
 {!! Html::script('scripts/vimeo.js')!!}
 {!! Html::script('scripts/aulainvertida.js')!!}
+{!! Html::script('bower_components/video.js/dist/video.min.js')!!}
+{!! Html::script('bower_components/recordrtc/RecordRTC.js')!!}
+{!! Html::script('bower_components/videojs-record/src/js/videojs.record.js')!!}
+
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 {!! Html::style('bower_components/lightslide/dist/css/lightslider.min.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
 {!! Html::style('css/aulaInvertida.css') !!}
+{!! Html::style('bower_components/video.js/dist/video-js.css') !!}
+{!! Html::style('bower_components/videojs-record/src/css/videojs.record.css') !!}
 
 
 <div>
@@ -25,8 +31,6 @@
 <div id="all" align="center" >
 
 <!--Area de pruebas-->
-
-
 
 <!--Fin de area de prueba-->
 <input type="hidden" id="idAi" value="{{$datos->idAi}}">
@@ -223,6 +227,8 @@ $(document).ready(function() {
 $("#reproductor").load(function(){
    $("#reproductor").vimeo("play");
 });
+
+
 
 
 });

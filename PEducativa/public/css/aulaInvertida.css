@@ -1,3 +1,6 @@
+strong {
+  color: white;
+}
 #instrucciondiv{
 	width: 50%;
 	height: 80%;
@@ -78,4 +81,25 @@
 }
 #g_material{
   display: none;
+}
+.fa-5x{
+  font-size: 200px;
+
+}
+#letrero_ai{
+  font-size: 50px;
+}
+
+#waiting_iframe{
+  
+   top: 50px; 
+   left: 0; 
+   width: 50%; 
+}
+
+#p_instruccion{
+  font-size: 18px;
+}
+#back_icon{
+  color: black;
 }

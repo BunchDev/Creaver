@@ -2,9 +2,19 @@
 $(document).ready(function(){
    activarCheckedListener();
    activarCheckedListenerVideo();
+   frameListener();
 //  activarSlideThumbNail();
    console.log("Its ok");
 });
+
+function frameListener()
+{
+  $("#reproductor").load(function(){
+    $("#reproductor").show();
+    $("#waiting_iframe").hide();
+
+  });
+}
 
 function activarSlideThumbNail()
 {

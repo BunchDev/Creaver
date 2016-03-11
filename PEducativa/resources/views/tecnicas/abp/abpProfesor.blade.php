@@ -65,8 +65,8 @@ personajesArray = new Array();
           <br>
        <button type="button" id ="ayuda" class="btn btn-raised btn-info btn-xs" 
           data-container="body" data-toggle="popover" 
-          data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          Ayuda
+          data-placement="top" data-content="En este apartado hacemos referencia a todo aquello que rodea física y/o simbólicamente el evento o acontecimiento de lo que vamos a plantear. ">
+          <i class="fa fa-question-circle fa-2x"></i>
      </button>
 
           @if(isset($abp->Contexto))
@@ -89,8 +89,8 @@ personajesArray = new Array();
           <br>
        <button type="button" id ="ayuda" class="btn btn-raised btn-info btn-xs" 
           data-container="body" data-toggle="popover" 
-          data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-          Ayuda
+          data-placement="top" data-content="En este apartado es el más importante, redactamos la problematica la cual el alumno resolverá, por ejemplo: 'Los enfermeros del hospital x no pueden atender de manera oportuna a los pacientes por falta de información ...'">
+          <i class="fa fa-question-circle fa-2x"></i>
      </button>
            @if(isset($abp->problematica))
             {!! Form::textarea('problematica',$abp->problematica,array('class'=>'form-control input-lg c_problematica','placeholder'=>'Añade una problemática'))!!}
@@ -110,8 +110,8 @@ personajesArray = new Array();
            <br>
        <button type="button" id ="ayuda" class="btn btn-raised btn-info btn-xs" 
        data-container="body" data-toggle="popover" 
-       data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-       Ayuda
+       data-placement="top" data-content="Aquí se agregan todos los individuos que participan o están involucrados en la problemática">
+       <i class="fa fa-question-circle fa-2x"></i>
      </button>
            <div id="agregarPersonajediv" class="form-group">
          {!! Form::text('Personaje','',['class'=>'form-control input-lg','id'=>'NuevoPersonaje','placeholder'=>'Agregar un personaje'])!!}

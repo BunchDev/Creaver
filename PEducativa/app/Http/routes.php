@@ -55,7 +55,16 @@ Route::post('actividad/ai/guardarAi','AiProfesorController@store');
 
 /* -------Comentario Propuesta------------*/
 Route::post('nuevoComentario', 'ComentarioController@store');
+
+
+
+/* ------------------- ABI ----------------------------- */
+Route::get('actividad/abi/{id}','AbiProfesorController@index');
+Route::post('actividad/abi/subirMaterial','AbiProfesorController@store');
 //
+
+
+
 
 //Alumnos
 

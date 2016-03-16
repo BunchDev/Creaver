@@ -101,6 +101,7 @@ public function guardarArchivo(Request $request)
  
         $mode = 'FTP_BINARY';
  		$conexion = FTP::connection();
+ 		$conexion->changeDir("propuestas_curso");
  		$statusMD = $conexion->makeDir("propuesta_".$id);
  		$statusCD = $conexion->changeDir("propuesta_".$id);
         //Hacemos el upload
@@ -131,7 +132,7 @@ public function actualizarArchivo(Request $request)
  
         $mode = 'FTP_BINARY';
  		$conexion = FTP::connection();
- 		
+ 		$conexion->changeDir("propuestas_curso");
  		$statusCD = $conexion->changeDir("propuesta_".$id);
  		$truncar = $conexion->truncateDir(".");
         //Hacemos el upload
@@ -155,6 +156,7 @@ public function descargarPropuesta()
 $id = Input::get('id');
 $mode= "FTP_BINARY";
 $conexion = FTP::connection();
+$conexion->changeDir("propuestas_curso");
 $statusCD = $conexion->changeDir("propuesta_".$id);
 $propuesta = Propuesta::where('fk_idCurso',$id)->first();
 $archivo = $conexion->getDirListing("",null);

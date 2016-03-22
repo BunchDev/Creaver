@@ -24,8 +24,11 @@ class MaterialesAbi extends Migration
             $table->increments('idMaterial');
             $table->integer('fk_idAbi')->unsigned();
             $table->string('url');
+<<<<<<< HEAD
             $table->integer('tipo');
             $table->string('icon');
+=======
+>>>>>>> origin/master
             $table->timestamps();
             }); 
 

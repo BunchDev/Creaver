@@ -16,7 +16,9 @@ class Abi extends Migration
            
             $table->increments('idAbi');
             $table->text('generador');
+
             $table->text('instruccion');
+
             $table->integer('tipo');
             $table->integer('fk_idActividad')->unsigned();
             $table->timestamps();

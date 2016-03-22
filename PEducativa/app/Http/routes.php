@@ -61,6 +61,7 @@ Route::post('nuevoComentario', 'ComentarioController@store');
 /* ------------------- ABI ----------------------------- */
 Route::get('actividad/abi/{id}','AbiProfesorController@index');
 Route::post('actividad/abi/subirMaterial','AbiProfesorController@store');
+
 //la siguiente ruta se ocupa para protejer la ruta donde se alojan los archivos y retornar los
 //binarios del archivo desde el servidor 
 
@@ -77,6 +78,7 @@ Route::get('asset/abi/{id}/{filename}', function ($id,$filename)
 });
 
 
+
 //
 
 
@@ -84,11 +86,11 @@ Route::get('asset/abi/{id}/{filename}', function ($id,$filename)
 
 //Alumnos
 
-/* -----------------------------------------------/*
+/* -----------------------------------------------*
 
 //
 
-//
+
 Route::post('crearActividad', 'ActividadController@store');
 
 

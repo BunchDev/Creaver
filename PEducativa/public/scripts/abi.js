@@ -1,3 +1,4 @@
+
 /*$urls se usa en abiProfesorCreator para controlar que las urls no se repitan al agregarse 
 y en abiProfesorShower para agregar todas las urls en tiempo de ejecución y después 
 iterar cuando todo la página haya terminado de cargar para mandar a llamar a urlive :) 
@@ -12,6 +13,7 @@ var $urls = new Array();
         
    
     }
+
 $('#generadora').on('change', function(){
    opcion =  $('select[id=generadora]').val()
    if(opcion == 1){
@@ -53,6 +55,7 @@ function enviarMateriales()
 
 //MAX_MB = 5;
 
+
 	var file_data = $('input[name=archivos_client]').prop('files');   
 
     var form_data = new FormData();        
@@ -60,6 +63,7 @@ function enviarMateriales()
    	   console.log("bomre" +file_data[i].name);
       form_data.append('archivos[]',file_data[i],file_data[i].name);
           };          
+
   
     form_data.append('generadora', $("#text_generadora").val() );
     form_data.append('urls', JSON.stringify($urls) );
@@ -68,6 +72,25 @@ function enviarMateriales()
     form_data.append('instruccion', $('#instruccion').val() );
     form_data.append('_token', $('input[name=_token]').val() );
    
+
+    /*
+'archivos': form_data,'generadora':$("#text_generadora").val(),
+            			'urls':$("urls").val(), 'id': $("#id").val(), 
+            			'tipo' :  $('select[id=generadora]').val(),
+            			'_token': $('input[name=_token]').val()
+    */
+    
+  
+
+   	//var size = ($('#a_propuesta').prop('files')[0].size/1024/1024).toFixed(2);
+  // 	$("#anuncios").empty();
+//	if(size > MAX_MB) 
+//	{
+
+//		$("#anuncios").append("El archivo rebasa los 5 MB");
+//		return;
+//	}
+
     $.ajax({
     		xhr: function () {
         	var xhr = new window.XMLHttpRequest();
@@ -108,11 +131,15 @@ function enviarMateriales()
 
                 }
                 ,
+
              error:function(exception){swal("Error",":(", "error");}
+
+          
      });
 
 
 }
+
 function completeUrlHttpMissing(url)
 {
   if (url.indexOf("http://") !== 0 & url.indexOf("https://") !== 0) {
@@ -273,3 +300,6 @@ catch(err)
 
 
 }
+
+
+

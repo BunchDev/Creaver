@@ -79,7 +79,9 @@ class ActividadController extends Controller
                 return redirect('./actividad/ai/'.$actividad->idTecnica);
                 break;
             case 4:
+
                 return redirect('./actividad/abi/'.$actividad->idActividad);
+
                 break;
             default:
                 # code...

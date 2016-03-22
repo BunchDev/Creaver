@@ -1,15 +1,19 @@
 @extends('profesor.perfil')
+
 @section('content')
 <!-- @start Estilos sección -->
 {!! Html::style('css/abi.css') !!}
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
+
 {!! Html::style('bower_components/urlive/jquery.urlive.css') !!}
 
 <!--  @end Estilos sección-->
 
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
+
 {!! Html::script('bower_components/urlive/jquery.urlive.js')!!}
 {!! Html::script('scripts/masonry.pkgd.min.js')!!}
+
 
 @if(isset($id)) 
 	<input type="hidden" id="id" value="{{$id}}"> 
@@ -38,8 +42,10 @@
 <!-- CONTENEDOR DE TEXTO GENERADOR O CASO -->
 <div id="formGenerador"></div>
 </div>
+
   <label>Intrucción</label>
   <textarea id="instruccion"></textarea> 
+
 
 <!-- Archivos para anexar-->
 
@@ -54,6 +60,7 @@
       </span>
   </div>
 </div>
+
 
 
 <!-- Links para anexar-->
@@ -85,6 +92,7 @@ var $grid = $('.grid').masonry({
 
 
 </script>
+
 
 <!-- Scripts sección -->
 {!! Html::script('bower_components/bootstrap-select/dist/js/bootstrap-select.min.js')!!}

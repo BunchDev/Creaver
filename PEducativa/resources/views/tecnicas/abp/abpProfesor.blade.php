@@ -19,7 +19,7 @@ personajesArray = new Array();
     
    	 	$("#AgregarPersonaje").click(function(){
      	var nuevoPersonaje=$("#NuevoPersonaje").val();
-      console.log("Compara tivos " + nuevoPersonaje + " - " + personajesArray)
+      
       if($.inArray(nuevoPersonaje,personajesArray) > -1)
       {
        alert("El personaje ya existe, intente con otro");

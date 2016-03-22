@@ -3,7 +3,7 @@ $(document).ready(function(){
    activarCheckedListener();
    activarCheckedListenerVideo();
    frameListener();
-//  activarSlideThumbNail();
+
    console.log("Its ok");
 });
 
@@ -15,18 +15,6 @@ function frameListener()
 
   });
 }
-
-function activarSlideThumbNail()
-{
-  console.log("Entro aca");
- $('#videos_slide').lightSlider({
-        loop:true,
-        keyPress:true
-    });  
-
-
-}
-
 
 
 function activarCheckedListener()

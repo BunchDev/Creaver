@@ -1,0 +1,57 @@
+.grid {
+
+  max-width: 1200px;
+}
+
+
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+  width: 250px;
+  height: 130px;
+  float: left;
+  background:black;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.grid-item--width2 { width:  320px; }
+.grid-item--width3 { width:  480px; }
+.grid-item--width4 { width:  720px; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }
+
+
+strong{
+  color: white;
+}
+#p_instruccion, .p_generador{
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300; 
+  font-size: 30px;
+}
+label{
+   font-family: 'Roboto', serif;
+  font-weight: 300; 
+  font-size: 25px; 
+}
+.fa-5x{
+  font-size: 200px;
+
+}
+#letrero_abi{
+  font-size: 22px;
+}

@@ -157,7 +157,6 @@
 
   {!! Html::script('bower_components/bootstrap-select/dist/js/bootstrap-select.min.js')!!}
   {!! Html::script('scripts/validatorJQB.js')!!}
-  {!! Html::script('bower_components/lightslide/src/js/lightslider.js')!!}
 <script>
 var msnry;
 var container = document.querySelector('.grid');

@@ -1,0 +1,107 @@
+/*
+ * jquery.urlive.css v1.1.1, jQuery URLive
+ *
+ * View the plugin repository at:
+ * https://github.com/markserbol/urlive
+ *
+ */
+
+.urlive-link {
+	color:black;
+	text-decoration:none;
+	display:block;
+	width:100%;
+	height: 100%;
+	overflow:hidden;
+	position:absolute;
+	margin:0;
+	background:#EFEFEF;
+	font-size:16px;
+	line-height:normal;
+	text-overflow:ellipsis;
+
+}
+
+.urlive-link:hover {
+	box-shadow:0 0 4px rgba(10,10,10,0.6);
+}
+
+.urlive-link * {
+	display:block;
+}
+
+.urlive-image {
+	width:120px;
+	display:block;
+}
+
+.urlive-title {
+	font-size:1.15em;
+	font-weight:bold;
+	text-overflow: ellipsis;
+}
+
+.urlive-description {
+	font-size:1em;
+	text-overflow: ellipsis;
+	float: right;
+}
+
+.urlive-url {
+	font-size:0.9em;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.urlive-sitename, .urlive-type {
+	float: right;
+}
+
+.urlive-img-wrapper {
+	float:left;
+	margin-right:10px;
+}
+
+.urlive-text-wrapper {
+	overflow:auto;
+	padding:10px;
+}
+
+/* SMALL IMAGE STYLES*/
+.urlive-img-small .urlive-img-wrapper {
+	width:auto;
+	max-width:20%px;
+}
+
+/* LARGE IMAGE STYLES */
+.urlive-img-large .urlive-img-wrapper {
+	width:100px;
+	max-width:none;
+	float:none;
+}
+
+.a-fixed{
+ color:black;
+	text-decoration:none;
+	display:block;
+	width:100%;
+	height: 100%;
+	overflow:hidden;
+	position:absolute;
+	margin:0;
+	background:#EFEFEF;
+	font-size:16px;
+	line-height:normal;
+	text-overflow:ellipsis;
+
+}
+
+#gStrong{
+	color: black;
+	height: 50%;
+	font-style: oblique;
+}
+.close{
+	position: relative;
+}

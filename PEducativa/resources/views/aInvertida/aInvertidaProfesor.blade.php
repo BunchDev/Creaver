@@ -133,7 +133,7 @@
   		
   			<script type="text/javascript">
 				$.when(vimeoLoadingThumb("{{$urln->url}}")).done(function(){
-					console.log("He pasado por aquí y el objeto es: "+msnry);
+					
 					msnry.layout();
 
 

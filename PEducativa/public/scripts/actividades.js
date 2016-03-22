@@ -168,6 +168,9 @@ function irActividad(tecnica,id)
     case 3:
         window.location.assign("../actividad/ai/"+id);
         break;
+    case 4:
+        window.location.assign("../actividad/abi/"+id);
+        break;
     default:
         return;
         break;

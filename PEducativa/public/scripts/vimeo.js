@@ -379,6 +379,7 @@ $('#videoModal').modal('show');
 function verificarAlteracion()
 {
   var supuesto = $("#idVideo").val();
+  if(urls.length == 0) return true;
   for (var i = urls.length - 1; i >= 0; i--) 
   {
       if(supuesto == urls[i]) return true;

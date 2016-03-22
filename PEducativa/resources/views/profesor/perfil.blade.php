@@ -65,7 +65,8 @@
 	{!! Html::script('bower_components/moment/min/moment.min.js')!!}
 	{!! Html::script('bower_components/moment/locale/es.js')!!}
 	{!! Html::script('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')!!}
-	
+	{!! Html::script('bower_components/urlive/jquery.urlive.js')!!}
+
 <script type="text/javascript">
 	$(document).on('ready',function(){
 

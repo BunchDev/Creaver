@@ -11,6 +11,7 @@ use App\Actividad;
 use App\Abp;
 use App\AulaInvertida;
 use App\Abi;
+use App\Resumen;
 class ActividadController extends Controller
 {
     public function store()
@@ -39,7 +40,7 @@ class ActividadController extends Controller
 
                 break;
 
-            case 3:
+            case 2:
                 $ai = new AulaInvertida();
                 $ai->fk_idActividad = $actividad->idActividad;
                 $ai->instruccion = $actividad->Descripcion;
@@ -49,11 +50,19 @@ class ActividadController extends Controller
                 $actividad->idTecnica = $id;
                 $actividad->save();
                 break;
-            case 4:
+            case 3:
                 $abi = new Abi();
                 $abi->fk_idActividad = $actividad->idActividad;
                 $abi->save();
                 $id = $abi->idAbi;
+                $actividad->idTecnica = $id;
+                $actividad->save();
+                break;
+            case 4:
+                $resumen = new Resumen();
+                $resumen->fk_idActividad = $actividad->idActividad;
+                $resumen->save();
+                $id = $resumen->idResumen;
                 $actividad->idTecnica = $id;
                 $actividad->save();
                 break;
@@ -75,14 +84,15 @@ class ActividadController extends Controller
             case 1:
                 return redirect('editarActividadABP/'.$actividad->idTecnica);
                 break;
-            case 3:
+            case 2:
                 return redirect('./actividad/ai/'.$actividad->idTecnica);
                 break;
-            case 4:
-
+            case 3:
                 return redirect('./actividad/abi/'.$actividad->idActividad);
-
                 break;
+            case 4:
+                return redirect('./actividad/resumen/'.$actividad->idActividad);
+                break;    
             default:
                 # code...
                 break;

@@ -74,7 +74,7 @@ mediante una petición ajax de tipo POST.
 function guardar(id)
 {
 if( (nactividad.validateInputText() & dactividad.validateInputText() & factividad.validateInputText()) == false) return;
-
+alert("SELECT: "+$('select[id=tecnicas]').val());
 $.ajax({
    type:'post',
    url :"../crearActividad",
@@ -165,11 +165,14 @@ function irActividad(tecnica,id)
     case 1:
         window.location.assign("../actividad/abp/"+id);
         break;
-    case 3:
+    case 2:
         window.location.assign("../actividad/ai/"+id);
         break;
-    case 4:
+    case 3:
         window.location.assign("../actividad/abi/"+id);
+        break;
+    case 4:
+        window.location.assign("../actividad/resumen/"+id);
         break;
     default:
         return;

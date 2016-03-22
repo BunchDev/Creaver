@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MaterialesAbi extends Migration
+class MaterialesResumen extends Migration
 {
     /**
      * Run the migrations.
@@ -12,26 +12,19 @@ class MaterialesAbi extends Migration
      */
     public function up()
     {
-        /*
-          Materiales_abi 
-        idMaterial 
-        idAbi (foreing key)
-        url 
-        */
-
-         Schema::create('materiales_abi', function (Blueprint $table) {
+        Schema::create('materiales_resumen', function (Blueprint $table) {
            
             $table->increments('idMaterial');
-            $table->integer('fk_idAbi')->unsigned();
+            $table->integer('fk_idResumen')->unsigned();
             $table->string('url');
             $table->integer('tipo');
             $table->string('icon');
             $table->timestamps();
             }); 
 
-        Schema::table('materiales_abi', function($table) {
+        Schema::table('materiales_resumen', function($table) {
       
-            $table->foreign('fk_idAbi')->references('idAbi')->on('abi')->onDelete('cascade');
+            $table->foreign('fk_idResumen')->references('idResumen')->on('resumen')->onDelete('cascade');
         });
     }
 
@@ -42,6 +35,6 @@ class MaterialesAbi extends Migration
      */
     public function down()
     {
-        Schema::drop('materiales_abi');
+        Schema::drop('materiales_resumen');
     }
 }

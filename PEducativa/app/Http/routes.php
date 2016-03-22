@@ -77,8 +77,24 @@ Route::get('asset/abi/{id}/{filename}', function ($id,$filename)
     return $response;
 });
 
+/*----------------- RESUMEN ------------------------------*/
+Route::get('actividad/resumen/{id}','ResumenProfesorController@index');
+Route::post('actividad/resumen/subirMaterial','ResumenProfesorController@store');
 
+//la siguiente ruta se ocupa para protejer la ruta donde se alojan los archivos y retornar los
+//binarios del archivo desde el servidor 
 
+Route::get('asset/resumen/{id}/{filename}', function ($id,$filename)
+{
+    $path = storage_path() . '/app/acreaver/materiales_resumen/material_' . $id . "/".$filename;
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
 //
 
 

@@ -55,7 +55,32 @@ Route::post('actividad/ai/guardarAi','AiProfesorController@store');
 
 /* -------Comentario Propuesta------------*/
 Route::post('nuevoComentario', 'ComentarioController@store');
+
+
+
+/* ------------------- ABI ----------------------------- */
+Route::get('actividad/abi/{id}','AbiProfesorController@index');
+Route::post('actividad/abi/subirMaterial','AbiProfesorController@store');
+//la siguiente ruta se ocupa para protejer la ruta donde se alojan los archivos y retornar los
+//binarios del archivo desde el servidor 
+
+Route::get('asset/abi/{id}/{filename}', function ($id,$filename)
+{
+    $path = storage_path() . '/app/acreaver/materiales_abi/material_' . $id . "/".$filename;
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
+
 //
+
+
+
 
 //Alumnos
 

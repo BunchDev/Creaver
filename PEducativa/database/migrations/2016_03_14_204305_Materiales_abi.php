@@ -19,7 +19,7 @@ class MaterialesAbi extends Migration
         url 
         */
 
-         Schema::create('materiales_abi', function (Blueprint $table) {
+         Schema::create('material_abi', function (Blueprint $table) {
            
             $table->increments('idMaterial');
             $table->integer('fk_idAbi')->unsigned();
@@ -29,7 +29,7 @@ class MaterialesAbi extends Migration
             $table->timestamps();
             }); 
 
-        Schema::table('materiales_abi', function($table) {
+        Schema::table('material_abi', function($table) {
       
             $table->foreign('fk_idAbi')->references('idAbi')->on('abi')->onDelete('cascade');
         });
@@ -42,6 +42,6 @@ class MaterialesAbi extends Migration
      */
     public function down()
     {
-        Schema::drop('materiales_abi');
+        Schema::drop('material_abi');
     }
 }

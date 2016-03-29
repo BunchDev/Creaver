@@ -13,11 +13,11 @@
 {!! Html::script('bower_components/arctext/js/jquery.arctext.js')!!}
 
 <!--LETRERO PRINCIPAL AI-->
-<div align="center" id="icon_pencil" class=".col-md-8">	
+<div align="center" id="icon_puzzle" class=".col-md-8">	
 <section class="main">				
 	<div id="presentacion" class="arc-wrapper">
-		<h3 id="letrero_resumen">Resumen</h3>
-		<i class="fa fa-pencil-square fa-5x"></i>
+		<h3 id="letrero_mapamental">Mapa Mental</h3>
+		<i class="fa fa-puzzle-piece fa-5x"></i>
 	</div>
 </section>
 
@@ -56,13 +56,20 @@
 				
 				
 					<div class="grid-item">
+						@if(pathinfo($material->url, PATHINFO_EXTENSION) ==  'jpg' || pathinfo($material->url, PATHINFO_EXTENSION) ==  'png' || pathinfo($material->url, PATHINFO_EXTENSION) ==  'JPG' || pathinfo($material->url, PATHINFO_EXTENSION) ==  'PNG' )
+							<img src="{{$material->url}}">
+							<br>
+							<button class='btn btn-raised btn-xs btn-info' onClick='downloadFile("{{$material->url}}")'>Descargar</button>
+
+						@else
 						<strong id="sid_{{$material->idMaterial}}"></strong>
 						<i class="{{$material->icon}}"></i>
+						<br>
 						<button class='btn btn-raised btn-xs btn-info' onClick='downloadFile("{{$material->url}}")'>Descargar</button>
+						
 					
-					
-					
-				
+						@endif
+
 					</div>
 					<script>
 							namePath('{{$material->url}}','{{$material->idMaterial}}');
@@ -122,7 +129,7 @@ var $grid = $('.grid').masonry({
         containerStyle: { position: 'relative' }
 });
 $(document).ready(function(){
-$("#icon_pencil").addClass('magictime tinUpIn');
+$("#icon_puzzle").addClass('magictime tinUpIn');
  fn();		
 });
 

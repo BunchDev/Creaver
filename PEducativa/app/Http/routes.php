@@ -77,6 +77,8 @@ Route::get('asset/abi/{id}/{filename}', function ($id,$filename)
     return $response;
 });
 
+Route::get('zip/abi/{id}','AbiProfesorController@downloadZip');
+
 /*----------------- RESUMEN ------------------------------*/
 Route::get('actividad/resumen/{id}','ResumenProfesorController@index');
 Route::post('actividad/resumen/subirMaterial','ResumenProfesorController@store');
@@ -97,8 +99,45 @@ Route::get('asset/resumen/{id}/{filename}', function ($id,$filename)
 });
 //
 
+/* ------------------------MAPA MENTAL ---------------------------------------------*/
+Route::get('actividad/mapamental/{id}','MapaMentalProfesorController@index');
+Route::post('actividad/mapamental/subirMaterial','MapaMentalProfesorController@store');
 
+//la siguiente ruta se ocupa para protejer la ruta donde se alojan los archivos y retornar los
+//binarios del archivo desde el servidor 
 
+Route::get('asset/mapamental/{id}/{filename}', function ($id,$filename)
+{
+    $path = storage_path() . '/app/acreaver/materiales_mapamental/material_' . $id . "/".$filename;
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+//
+
+/* ------------------------MAPA CONCEPTUAL ---------------------------------------------*/
+Route::get('actividad/mapaconceptual/{id}','MapaConceptualProfesorController@index');
+Route::post('actividad/mapaconceptual/subirMaterial','MapaConceptualProfesorController@store');
+
+//la siguiente ruta se ocupa para protejer la ruta donde se alojan los archivos y retornar los
+//binarios del archivo desde el servidor 
+
+Route::get('asset/mapaconceptual/{id}/{filename}', function ($id,$filename)
+{
+    $path = storage_path() . '/app/acreaver/materiales_mapaconceptual/material_' . $id . "/".$filename;
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+//
 
 //Alumnos
 

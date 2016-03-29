@@ -14,41 +14,8 @@ var $urls = new Array();
    
     }
 
-$('#generadora').on('change', function(){
-   opcion =  $('select[id=generadora]').val()
-   if(opcion == 1){
-   	crearInputPregunta();
-   }
-   if(opcion == 2)
-   {
-   	crearInputCaso();
-   }
-});
-
-// de manera dinamica creo el campo, limpiando los elementos del div primero y luego añandiendo
-function crearInputPregunta(){
-$("#formGenerador").empty();
-label = $("<label>Pregunta Generadora: </label>");
-br = $("<br>");
-input = $("<input type='text' id='text_generadora'>");
-$("#formGenerador").append(label);
-$("#formGenerador").append(br);
-$("#formGenerador").append(input);
 
 
-}
-function crearInputCaso()
-{
-$("#formGenerador").empty();
-label = $("<label>Caso: </label>");
-br = $("<br>");
-input = $("<textarea id='text_generadora'>");
-$("#formGenerador").append(label);
-$("#formGenerador").append(br);
-$("#formGenerador").append(input);
-
-
-}
 
 function enviarMateriales()
 {
@@ -65,31 +32,13 @@ function enviarMateriales()
           };          
 
   
-    form_data.append('generadora', $("#text_generadora").val() );
+    
     form_data.append('urls', JSON.stringify($urls) );
-    form_data.append('tipo', $('select[id=generadora]').val() );
     form_data.append('id', $('#id').val() );
     form_data.append('instruccion', $('#instruccion').val() );
     form_data.append('_token', $('input[name=_token]').val() );
    
 
-    /*
-'archivos': form_data,'generadora':$("#text_generadora").val(),
-            			'urls':$("urls").val(), 'id': $("#id").val(), 
-            			'tipo' :  $('select[id=generadora]').val(),
-            			'_token': $('input[name=_token]').val()
-    */
-    
-  
-
-   	//var size = ($('#a_propuesta').prop('files')[0].size/1024/1024).toFixed(2);
-  // 	$("#anuncios").empty();
-//	if(size > MAX_MB) 
-//	{
-
-//		$("#anuncios").append("El archivo rebasa los 5 MB");
-//		return;
-//	}
 
     $.ajax({
     		xhr: function () {
@@ -232,10 +181,6 @@ function verifyLink(urlNew){
 function downloadFile(url)
 {
   window.open(url);
-}
-function downloadZIP(id)
-{
-  window.open("../../zip/abi/"+id);
 }
 function namePath(url,idm)
 {

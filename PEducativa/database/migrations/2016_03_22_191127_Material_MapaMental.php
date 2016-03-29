@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MaterialesResumen extends Migration
+class MaterialMapaMental extends Migration
 {
     /**
      * Run the migrations.
@@ -12,19 +12,19 @@ class MaterialesResumen extends Migration
      */
     public function up()
     {
-        Schema::create('material_resumen', function (Blueprint $table) {
+      Schema::create('material_mapamental', function (Blueprint $table) {
            
             $table->increments('idMaterial');
-            $table->integer('fk_idResumen')->unsigned();
+            $table->integer('fk_idMapaMental')->unsigned();
             $table->string('url');
             $table->integer('tipo');
             $table->string('icon');
             $table->timestamps();
             }); 
 
-        Schema::table('material_resumen', function($table) {
+        Schema::table('material_mapamental', function($table) {
       
-            $table->foreign('fk_idResumen')->references('idResumen')->on('resumen')->onDelete('cascade');
+            $table->foreign('fk_idMapaMental')->references('idMapaMental')->on('mapamental')->onDelete('cascade');
         });
     }
 
@@ -35,6 +35,6 @@ class MaterialesResumen extends Migration
      */
     public function down()
     {
-        Schema::drop('materiales_resumen');
+        Schema::drop('material_mapamental');
     }
 }

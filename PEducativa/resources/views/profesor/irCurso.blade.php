@@ -41,6 +41,12 @@
             @if($actividad->tipo_tecnica == 4)
               <img class="circle" src="../images/tecnicas/resumen.png" alt="icon">
             @endif
+            @if($actividad->tipo_tecnica == 5)
+              <img class="circle" src="../images/tecnicas/mapamental.png" alt="icon">
+            @endif
+            @if($actividad->tipo_tecnica == 6)
+              <img class="circle" src="../images/tecnicas/mapaconceptual.png" alt="icon">
+            @endif
 
 
             
@@ -91,12 +97,13 @@
 
       <div class="col-md-10">
         <div id="status">
-        <select class="selectpicker" data-width="100%" id="tecnicas">
+        <select class="selectpicker" data-width="100%" id="tecnicas" data-size="20">
           <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-action-primary'><img class='circle' src='../images/tecnicas/abp.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>ABP</h4><p class='list-group-item-text'>Aprendizaje Basado en Problemas</p></div></div></div>">1</option>
           <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/ai.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>AI</h4><p class='list-group-item-text'>Aula Invertida</p></div></div></div>">2</option>
           <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/abi.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>ABI</h4><p class='list-group-item-text'>Aprendizaje Basado en Investigación</p></div></div></div>">3</option>
           <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/resumen.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>RESUMEN</h4><p class='list-group-item-text'>Resumen</p></div></div></div>">4</option>
-
+          <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/mapamental.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>MAPA MENTAL</h4><p class='list-group-item-text'>Mapa Mental</p></div></div></div>">5</option>
+          <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/mapaconceptual.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>MAPA CONCEPTUAL</h4><p class='list-group-item-text'>Mapa Conceptual</p></div></div></div>">6</option>
         </select>
         </div>
       </div>

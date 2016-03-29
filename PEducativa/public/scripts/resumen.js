@@ -27,7 +27,7 @@ function enviarMateriales()
 
     var form_data = new FormData();        
    for (var i = 0; i<file_data.length ; i++) {
-   	   console.log("bomre" +file_data[i].name);
+   	  
       form_data.append('archivos[]',file_data[i],file_data[i].name);
           };          
 
@@ -196,7 +196,7 @@ function appendUrlShow(urlval)
 {
  
    // create new item elements
-  var items = $('<div class="grid-item"></div>');
+  var items = $('<div class="grid-item urlgrid"></div>');
   var iconAnimation = $('<i class="fa fa-spinner fa-spin fa-3x"></i>');
   items.append(iconAnimation);
   var a = $('<a href="'+urlval+'"></a>');

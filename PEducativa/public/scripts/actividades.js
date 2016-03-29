@@ -83,7 +83,7 @@ $.ajax({
           'tecnica': $('select[id=tecnicas]').val(),'idcurso':id,'vencimiento':$("#fechaVencimiento").val(),'_token': $('input[name=_token]').val()},
    
    success: function(data) {
-   
+        
        $('#nuevaActividadModal').modal('hide');
        $('#guardarActividad').attr('disabled',true);
        swal({   title: 'Actividad Añadida exitosamente',  
@@ -174,6 +174,12 @@ function irActividad(tecnica,id)
     case 4:
         window.location.assign("../actividad/resumen/"+id);
         break;
+    case 5:
+        window.location.assign("../actividad/mapamental/"+id);
+        break;
+    case 6:
+        window.location.assign("../actividad/mapaconceptual/"+id);
+        break;        
     default:
         return;
         break;

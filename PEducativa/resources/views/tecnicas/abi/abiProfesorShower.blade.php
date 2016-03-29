@@ -55,6 +55,9 @@
 			</div>
 
 	@else	
+		 <button  class="close" data-dismiss="alert">×</button>
+		 <button class='btn btn-raised btn-xs btn-info' onClick='downloadZIP("{{$materiales[0]->fk_idAbi}}")'>Descargar ZIP</button>
+
 		<div id="files" class="grid">
 		
 			@foreach($materiales as $material)
@@ -63,11 +66,19 @@
 				
 				
 					<div class="grid-item">
+						@if(pathinfo($material->url, PATHINFO_EXTENSION) ==  'jpg' || pathinfo($material->url, PATHINFO_EXTENSION) ==  'png' || pathinfo($material->url, PATHINFO_EXTENSION) ==  'JPG' || pathinfo($material->url, PATHINFO_EXTENSION) ==  'PNG' )
+							<img src="{{$material->url}}">
+							<br>
+							<button class='btn btn-raised btn-xs btn-info' onClick='downloadFile("{{$material->url}}")'>Descargar</button>
+
+						@else
 						<strong id="sid_{{$material->idMaterial}}"></strong>
 						<i class="{{$material->icon}}"></i>
+						<br>
 						<button class='btn btn-raised btn-xs btn-info' onClick='downloadFile("{{$material->url}}")'>Descargar</button>
+						
 					
-					
+						@endif
 					
 				
 					</div>

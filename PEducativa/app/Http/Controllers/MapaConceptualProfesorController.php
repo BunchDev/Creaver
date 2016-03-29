@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Actividad;
-use App\MapaMental;
-use App\MaterialMapaMental;
+use App\MapaConceptual;
+use App\MaterialMapaConceptual;
 use FTP;
 use File;
-class MapaMentalProfesorController extends Controller
+class MapaConceptualProfesorController extends Controller
 {
 
     
@@ -20,27 +20,27 @@ class MapaMentalProfesorController extends Controller
         
         $actividad = Actividad::find($id);
         
-        $mapamental = MapaMental::where('fk_idActividad',$actividad->idActividad)->get()->first();
-    
-        if($actividad->status == 0) return $this->createViewer()->with('id',$mapamental->idMapaMental)
+        $mapaconceptual = MapaConceptual::where('fk_idActividad',$actividad->idActividad)->get()->first();
+        echo "MAPA ".$mapaconceptual;
+        if($actividad->status == 0) return $this->createViewer()->with('id',$mapaconceptual->idMapaConceptual)
                                             ->with('idCurso',$actividad->fk_idCurso);
-        if($actividad->status == 1) return $this->show($mapamental);
+        if($actividad->status == 1) return $this->show($mapaconceptual);
 
         
     }
 
-    public function show($mapamental)
+    public function show($mapaconceptual)
     {
 
-        $materiales = MaterialMapaMental::where('fk_idMapaMental',$mapamental->idMapaMental)->get();
+        $materiales = MaterialMapaConceptual::where('fk_idMapaConceptual',$mapaconceptual->idMapaConceptual)->get();
        
-        return view('tecnicas.mapa_mental.mapaMentalProfesorShower')
-                    ->with('datos',$mapamental)
+        return view('tecnicas.mapa_conceptual.mapaConceptualProfesorShower')
+                    ->with('datos',$mapaconceptual)
                     ->with('materiales',$materiales);
     }
     public function createViewer()
     {
-        return view('tecnicas.mapa_mental.mapaMentalProfesorCreator');
+        return view('tecnicas.mapa_conceptual.mapaConceptualProfesorCreator');
     }
 
     public function store(Request $request)
@@ -52,12 +52,12 @@ class MapaMentalProfesorController extends Controller
         $files = Input::file('archivos');
         $urls = Input::get('urls');
         $id = Input::get('id');
-        $mapamental = MapaMental::find($id);
+        $mapaconceptual = MapaConceptual::find($id);
         $instruccion = Input::get('instruccion');
-        $actividad = Actividad::find($mapamental->fk_idActividad);
-        /*Se guarda la informacion del MapaMental */
-        $mapamental->instruccion = $instruccion;
-        $mapamental->save();
+        $actividad = Actividad::find($mapaconceptual->fk_idActividad);
+        /*Se guarda la informacion del MapaConceptual */
+        $mapaconceptual->instruccion = $instruccion;
+        $mapaconceptual->save();
         
         /*Se verifica si la informacion de links o archivos viene vacío*/
         if(is_null($files) == false) $files_bool = true;
@@ -69,7 +69,7 @@ class MapaMentalProfesorController extends Controller
             // Se suben los archivos al servidor ftp ...
             $mode = 'FTP_BINARY';
             $conexion = FTP::connection();
-            $conexion->changeDir('materiales_mapamental');
+            $conexion->changeDir('materiales_mapaconceptual');
             $statusMD = $conexion->makeDir("material_".$id);
             $statusCD = $conexion->changeDir("material_".$id);
             //Hacemos el upload recorriendo cada uno de los archivos que nos manda el cliente
@@ -82,15 +82,15 @@ class MapaMentalProfesorController extends Controller
             /*Se obtiene la lista de archivos que se ha almacenado en su carpeta de materiales*/
             $list_files = $conexion->getDirListing("",null);
            
-            $PATHTML = "../../asset/mapamental/".$id."/";
+            $PATHTML = "../../asset/mapaconceptual/".$id."/";
 
             foreach ($list_files as $url) {
-                $material_mapamental = new MaterialMapaMental();
-                $material_mapamental->fk_idMapaMental = $mapamental->idMapaMental;
-                $material_mapamental->url = $PATHTML.$url;
-                $material_mapamental->tipo = 1;
-                $material_mapamental->icon = $this->getIconName(File::extension($url));
-                $material_mapamental->save();
+                $material_mapaconceptual = new MaterialMapaConceptual();
+                $material_mapaconceptual->fk_idMapaConceptual = $mapaconceptual->idMapaConceptual;
+                $material_mapaconceptual->url = $PATHTML.$url;
+                $material_mapaconceptual->tipo = 1;
+                $material_mapaconceptual->icon = $this->getIconName(File::extension($url));
+                $material_mapaconceptual->save();
             }
 
             $conexion->disconnect();
@@ -99,14 +99,14 @@ class MapaMentalProfesorController extends Controller
         }
 
         if($urls_bool){
-        /*Se crean los modelos MaterialMapaMental para cada url añadida por el cliente*/    
+        /*Se crean los modelos MaterialMapaConceptual para cada url añadida por el cliente*/    
             $urls = json_decode($urls);
             foreach ($urls as $url2) {
-                $material_mapamental = new MaterialMapaMental();
-                $material_mapamental->fk_idMapaMental = $mapamental->idMapaMental;
-                $material_mapamental->url = $url2;
-                $material_mapamental->tipo = 2;
-                $material_mapamental->save();
+                $material_mapaconceptual = new MaterialMapaConceptual();
+                $material_mapaconceptual->fk_idMapaConceptual = $mapaconceptual->idMapaConceptual;
+                $material_mapaconceptual->url = $url2;
+                $material_mapaconceptual->tipo = 2;
+                $material_mapaconceptual->save();
             }
         }
         

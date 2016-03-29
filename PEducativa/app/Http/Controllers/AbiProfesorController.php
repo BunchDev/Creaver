@@ -11,6 +11,9 @@ use App\Abi;
 use App\MaterialAbi;
 use FTP;
 use File;
+use Chumper\Zipper\Zipper;
+use DB;
+use Response;
 class AbiProfesorController extends Controller
 {
 
@@ -121,7 +124,24 @@ class AbiProfesorController extends Controller
 
 
 
+public function downloadZip($id)
+{
 
+$actividad = Actividad::find($id);  
+
+$path = storage_path() . '/app/acreaver/materiales_abi/material_' . $id . "/";
+
+$name = $actividad->Nombre;
+$files = glob($path."*");
+$zipper  = new Zipper();
+$zipper->make($path.$name."-compressfiles.zip")->add($files);
+
+//$zip = File::get($path.$name."-compressfiles.zip");
+//$response = Response::make($zip, 200);
+//$response->header("Content-Type","application/zip");
+
+return $zipper->getStatus();
+}
 public function getIconName($extension)
 {
     

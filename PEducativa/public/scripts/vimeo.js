@@ -62,26 +62,16 @@ function createCircleProgress()
 		
 		$("#vid").on("loadedmetadata", function() {
 
+			videoFile = $("#vid")[0];
+      if ( !validarVideo("archivo",file,$(this))) return;
+      if ( !validarVideo("size",videoFile,$(this)) ) return;
 			
-			var seconds = $("#vid")[0].duration;
-			var minutes = (seconds / 60);
-			console.log("Listo: "+ minutes);
-			if(minutes > 5)
-			{
-			   $("#drop_zone").show();
-   	            
-   	     $("#archivos_contenedor").show();
-				 $(this).off('loadedmetadata');
-
-			}
-			else {
-
-         $.when(getTokenVimeo()).done(function(respuestaToken){
-         	uploadFile(files,respuestaToken);
-          createCircleProgress();
-         });
+      $.when(getTokenVimeo()).done(function(respuestaToken){
+         	  uploadFile(files,respuestaToken);
+            createCircleProgress();
+            });
 				
-			}
+	
 
     	
     	});
@@ -124,14 +114,10 @@ function createCircleProgress()
 
 function subirVideo()
 {
-
-	if(validarVideo("archivo") == false) {
-
-		alert("El video rebasa los 5 minutos");
-	    $("#drop_zone").show();
-   	    
-		return;
-	}
+  videoFile = $("#vid")[0];
+  file_data = $('#fl').prop('files')[0]
+  if ( !validarVideo("archivo",file_data,null) ) return;
+	if ( !validarVideo("size",videoFile,null) ) return;
   $("#checkbutton").prop("disabled",true);
 	$("#drop_zone").hide();
   $("#cancelarSubida").show();
@@ -203,19 +189,48 @@ $('#drop_zone').bind("DOMNodeInserted DOMNodeRemoved",function(){
 });
 
 
-function validarVideo(tipo)
+function validarVideo(tipo,file,metaload)
 {
-	
-		if(tipo=="archivo")
+
+		if(tipo=="size")
 		{
-			var seconds = $("#vid")[0].duration;
-			var minutes = (seconds / 60);
-			if(minutes > 5)
-				return false;
-			else 
-				return true;
+			 var seconds = file.duration;
+			 var minutes = (seconds / 60);
+			 if(minutes > 5){
+           swal({  
+                  title: '<i class="fa fa-frown-o fa-4x"></i>', 
+                  text: "<h2>¡Ups!, el video supera los 5 minutos</h2>", 
+                  html: true 
+                });
+            $("#drop_zone").show();
+            if(metaload != null) metaload.off('loadedmetadata');
+				    return false;
+      }
+      else{
+        return true;
+      }
+			
 
 		}
+    if(tipo=="archivo")
+    {
+      console.log(file.duration);
+      var validExtensions = ['mp4','mov','avi']; //array of valid extensions
+      var fileName = file.name;
+      var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+      if ($.inArray(fileNameExt, validExtensions) == -1){
+            swal({  
+                  title: '<i class="fa fa-frown-o fa-4x"></i>', 
+                  text: "<h2>¡Ups!, el archivo que tratas de subir no contiene un formato de video correcto</h2>", 
+                  html: true 
+                });
+          $("#drop_zone").show();    
+          if(metaload != null) metaload.off('loadedmetadata');
+          return false;
+          }
+      else 
+        return true;
+    }
 
 }		
 function uploadFile(files,accessToken)

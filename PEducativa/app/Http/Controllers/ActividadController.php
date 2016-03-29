@@ -12,6 +12,8 @@ use App\Abp;
 use App\AulaInvertida;
 use App\Abi;
 use App\Resumen;
+use App\MapaMental;
+use App\MapaConceptual;
 class ActividadController extends Controller
 {
     public function store()
@@ -66,6 +68,22 @@ class ActividadController extends Controller
                 $actividad->idTecnica = $id;
                 $actividad->save();
                 break;
+           case 5:
+                $mapamental = new MapaMental();
+                $mapamental->fk_idActividad = $actividad->idActividad;
+                $mapamental->save();
+                $id = $mapamental->idMapaMental;
+                $actividad->idTecnica = $id;
+                $actividad->save();
+                break;
+            case 6:
+                $mapaconceptual = new MapaConceptual();
+                $mapaconceptual->fk_idActividad = $actividad->idActividad;
+                $mapaconceptual->save();
+                $id = $mapaconceptual->idMapaConceptual;
+                $actividad->idTecnica = $id;
+                $actividad->save();
+                break;
             default:
                 echo "default";
                 break;
@@ -85,7 +103,7 @@ class ActividadController extends Controller
                 return redirect('editarActividadABP/'.$actividad->idTecnica);
                 break;
             case 2:
-                return redirect('./actividad/ai/'.$actividad->idTecnica);
+                return redirect('./actividad/ai/'.$actividad->idActividad);
                 break;
             case 3:
                 return redirect('./actividad/abi/'.$actividad->idActividad);
@@ -93,7 +111,13 @@ class ActividadController extends Controller
             case 4:
                 return redirect('./actividad/resumen/'.$actividad->idActividad);
                 break;    
-            default:
+            case 5:
+                return redirect('./actividad/mapamental/'.$actividad->idActividad);
+                break;
+            case 6:
+                return redirect('./actividad/mapaconceptual/'.$actividad->idActividad);
+                break;    
+            default:        
                 # code...
                 break;
         }

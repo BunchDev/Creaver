@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MaterialAbi extends Model
 {
-    protected $table="materiales_abi";
+    protected $table="material_abi";
     protected $primaryKey="idMaterial";
 }

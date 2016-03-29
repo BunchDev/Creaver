@@ -17,6 +17,7 @@ class AiProfesorController extends Controller
         
         $actividad = Actividad::find($id);
         $datos = AulaInvertida::find($actividad->idTecnica);
+      
         if($actividad->status == 1 )
         {
             return view('aInvertida.aInvertidaProfesorPreview')->with('aula',$datos)->with('curso',$actividad->fk_idCurso);

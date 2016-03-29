@@ -3,6 +3,9 @@
 {!! Html::style('bower_components/bootstrap-material-design-icons/css/material-icons.css') !!}
 {!! Html::style('css/adaptaciones.css') !!}
 {!! Html::style('css/actividades.css') !!}
+{!! Html::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js')!!}
+
+
 @section('content')
 
 <div class="se-pre-con-irCurso"></div>
@@ -17,13 +20,19 @@
 <div id="ir"></div>
 
    
-   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn  btn-fab" id="addAct" ><i class="material-icons">add</i></a>
-<br>
-
-
+<div class="row">
+  <div class="col-md-9">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn  btn-fab" id="addAct" ><i class="material-icons">add</i></a>
+  </div>
+  <div class="col-md-2 form-group">
+    <i class="fa fa-search"></i><input id="search" class="form-control" placeholder="Buscar Actividad">
+  </div>
+</div>
 	<div id="listaActividades" align="center">
-	  <div class="list-group" id="actividadesList">
+    
+  
+
+	  <div class="list-group" id="actividadesList" >
     @foreach($actividades as $actividad)
    
 		

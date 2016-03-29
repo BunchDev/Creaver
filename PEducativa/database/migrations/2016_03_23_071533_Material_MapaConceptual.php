@@ -24,7 +24,7 @@ class MaterialMapaConceptual extends Migration
 
         Schema::table('material_mapaconceptual', function($table) {
       
-            $table->foreign('fk_idMapaConceptual')->references('idMapaConceptual')->on('mapaconceptual')->onDelete('cascade');
+            $table->foreign('fk_idMapaConceptual')->references('idMapaConceptual')->on('mapa_conceptual')->onDelete('cascade');
         });
     }
 

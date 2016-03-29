@@ -6,6 +6,27 @@ $(window).load(function() {
 
 $(document).ready(function(){
 configurarValidaciones();
+;(function() {
+    jQuery.expr[':'].containsNM =  function(elem, index, match) {
+        return (elem.textContent || elem.innerText || jQuery(elem).text() || '').toLowerCase().indexOf((match[3] || '').toLowerCase()) >= 0;
+    }
+}(jQuery));
+});
+
+
+
+
+
+$("#search").keyup(function(e) {
+      var filter = $(this).val().replace(/\s+/g, '').toLowerCase();
+      $(".list-group-item").hide();
+      elements = $( "div[class=list-group-item]:containsNM('"+$("#search").val()+"')" );
+
+$.each(elements,function(key,value){
+      $(value).show();
+
+});
+
 });
 
 function configurarValidaciones()

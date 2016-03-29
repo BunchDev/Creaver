@@ -12,7 +12,7 @@ class MapaConceptual extends Migration
      */
     public function up()
     {
-         Schema::create('mapa_conceptual', function (Blueprint $table) {
+        Schema::create('mapa_conceptual', function (Blueprint $table) {
            
             $table->increments('idMapaConceptual');
             $table->text('instruccion');

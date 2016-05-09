@@ -21,60 +21,66 @@
 
    
 <div class="row">
-  <div class="col-md-9">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarActividad()" class="btn  btn-fab" id="addAct" ><i class="material-icons">add</i></a>
+  <div class="col-md-8">
+    <div class="round-button"><div class="round-button-circle btn-primary"><a href="javascript:mostrarFormAgregarActividad()" class="round-button"><i class="material-icons">add</i></a></div></div>
   </div>
-  <div class="col-md-2 form-group">
-    <i class="fa fa-search"></i><input id="search" class="form-control" placeholder="Buscar Actividad">
+  <div class="col-md-3 form-group">
+ <div class="inner-addon left-addon">
+    <i class="fa fa-search"></i>
+    <input type="text" id="search" class="form-control" placeholder="Buscar una actividad"/>
+</div>
   </div>
 </div>
-	<div id="listaActividades" align="center">
-    
-  
 
-	  <div class="list-group" id="actividadesList" >
+
+    
+  <div class="row-fluid">  
     @foreach($actividades as $actividad)
    
-		
-        <div class="list-group-item" id="items" onClick="irActividad({{$actividad->tipo_tecnica}},{{$actividad->idActividad}})">
-          <div class="row-picture">
+		   <div class="col-md-6"> 
+        <div class="actividad" onClick="irActividad({{$actividad->tipo_tecnica}},{{$actividad->idActividad}})">
+          <div class="circular">
             @if($actividad->tipo_tecnica == 1)
-              <img class="circle" src="../images/tecnicas/abp.png" alt="icon">
+              <img src="../images/tecnicas/abp.png">
             @endif
             @if($actividad->tipo_tecnica == 2)
-              <img class="circle" src="../images/tecnicas/ai.png" alt="icon">
+              <img  src="../images/tecnicas/ai.png">
             @endif
             @if($actividad->tipo_tecnica == 3)
-              <img class="circle" src="../images/tecnicas/abi.png" alt="icon">
+              <img src="../images/tecnicas/abi.png">
             @endif
             @if($actividad->tipo_tecnica == 4)
-              <img class="circle" src="../images/tecnicas/resumen.png" alt="icon">
+              <img  src="../images/tecnicas/resumen.png">
             @endif
             @if($actividad->tipo_tecnica == 5)
-              <img class="circle" src="../images/tecnicas/mapamental.png" alt="icon">
+              <img src="../images/tecnicas/mapamental.png">
             @endif
             @if($actividad->tipo_tecnica == 6)
-              <img class="circle" src="../images/tecnicas/mapaconceptual.png" alt="icon">
+              <img src="../images/tecnicas/mapaconceptual.png">
             @endif
 
 
             
           </div>
-          <div class="row-content">
-            <h4 class="list-group-item-heading">{{$actividad->Nombre}}</h4>
-            <p class="list-group-item-text">{{$actividad->Descripcion}}</p>
-          </div>
-        </div>
+
+          <h4 class="list-group-item-heading">{{$actividad->Nombre}}</h4>
+          <p class="list-group-item-text">{{$actividad->Descripcion}}</p>
+          <br>
+          <br>
+         </div>
+         </div>
+         
+         
       
-      <div class="list-group-separator"></div>
+     
 		@endforeach
-    </div>
   </div>
+  
 
 
 
 <!-- MODAL PARA LA ACTIVIDAD -->
-<div class="modal fade" id="nuevaActividadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade large" id="nuevaActividadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -89,8 +95,8 @@
 <!-- Cuerpo del form -->
 <form action="./crearCurso" method="post" id='formCrearCurso'>
   <div id="avisos"></div>
-<div class="form-group">
-      <label class="col-md-2 control-label">Nombre</label>
+<div class="form-group fmodal">
+      <label class="col-md-2 control-label">Nombre *</label>
 
       <div class="col-md-10" id="actividad">
         <div id="status">
@@ -98,49 +104,55 @@
         </div>
       </div>
 
-    </div>
+</div>
 
 <!-- Selector de tecnicas -->
-<div class="form-group">
-      <label class="col-md-2 control-label">Técnica de enseñanza</label>
+<div class="form-group fmodaltec">
+      <label class="col-md-2 control-label">Técnica de enseñanza *</label>
 
       <div class="col-md-10">
         <div id="status">
         <select class="selectpicker" data-width="100%" id="tecnicas" data-size="20">
-          <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-action-primary'><img class='circle' src='../images/tecnicas/abp.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>ABP</h4><p class='list-group-item-text'>Aprendizaje Basado en Problemas</p></div></div></div>">1</option>
-          <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/ai.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>AI</h4><p class='list-group-item-text'>Aula Invertida</p></div></div></div>">2</option>
-          <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/abi.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>ABI</h4><p class='list-group-item-text'>Aprendizaje Basado en Investigación</p></div></div></div>">3</option>
-          <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/resumen.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>RESUMEN</h4><p class='list-group-item-text'>Resumen</p></div></div></div>">4</option>
-          <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/mapamental.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>MAPA MENTAL</h4><p class='list-group-item-text'>Mapa Mental</p></div></div></div>">5</option>
-          <option data-content="<div class='list-group'><div class='list-group-item'><div class='row-picture'><img class='circle' src='../images/tecnicas/mapaconceptual.png' alt='icon'></div><div class='row-content'><h4 class='list-group-item-heading'>MAPA CONCEPTUAL</h4><p class='list-group-item-text'>Mapa Conceptual</p></div></div></div>">6</option>
+         
+          <option data-content='<div class="row"><div class="col-md-4"><div class="circular"><img src="../images/tecnicas/abp.png"></div></div><div class="col-md-6"><h3>ABP</h3><h5>Aprendizaje Basado en Problemas</h5></div></div>'>1</option>
+          <option data-content='<div class="row"><div class="col-md-4"><div class="circular"><img src="../images/tecnicas/ai.png"></div></div><div class="col-md-6"><h3>AI</h3><h5>Aula Invertida</h5></div></div>'>2</option>
+          <option data-content='<div class="row"><div class="col-md-4"><div class="circular"><img src="../images/tecnicas/abi.png"></div></div><div class="col-md-6"><h3>ABI</h3><h5>Aprendizaje Basado en Investigación</h5></div></div>'>3</option>
+          <option data-content='<div class="row"><div class="col-md-4"><div class="circular"><img src="../images/tecnicas/resumen.png"></div></div><div class="col-md-6"><h3>RESUMEN</h3><h5>Resumen</h5></div></div>'>4</option>
+          <option data-content='<div class="row"><div class="col-md-4"><div class="circular"><img src="../images/tecnicas/mapamental.png"></div></div><div class="col-md-6"><h3>MAPA MENTAL</h3><h5>Mapa Mental</h5></div></div>'>5</option>
+          <option data-content='<div class="row"><div class="col-md-4"><div class="circular"><img src="../images/tecnicas/mapaconceptual.png"></div></div><div class="col-md-6"><h3>MAPA CONCEPTUAL</h3><h5>Mapa Conceptual</h5></div></div>'>6</option>
         </select>
         </div>
       </div>
 
-    </div>
+</div>
 
+<br>
+<br>
 
-<!---->
 <!-- Descripcion texarea-->
-    <div class="form-group">
-<div class="col-md-11">
-  <label class="control-label" for="descripcionCurso">Escriba una descripción de la actividad (opcional)</label>
-  <div id="statusTArea">
-   <textarea class="form-control" rows="3" id="descripcionActividad" name="descripcion"></textarea>
-   </div>
-
-      </div>
+<div class="form-group fmodal">
+  <div class="row">
+  <div class="col-md-2">
+    <label class="control-label" for="descripcionActividad">Descripción</label>
+  </div>
+  <div class="col-md-10">
+    <div id="statusTArea">
+      <textarea class="form-control col-md-6" rows="3" id="descripcionActividad" name="descripcion"></textarea>
     </div>
 
+  </div>
+  </div>
+</div>
 
-      </div>
+
+
 
       <!--Date Picker-->
 <div class="container">
     <div class="row">
         <div class='col-sm-6'>
             <div class="form-group">
-              <label class="col-md-4 control-label">Fecha de Vencimiento</label>
+              <label class="col-md-4 control-label">Fecha de Vencimiento *</label>
                 <div class='input-group date' id='fecha'>
                     <input type='text' class="form-control" id="fechaVencimiento">
                     <span class="input-group-addon">

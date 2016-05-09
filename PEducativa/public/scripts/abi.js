@@ -60,7 +60,7 @@ function enviarMateriales()
 
     var form_data = new FormData();        
    for (var i = 0; i<file_data.length ; i++) {
-   	   console.log("bomre" +file_data[i].name);
+   	   
       form_data.append('archivos[]',file_data[i],file_data[i].name);
           };          
 

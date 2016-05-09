@@ -143,6 +143,29 @@ Route::get('asset/mapaconceptual/{id}/{filename}', function ($id,$filename)
 
 /* -----------------------------------------------*
 
+/*-----------------------ABP ALUMNO ---------------*/
+
+
+Route::get('Alumno/abp/defconceptos/{id}','AbpAlumnoController@conceptosShow');
+Route::post('Alumno/abp/addConceptos','AbpAlumnoController@conceptosStore');
+Route::get('Alumno/abp/planteamiento/{id}','AbpAlumnoController@planteamientoCreate');
+Route::post('Alumno/abp/addPlanteamientos','AbpAlumnoController@planteamientoStore');
+Route::get('Alumno/abp/ideas/{id}','AbpAlumnoController@lluviaIdeasCreate');
+Route::post('Alumno/abp/addIdeas','AbpAlumnoController@lluviaIdeasStore');
+Route::get('Alumno/abp/categorizacion','AbpAlumnoController@categorizacionCreate');
+Route::get('Alumno/abp/metas','AbpAlumnoController@metasCreate');
+Route::post('Alumno/abp/metas','AbpAlumnoController@metasStore');
+Route::get('Alumno/abp/estudio','AbpAlumnoController@estudioCreate');
+Route::post('Alumno/abp/estudio','AbpAlumnoController@estudioStore');
+Route::get('Alumno/abp/conclusion','AbpAlumnoController@conclusionCreate');
+Route::post('Alumno/abp/conclusion','AbpAlumnoController@conclusionStore');
+
+
+
+
+Route::get('Alumno/abp/{id}','AbpAlumnoController@show');
+
+
 //
 
 

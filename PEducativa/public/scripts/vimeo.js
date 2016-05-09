@@ -45,6 +45,8 @@ function createCircleProgress()
 });
 }
 
+
+
     /**
         * Called when files are dropped on to the drop target. For each file,
         * uploads the content to Drive & displays the results when complete.
@@ -172,7 +174,8 @@ function prepareFiletoUpload(accessToken)
 var objectUrl;
 $(document).ready(function(){
 $('#drop_zone').bind("DOMNodeInserted DOMNodeRemoved",function(){
-  alert('changed');
+  
+
 });
 
 

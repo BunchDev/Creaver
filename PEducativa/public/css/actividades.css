@@ -1,3 +1,7 @@
+.modal-title{
+      color: black;
+}
+
 #items{
 	border: 2px dashed #bbb;
       -moz-border-radius: 7px;
@@ -19,3 +23,23 @@
       overflow-x: hidden;
       max-height: 300px;
 }
+
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .fa {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .fa  { left:  0px;}
+.right-addon .fa { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }

@@ -1,9 +1,6 @@
 body { 
 padding-top: 65px; 
-background-color: #343945;
-background-image: url("http://www.transparenttextures.com/patterns/triangles.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-          
+background-color: #EEEEFF;     
 }
 
 h1,
@@ -18,7 +15,7 @@ h6,
 p{
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 300;
-  color: white;
+
 }
 h1{ font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-size: 70;}
@@ -27,15 +24,11 @@ h6 {
   font-weight: 400;
 }
 
-nav {
-background-color: #343945;
-background-image: url("http://www.transparenttextures.com/patterns/triangles.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-  
+.navbar{
+
+background-color:#2FAACE;
 }
-.c_contexto,.c_problematica{
-    color: white;
-}
+
 
 .table td {
    text-align: center;  
@@ -132,7 +125,7 @@ background-image: url("http://www.transparenttextures.com/patterns/triangles.png
 }
 	
 #addAct{
-color: white;
+
 background-color: #2966B8;
 }
 
@@ -237,9 +230,7 @@ background-color: #2966B8;
 	    float:left;
 }
 
-.container h1 {
-    color: white;
-}
+
 
 
  
@@ -276,9 +267,7 @@ background-color: #2966B8;
   font-weight: 300; 
   font-size: 30px;
 }
-.fa{
-  color: white;
-}
+
 #p_contexto{
   font-family: 'Roboto Slab', serif;
   font-weight: 300; 
@@ -315,3 +304,101 @@ background-color: #2966B8;
 #letrero_abp{
   font-size: 22px;
 }
+
+.round-button {
+  width:7%;
+}
+.round-button-circle {
+  width: 100%;
+  height:0;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  border:10px;
+  
+}
+
+.round-button a {
+  display:block;
+  float:left;
+  width:100%;
+  padding-top:50%;
+  padding-bottom:50%;
+  line-height:1em;
+  margin-top:-0.5em;
+  text-align:center;
+  color:#e2eaf3;
+  font-family:Verdana;
+  font-size:1.2em;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.round-icon{
+  text-align: center;
+  width: 30%;
+  height: 70px;
+  border-radius: 200px;
+  background-color:#e2eaf3;
+  margin: 0 auto; position: relative;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+
+}
+.avatar{
+  font-size: 40;
+  margin-top: 0.2em;
+}
+.name-curse{
+  text-align: center;
+}
+.circular {
+  width: 10%;
+  min-width: 60px;
+  height: 70px;
+  border-radius: 200px;
+  background-color:#6094DB;
+  margin: 0 auto; position: relative;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+ 
+  }
+.circular:hover{
+border-style:solid;
+border-width:3px; 
+border-color:#2F74D0;
+}
+
+.circular img {
+  width: 70%;
+  height: 70%;
+  opacity: 5;
+  margin-top: 0.6em;
+  margin-right: 0.6em;
+  margin-left: 0.6em;
+  border-radius: 50px;
+  filter: alpha(opacity=0);
+  }
+  .actividad{
+    text-align: center;
+   
+  }
+.modal-dialog {
+     width: 70%;
+     height: 90%;
+}
+/*Cuando es un telefono el modal cambia de ancho*/
+@media all and (max-width: 768px) {
+    .modal-dialog {
+     width: 90%;
+     height: 90%;
+}
+}
+.fmodal{
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.fmodaltec{
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
+

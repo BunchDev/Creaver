@@ -1,0 +1,287 @@
+.pasos{
+	background-color: white;
+	border-radius: 10px;
+	height: 50px;
+}
+
+
+.rbfuente{
+	float: left;
+   
+}
+
+.round-button-circle{
+	margin-top: 70%;
+}
+.round-button{
+	width: 50px;
+	height: 100%;
+}
+.fa-pencil{
+	margin-top: -0.7em;
+	font-size: 30px;
+}
+textarea{
+	resize:none;
+
+}
+
+.pform{
+	margin-top: 5%;
+}
+.fuente {
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    border: 1px solid gray;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    height: 90px;
+    overflow-y: auto;
+    padding: 2px;
+    resize: none;
+    width: 100%;
+}
+
+#flag_ins{
+	width: 20%;
+	height: 50px;
+	border-radius: 10px;
+}
+#pen_flag{
+	margin-top: 10px;
+	font-weight: 50%;
+}
+.close{
+	width: 5%;
+	color: black;
+	opacity: 0.9;
+
+
+}
+.close:hover{
+	width: 5%;
+	color: red;
+	opacity: 1;
+
+
+}
+
+
+
+.concept-box{
+	width: 95%;
+	display: inline-block;
+	-webkit-box-shadow: 3px 3px 5px #999;
+  	-moz-box-shadow: 2px 2px 5px #999;
+  	filter: shadow(color=#999999, direction=180, strength=2);
+}
+
+.counter{
+
+}
+.planteamiento{
+	width: 100%;
+	height: 100%;
+
+
+}
+.lluvia{
+	width: 100%;
+	height: 100%;
+	
+
+}
+
+
+
+/*ABP CATEGORIZACIÓN DE IDEAS*/
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol li.placeholder {
+  position: relative;
+
+  /** More li styles **/
+}
+ol li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+
+.grid-item{
+
+            
+	min-width: 200px;
+	max-width: auto;
+	min-height: 200px;
+	max-height: auto;
+	border-radius: 10px;
+	border: 4px solid hsla(0, 0%, 0%, 0.5);
+
+}
+#container-tags > ol > li{
+ float: left;
+ margin-left: 5px;
+ }
+
+.header{
+	height: 30%;
+	font-family: "Arimo";
+	text-align: center;
+	background-color: white;
+}
+
+.close_box{
+	width: 8%;
+	color: black;
+	opacity: 0.9;
+
+
+}
+.close_box:hover{
+	width: 8%;
+	color: red;
+	opacity: 1;
+
+
+}
+
+.colorSelector {
+	position: relative;
+	width: 36px;
+	height: 36px;
+	background: url(../jsext/colorpicker/images/select.png);
+}
+.colorSelector div {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 30px;
+	height: 30px;
+	background: url(..//jsext/colorpicker/images/select.png) center;
+}
+
+
+.panel-footer .fuente{
+	width: 50%;
+	height: 100px;
+}
+.fuente *{
+	display: inline-block;
+
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 15px;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    border-radius: 10px;
+    /* 10px 20px */
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+    /* pointer-events: none; */
+    /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+
+/* style 1 */
+
+.inputfile + label {
+    color: #f1e5e6;
+    background-color: #d3394c;
+    width: 60%;
+    height: 45px;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label,
+.inputfile + label:hover {
+    background-color: #722040;
+}
+
+
+#shower{
+  min-height: 30vh;
+}
+#link{
+ 	width: 40%;
+}
+
+.grid-item-conclution{
+	float: left;
+	width: 300px;
+	height: 250px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	border: 4px solid hsla(0, 0%, 0%, 0.5);
+
+}
+
+#fileRoot{
+	border-radius: 10px;
+	width: 80%;
+	height: 200px;
+	
+	
+
+}
+
+#linkAdd{
+	border-radius: 10px;
+	width: 80%;
+	height: 200px;
+	
+}

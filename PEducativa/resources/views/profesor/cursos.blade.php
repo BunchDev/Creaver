@@ -6,6 +6,7 @@
 {!! Html::style('css/adaptaciones.css') !!}
 {!! Html::style('css/cursos.css') !!}
 @section('content')
+
 <div class="se-pre-con-curso"></div>
 
 <!-- Agrego un mensaje de informacion al entrar a este modulo -->
@@ -15,8 +16,18 @@
 <p > Tus cursos aprobados y pendientes por aprobar se encuentran aquí
 <br>
 
+<div class="row">
+  <div class="col-md-8">
+    <div class="round-button"><div class="round-button-circle btn-danger"><a href="javascript:mostrarFormAgregarCurso()" class="round-button"><i class="material-icons">add</i></a></div></div>
+   
+  </div>
+  <div class="col-xs-3" id="iconos_descripcion">
+    <i class="material-icons" style="color:green;font-size:40;">check_circle</i> <label> Curso Aprobado</label>
+    <br>
+    <i class="material-icons" style="color:red;font-size:40;">hourglass_empty</i> <label>Curso pendiente por aprobar</label>
+  </div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:mostrarFormAgregarCurso()" class="btn btn-danger btn-fab" ><i class="material-icons">add</i></a>
+</div>
 <br>
 <br>
 @if(count($datoscursos) > 0)
@@ -27,28 +38,25 @@
       @else  
       <div class="grid-item" onClick="irCurso({{$curso->idCurso}},{{$curso->Estatus}})" id="Aprobado">
       @endif
-        <div class="list-group">
-          <div class="list-group-item">
-            <div class="row-action-primary">
-              <i class="material-icons">{{$curso->avatar}}</i>
-            </div>
-            <div class="row-content">
+          <div class="round-icon">
+          <i class="material-icons avatar">{{$curso->avatar}}</i>
+          </div>
+           
               @if($curso->Estatus == 0)
-                <div class="action-secondary">
+               
                   <i class="material-icons">hourglass_empty</i>
-                </div>
+             
               @else
-                <div class="action-secondary">
+              
                   <i class="material-icons">check_circle</i>
-                </div>
+               
               @endif
 
-                <h4 class="list-group-item-heading">{{$curso->Nombre}}</h4>
+                <h4 class="name-curse">{{$curso->Nombre}}</h4>
 
-            </div>
-          </div>
+            
+          
         </div>
-      </div>
      
 
 
@@ -86,30 +94,21 @@
        
 <!-- Cuerpo del form -->
 <form action="./crearCurso" method="post" id='formCrearCurso'>
+  <fieldset>
   <div id="avisos"></div>
 <div class="form-group">
       <label class="col-md-2 control-label" for="nombreCurso">Nombre</label>
 
       <div class="col-md-10">
-        <div id="status">
+        
         <input type="text" class="form-control" id="nombreCurso" name="nombre">
-        </div>
+       
       </div>
 
-    </div>
-    <div class="form-group">
- 
-
-      <div class="col-md-11 ">
-        <label class="control-label" for="descripcionCurso">Escriba una descripción del curso (opcional)</label>
-        <div id="statusTArea">
-          <textarea class="form-control" rows="3" id="descripcionCurso" name="descripcion"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <select class="selectpicker" id="avatar" title="Escoje un avatar">
+  </div>
+<!--ICONOS-->
+<div class="form-group">
+      <select class="selectpicker" id="avatar" title="Icono del curso">
         <!--Sorry for this dev, but it was the best way to shows icons, maybe in the future
             you will replace this using a script getting the names of icons from a file -->
         <option data-content="<i class='material-icons'>build</i> &nbsp;<strong>Build </strong>">build</option>
@@ -143,13 +142,28 @@
       </select>
  
 
+     </div>
+
+<!--Descripcion-->
+  
+   <div class="form-group">
+   
+
+      <div class="col-md-10">
+           <label for="descripcion" class="control-label">Descripción</label>
+        <textarea class="form-control" rows="3" id="descripcionCurso" name="descripcion"></textarea>
+        <span class="help-block">La descripción puede ser opcional</span>
+      </div>
     </div>
 
-      </div>
+    
+
+</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar <i class="material-icons">clear</i></button>
         <button type="button" onclick="enviarDatosServidor()" class="btn btn-raised btn-danger">Guardar Curso <i class="material-icons">save</i></button>
       </div>
+      </fieldset>
       </form>
     </div>
   </div>

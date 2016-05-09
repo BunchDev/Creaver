@@ -11,9 +11,9 @@ use App\Abi;
 use App\MaterialAbi;
 use FTP;
 use File;
-use Chumper\Zipper\Zipper;
 use DB;
 use Response;
+use App\ZipCreator;
 class AbiProfesorController extends Controller
 {
 
@@ -132,15 +132,26 @@ $actividad = Actividad::find($id);
 $path = storage_path() . '/app/acreaver/materiales_abi/material_' . $id . "/";
 
 $name = $actividad->Nombre;
+if(file_exists($path.$name."-compressfiles.zip")){
+    unlink($path.$name."-compressfiles.zip");
+}
+while (file_exists($path.$name."-compressfiles.zip")){ sleep(1);
+echo "DURMIENDO EN EL PRIMER WHILE";
+}
 $files = glob($path."*");
-$zipper  = new Zipper();
-$zipper->make($path.$name."-compressfiles.zip")->add($files);
+$path_final = $path.$name."-compressfiles.zip";
+$zipThread = new ZipCreator($path_final,$files);
+$zipThread->start();
 
-//$zip = File::get($path.$name."-compressfiles.zip");
-//$response = Response::make($zip, 200);
-//$response->header("Content-Type","application/zip");
+while (file_exists($path.$name."-compressfiles.zip") != true) {
+    usleep(100);
+//echo "Respuesta: ".file_exists($path.$name."-compressfiles.zip");
+}
 
-return $zipper->getStatus();
+$zip = File::get($path.$name."-compressfiles.zip");
+$response = Response::make($zip, 200);
+$response->header("Content-Type","application/zip");
+return $response;
 }
 public function getIconName($extension)
 {

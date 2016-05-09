@@ -14,13 +14,10 @@ configurarValidaciones();
 });
 
 
-
-
-
 $("#search").keyup(function(e) {
-      var filter = $(this).val().replace(/\s+/g, '').toLowerCase();
-      $(".list-group-item").hide();
-      elements = $( "div[class=list-group-item]:containsNM('"+$("#search").val()+"')" );
+     
+      $(".actividad").hide();
+      elements = $( "div[class=actividad]:containsNM('"+$("#search").val()+"')" );
 
 $.each(elements,function(key,value){
       $(value).show();

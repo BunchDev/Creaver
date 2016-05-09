@@ -6,8 +6,6 @@ $(document).ready(function(){
      $.fn.JQBConfig = function(config){
         return new JQBValidator(this,config);
  
-            
-        
     };
     /*Declaring the class JQBValidator*/
     var JQBValidator = function( element,  options ){
@@ -44,7 +42,7 @@ $(document).ready(function(){
 
 function fnerrorEmptyTag(element,rules)
 {
-console.log("entro");
+
 var tagMessage = "";
 var div = $("<div id='JQB_Element'></div>");
 var taggedError = false;

@@ -35,6 +35,7 @@ function irCurso(id,status)
    }
     
 }
+
 function configurarValidaciones()
 {
 
@@ -221,7 +222,7 @@ swal({   title: "Mensaje de Confirmación",
 	   showLoaderOnConfirm: true, }, 
 	function(){  
 
-alert($('select[id=avatar]').val());
+//alert($('select[id=avatar]').val());
 $.ajax({
    type:'post',
    url :"./crearCurso",

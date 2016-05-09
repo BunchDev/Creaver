@@ -10,7 +10,7 @@
 personajesArray = new Array();
     function eliminarNuevo(datos){
       var removeItem = datos.val();
-      console.log("Eliminar : " + removeItem);
+      //console.log("Eliminar : " + removeItem);
       personajesArray.splice(personajesArray.indexOf(removeItem),1);
       datos.remove();
     }

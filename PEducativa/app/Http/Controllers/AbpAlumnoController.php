@@ -80,6 +80,20 @@ class AbpAlumnoController extends Controller
         return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator');
     }
 
+       public function categorizacionStore()
+    {
+       /*
+       el JSON llegará con una estructura igual al siguiente y con informacion similar
+        "categorias" : {
+                {'name' : 'categoria_x' , 'color' : '#fgr553', 'datas' : ['a','b','c'] },
+                {'name' : 'categoria_y' , 'color' : '#h76544d', datas' : ['d','e','a'] }
+            
+            } 
+        */
+       
+       $categorias = json_encode(Input::get('categorias'));
+       echo $categorias;
+    }
     public function metasCreate()
     {
         return view('tecnicas.abp.metas.abpAlumnoMetasCreator');
@@ -103,7 +117,11 @@ class AbpAlumnoController extends Controller
     }
     public function estudioStore()
     {
-       
+       $estudio = Input::get('estudio');
+       $fuente = Input::get('fuente');
+
+       echo "Estudio : ".$estudio;
+       echo "Fuente : ".$fuente;
 
 
     }

@@ -93,6 +93,12 @@
 <div class="row">
   <div class="col-md-6">
     <div id="fileRoot" class="alert alert-info" align="center">
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Aviso: </strong>
+         <br> 
+         Puedes adjuntar como máximo 10MB de información
+       </div>
       <h4 id="fileDisplay"></h4>
       <input type="file" name="archivos_client" id="file" class="inputfile inputfile btn btn-lg" data-multiple-caption="{count} archivos seleccionados" multiple />
       <label for="file">

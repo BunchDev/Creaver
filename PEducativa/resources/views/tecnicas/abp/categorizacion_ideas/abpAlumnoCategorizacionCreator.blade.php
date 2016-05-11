@@ -11,12 +11,12 @@
 <div id="container-tags" >
 <ol class="ideas-dragger">
 
-<li> <h3> <span class="label label-info">#SELFIE			</span> </h3> </li>
-<li> <h3> <span class="label label-info">Motorola			</span> </h3> </li>
-<li> <h3> <span class="label label-info">Vaso				</span> </h3> </li>
-<li> <h3> <span class="label label-info">Rio del suchiate	</span> </h3> </li>
-<li> <h3> <span class="label label-info">Clever				</span> </h3> </li>
-<li> <h3> <span class="label label-info">Fantastic			</span> </h3> </li>
+<li> <h3> <span class="label label-info">Rios en mal estado</span> </h3> </li>
+<li> <h3> <span class="label label-info">Funciones lógicas</span> </h3> </li>
+<li> <h3> <span class="label label-info">Pruebas unitarias</span> </h3> </li>
+<li> <h3> <span class="label label-info">Microorganismos sueltos</span> </h3> </li>
+<li> <h3> <span class="label label-info">Ganancias</span> </h3> </li>
+<li> <h3> <span class="label label-info">Aire limpio</span> </h3> </li>
 
 </ol>
 
@@ -30,8 +30,10 @@
  <br style="clear: left;" />
  <br>
  <br>
-<div>
-<button class="btn btn-default" onclick="requestNewCategory()"><i class="fa fa-plus"></i>  Agregar categoria</button>
+<div align="center">
+<button style="margin: 10px;" class="btn btn-warning btn-lg" onclick="requestNewCategory()"><i class="fa fa-plus"></i>  Agregar categoria</button>
+<button style="margin: 10px;" class="btn btn-info btn-lg" onclick="sendCategorizaciones()"><i class="fa fa-send"></i> Enviar categorización</button>
+
 </div>
 <br>
 <br>

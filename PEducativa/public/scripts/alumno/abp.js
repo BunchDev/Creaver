@@ -47,15 +47,7 @@ function prepareConceptos()
 {
  if (validateInputsForm()) return;
 
-swal({   title: "Ajax request example",   
-	text: "Submit to run ajax request",   
-	type: "info",  
-	 showCancelButton: true,   
-	 closeOnConfirm: false,   
-	 showLoaderOnConfirm: true, }, function(){  
-
-	 	sendConceptos();
-	  });
+sendConceptos();
     
 }
 //envia los conceptos al servidor mediante ajax
@@ -857,6 +849,17 @@ return flag;
 
 
 /*----------------- PASO 4 .- CATEGORIZACIÓN DE IDEAS -------------------*/
+
+function hexc(colorval) {
+    var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    delete(parts[0]);
+    for (var i = 1; i <= 3; ++i) {
+        parts[i] = parseInt(parts[i]).toString(16);
+        if (parts[i].length == 1) parts[i] = '0' + parts[i];
+    }
+    return '#' + parts.join('');
+}
+
 var $grid;
 $(function  () {
 
@@ -1014,6 +1017,53 @@ function configColorPicker(color,griditem)
 });
 }
 
+function sendCategorizaciones()
+{
+
+
+    $items = $('.grid-item');
+    //crea el json que se va enviar al server
+    $categorias = {'categorias' : [] };
+    //recorre cada una de las categorias
+    $.each($items,function(key,value){
+
+        $nombre = $(value).find('h4').text();
+        //convierte el balor del background a hexadecimal
+        $color = hexc($(value).css('backgroundColor'));
+        $categoria = {'name' : $nombre ,'color' : $color,  'datas' : [] };
+        $tags = $(value).find('ol').children();
+        //recorre las etiquetas de cada categoría y las agrega al json
+        $.each($tags,function(keyol,valueol){
+            $categoria.datas.push($(valueol).text());
+        });
+
+        $categorias.categorias.push($categoria);
+    });
+
+    $.ajax({
+
+        type : 'post',
+        data: $categorias,
+
+        success: function(response){
+            window.location.assign('./1');
+        },
+        error : function(exception){
+            swal({
+                title : 'error',
+                text : 'Ocurrió un error al enviar los datos intenta de nuevo',
+                type : 'error',
+                closeOnConfirm : true
+            });
+            console.log(exception);
+        }
+
+
+    });
+
+}
+
+
 
 
 /* ------------- PASO 5 .- METAS DE APRENDIZAJE -------------------*/
@@ -1142,9 +1192,39 @@ function checkEiContent(pasostr){
 
 }
 
+/* ---------------- PASO 6 .- ESTUDIO INDEPENDIENTE --------------*/
+
+ function sendEstudioIndependiente(){
+ $estudio = $('#shower');
+ $fuente = $('.fuente');
+
+ $form_data = new FormData();
+
+ $form_data.append('estudio', $estudio.html());
+ $form_data.append('fuente',$fuente.html()); 
+
+ $.ajax({
+    type: 'post',
+    data: $form_data,
+    processData: false,
+    contentType: false,
+    dataType:'text',
+    success: function(){
+      window.location.assign('./1');
+    },
+    error: function(exception){
+        console.log("Error: " + exception);
+    }
+
+ });
+
+ }
 
 
-/* ------------------ CONCLUSIONES ----------------------*/
+
+
+
+/* ---------------- PASO 7.-  CONCLUSIONES ----------------------*/
 
 
 /*$urls se usa en abiProfesorCreator para controlar que las urls no se repitan al agregarse 
@@ -1182,7 +1262,7 @@ function enviarConclusion()
   
     
     form_data.append('urls', JSON.stringify(urls) );
-    form_data.append('id', $('#id').val() );
+    form_data.append('conclusion', $('#shower').html() );
     form_data.append('_token', $('input[name=_token]').val() );
    
 

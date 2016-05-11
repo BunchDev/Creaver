@@ -153,6 +153,7 @@ Route::post('Alumno/abp/addPlanteamientos','AbpAlumnoController@planteamientoSto
 Route::get('Alumno/abp/ideas/{id}','AbpAlumnoController@lluviaIdeasCreate');
 Route::post('Alumno/abp/addIdeas','AbpAlumnoController@lluviaIdeasStore');
 Route::get('Alumno/abp/categorizacion','AbpAlumnoController@categorizacionCreate');
+Route::post('Alumno/abp/categorizacion','AbpAlumnoController@categorizacionStore');
 Route::get('Alumno/abp/metas','AbpAlumnoController@metasCreate');
 Route::post('Alumno/abp/metas','AbpAlumnoController@metasStore');
 Route::get('Alumno/abp/estudio','AbpAlumnoController@estudioCreate');

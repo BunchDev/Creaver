@@ -112,7 +112,7 @@
 </div>
 
 <div align="center">
-<button class="btn btn-success">Enviar estudio independiente <i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i></button>
+<button class="btn btn-success" onclick="sendEstudioIndependiente()">Enviar estudio independiente <i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i></button>
 </div>
 
 

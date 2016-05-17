@@ -2,10 +2,14 @@
 
 @section('content')
 {!! Html::style('css/abp.css') !!}
+{!! Html::style('jsext/ckeditor/contents.css') !!}
+
 {!! Html::style('css/ext/font-awesome-animation.css') !!}
 
 {!! Html::script('jsext/ckeditor/ckeditor.js')!!}
 
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 <div class="list-group">
   <div class="list-group-item active">

@@ -20,6 +20,13 @@
 
 </head>
 <!--oncontextmenu="return false"-->
+<style type="text/css">
+.navbar-brand > img{
+	width: 100px;
+	height: 40px;
+}
+
+</style>
 <body >
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
@@ -30,7 +37,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Creatver</a>
+				<a class="navbar-brand" href="#">
+					<img src="http://localhost:8080/Creaver/PEducativa/public/images/creatver.jpg">
+				</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

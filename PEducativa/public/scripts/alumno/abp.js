@@ -4,6 +4,52 @@ var items_ideas = 3;
 var items_metas = 3;
 //agrega un nuevo formulario para agregar palabra-concepto-fuente
 
+$(window).resize(function(){
+    $pasos = $('.pasos');
+    $percentage = null;
+    $.each($pasos,function(key,value){
+        $percentage = Math.floor((Math.random() * 80) + 1);
+        
+        $(value).css('left', + $percentage+'%');
+     
+       
+    });
+
+    $('.pasos').connections('update');
+});
+
+$(function(){
+
+    $pasos = $('.pasos');
+    
+    $.each($pasos,function(key,value){
+        $percentage = Math.floor((Math.random() * 80) + 1);
+        
+        $(value).css('left', + $percentage+'%');
+        
+        if(key > 0){
+
+             $(value).connections({
+                to: $($pasos[key-1]),
+                  borderClasses: {
+    top: 'border-top',
+    right: 'border-right',
+    bottom: 'border-bottom',
+    left: 'border-left'
+  },
+                  css: {
+    border: 'solid 10px #44B4D5',
+    'border-radius': '30px'
+  }
+
+             });
+
+        }
+       
+    });
+});
+
+
 function addDefinitionForm()
 {
     

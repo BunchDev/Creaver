@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\AbpConceptos;
-
+use App\AbpPlanteamiento;
+use App\AbplluviaIdeas;
 class AbpAlumnoController extends Controller
 {
     
@@ -28,9 +29,15 @@ class AbpAlumnoController extends Controller
    			echo "PALABRA : ".$palabras[$i];
    			echo "DEFINICION: ".$definiciones[$i];
             echo "FUENTE: ".$fuentes[$i];
-
-
+            $NuevoAbpConcepto = new AbpConceptos;
+            $NuevoAbpConcepto->palabra =$palabras[$i];
+            $NuevoAbpConcepto->concepto =$definiciones[$i];;
+            $NuevoAbpConcepto->fuente =$fuentes[$i];;
+            $NuevoAbpConcepto->fk_idAbp =1;
+            $NuevoAbpConcepto->fk_idAlumno =1;
+            $NuevoAbpConcepto->save();
     }
+    
     //		AbpConceptos::create($palabra);
     	//	$abpConcepto->fk_idAbp = $id;
     	//	$abpConcepto->fk_idAlumno = 0;
@@ -54,6 +61,11 @@ class AbpAlumnoController extends Controller
        // $planteamientos = json_encode($planteamientos);
         foreach ($planteamientos as $planteamiento) {
             echo "Planteamiento: ".$planteamiento;
+            $NuevoAbpPlanteamiento = new AbpPlanteamiento;
+            $NuevoAbpPlanteamiento->Planteamiento =$planteamiento;
+            $NuevoAbpPlanteamiento->fk_idAbp =1;
+            $NuevoAbpPlanteamiento->fk_idAlumno =1;
+            $NuevoAbpPlanteamiento->save();
         }
 
 
@@ -70,6 +82,11 @@ class AbpAlumnoController extends Controller
        // $planteamientos = json_encode($planteamientos);
         foreach ($ideas as $idea) {
             echo "Idea: ".$idea;
+            $NuevoAbpIdea = new AbplluviaIdeas;
+            $NuevoAbpIdea->Ideas =$idea;
+            $NuevoAbpIdea->fk_idAbp =1;
+            $NuevoAbpIdea->fk_idAlumno =1;
+            $NuevoAbpIdea->save();
         }
 
 

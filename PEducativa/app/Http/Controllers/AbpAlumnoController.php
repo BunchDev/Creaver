@@ -16,16 +16,29 @@ class AbpAlumnoController extends Controller
     	return view('tecnicas.abp.abpAlumnoShow');
     }
     public function conceptosShow($id){
-    	return view('tecnicas.abp.abpAlumnoDefinicionConceptos');
+        
+         $ConceptosAbp=AbpConceptos::GetConceptos(1,1);
+         
+        if($ConceptosAbp === NULL) {
+            return view('tecnicas.abp.abpAlumnoDefinicionConceptos');
+        }
+        else{
+             //Forma de recorrer la variable <- comentado
+           // foreach ($ConceptosAbp as $key) {
+           // echo($key->palabra);
+            //echo($key->concepto);
+            // echo($key->fuente);
+           
+            //} 
+         return view('tecnicas.abp.abpAlumnoDefinicionConceptos')->with('ConceptosAbp',$ConceptosAbp); 
+        }	
     }
 
     public function conceptosStore(){
     	$palabras =Input::get('palabra');
     	$definiciones =Input::get('definicion');
     	$fuentes = Input::get('fuente');
-
-
-    for ($i=0; $i < count($palabras) ; $i++) { 
+        for ($i=0; $i < count($palabras) ; $i++) { 
    			echo "PALABRA : ".$palabras[$i];
    			echo "DEFINICION: ".$definiciones[$i];
             echo "FUENTE: ".$fuentes[$i];
@@ -36,23 +49,26 @@ class AbpAlumnoController extends Controller
             $NuevoAbpConcepto->fk_idAbp =1;
             $NuevoAbpConcepto->fk_idAlumno =1;
             $NuevoAbpConcepto->save();
-    }
+        }
     
-    //		AbpConceptos::create($palabra);
-    	//	$abpConcepto->fk_idAbp = $id;
-    	//	$abpConcepto->fk_idAlumno = 0;
-    	//	$abpConcepto->palabra = $concepto->palabra;
-    	//	$abpConcepto->concepto = $concepto->concepto;
-    	//	$abpConcepto->fuente = $concepto->fuente;
-
-   // }
+    
 
     }
 
     public function planteamientoCreate($id){
-
-
-       return view('tecnicas.abp.planteamiento.abpAlumnoPlanteamientoCreator');
+        $PlanteamientosAbp=AbpPlanteamiento::GetPlanteamientos(1,1);
+        
+        if($PlanteamientosAbp === NULL) {
+            return view('tecnicas.abp.planteamiento.abpAlumnoPlanteamientoCreator');
+        }
+        else{
+        //Forma de recorrer la variable <- comentado
+         //foreach ($PlanteamientosAbp as $key) {
+           // echo($key->Planteamiento);
+           //}
+           return view('tecnicas.abp.planteamiento.abpAlumnoPlanteamientoCreator')->with('PlanteamientosAbp',$PlanteamientosAbp);
+        } 
+           
     }
 
     public function planteamientoStore(){
@@ -73,8 +89,22 @@ class AbpAlumnoController extends Controller
 
     public function lluviaIdeasCreate()
     {
-        return view('tecnicas.abp.lluvia_ideas.abpAlumnoLluviaCreator');
+        $IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
+        
+         if($IdeasAbp === NULL) {
+            return view('tecnicas.abp.lluvia_ideas.abpAlumnoLluviaCreator');
+        }
+        else{
+        //Forma de recorrer la variable <- comentado
+            //foreach ($IdeasAbp as $key) {
+            //echo($key->Ideas);
+           // }
+      return view('tecnicas.abp.lluvia_ideas.abpAlumnoLluviaCreator')->with('IdeasAbp',$IdeasAbp);  
+        }
     }
+        
+        
+    
 
     public function lluviaIdeasStore(){
         //$id= Input::get('id');

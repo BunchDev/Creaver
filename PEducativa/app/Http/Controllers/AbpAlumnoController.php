@@ -124,8 +124,21 @@ class AbpAlumnoController extends Controller
 
     public function categorizacionCreate()
     {
-        return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator');
+$IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
+        
+         if($IdeasAbp === NULL) {
+             return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator');
+        }
+        else{
+        //Forma de recorrer la variable <- comentado
+            //foreach ($IdeasAbp as $key) {
+            //echo($key->Ideas);
+           // }
+       return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator')->with('IdeasAbp',$IdeasAbp);  
+        }
     }
+       
+    
 
        public function categorizacionStore()
     {

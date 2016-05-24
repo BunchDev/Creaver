@@ -1,0 +1,37 @@
+{
+  "name": "jsVideoUrlParser",
+  "version": "0.1.6",
+  "homepage": "https://github.com/Zod-/jsVideoUrlParser",
+  "authors": [
+    {
+      "name": "Julian Hangstörfer",
+      "email": "jhangstoerfer@gmail.com"
+    }
+  ],
+  "description": "A parser to extract provider, video id, starttime and others from YouTube, Vimeo, ... urls",
+  "keywords": [
+    "parser",
+    "YouTube",
+    "Vimeo",
+    "Dailymotion",
+    "Twitch"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.1.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.6",
+    "commit": "ecd4e7d440514ebf0901778a70174ea911f5e092"
+  },
+  "_source": "https://github.com/Zod-/jsVideoUrlParser.git",
+  "_target": "^0.1.6",
+  "_originalSource": "js-video-url-parser",
+  "_direct": true
+}

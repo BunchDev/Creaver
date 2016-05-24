@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +50,14 @@ Route::post('eliminarActividadABP/{id}', 'AbpProfesorController@delete');
 
 /*------------------- AULA INVERTIDA -----------*/
 
-Route::get('actividad/ai/{id}','AiProfesorController@show');
+
 Route::post('actividad/ai/getToken','AiProfesorController@getToken');
 Route::post('actividad/ai/guardarAi','AiProfesorController@store');
+Route::post('actividad/ai/videoDurationYoutube','VideoInformationController@getMinutesDurationYoutube');
+Route::post('actividad/ai/videoDurationVimeo','VideoInformationController@getMinutesDurationVimeo');
+Route::post('actividad/ai/videoDurationDayliMotion','VideoInformationController@getMinutesDurationDayliMotion');
+Route::post('actividad/ai/videoDurationTwitch','VideoInformationController@getMinutesDurationTwitch');
+Route::get('actividad/ai/{id}','AiProfesorController@show');
 
 /* -------Comentario Propuesta------------*/
 Route::post('nuevoComentario', 'ComentarioController@store');
@@ -138,6 +144,10 @@ Route::get('asset/mapaconceptual/{id}/{filename}', function ($id,$filename)
     return $response;
 });
 //
+
+
+
+
 
 //Alumnos
 

@@ -304,6 +304,19 @@ ol li.placeholder:before {
 
 
 }
+
+@media only screen and (max-width: 800px){
+
+.pasos{
+	width: 100px;
+	height: 100px;
+	font-size: 8px;
+}
+
+}
+
+
+
 .pasos > strong {
 	position: absolute;
     top: 50%;

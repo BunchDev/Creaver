@@ -30,7 +30,10 @@ background: linear-gradient(to left, #136a8a , #267871); /* W3C, IE 10+/ Edge, F
 </div>
 
 
+<script>
 
+init();
+</script>
 
 
 

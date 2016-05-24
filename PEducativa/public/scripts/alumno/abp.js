@@ -2,58 +2,65 @@ var items_conceptos = 3;
 var items_planteamientos = 3;
 var items_ideas = 3;
 var items_metas = 3;
-//agrega un nuevo formulario para agregar palabra-concepto-fuente
+/* ##### Es la funcion que se ejecuta cuando el index de abp se manda a llamar ##### */
+function init(){
 
-$(window).resize(function(){
     $pasos = $('.pasos');
     $percentage = null;
-    $.each($pasos,function(key,value){
-        $percentage = Math.floor((Math.random() * 80) + 1);
-        
-        $(value).css('left', + $percentage+'%');
-     
-       
-    });
-
-    $('.pasos').connections('update');
-});
-
-$(function(){
-
-    $pasos = $('.pasos');
-    
-    $.each($pasos,function(key,value){
+    /* ----------------------------------------------   */
+    /* Configura las posiciones a la izquierda de acada elemento por porcentaje y conecta con el siguiente div hermano*/
+    $.each($pasos,function(key,value)
+    {
         $percentage = Math.floor((Math.random() * 80) + 1);
         
         $(value).css('left', + $percentage+'%');
         
-        if(key > 0){
+        if(key > 0)
+        {
 
-             $(value).connections({
+             $(value).connections(
+             {
                 to: $($pasos[key-1]),
-                  borderClasses: {
-    top: 'border-top',
-    right: 'border-right',
-    bottom: 'border-bottom',
-    left: 'border-left'
-  },
-                  css: {
-    border: 'solid 10px #44B4D5',
-    'border-radius': '30px'
-  }
+                //agrega algunos estilos para el borde de las conexiones
+                css:    {
+                            border: 'solid 10px #44B4D5',
+                            'border-radius': '30px'
+                        }
 
              });
 
         }
        
     });
-});
 
+
+    /* ------------------------------------------------------*/
+    /*Cambia las posiciones de los divs cuando la pantalla cambia de tamaño y actualiza las conecciones*/
+   
+    $(window).resize(function()
+    {
+        
+
+        $.each($pasos,function(key,value){
+            $percentage = Math.floor((Math.random() * 80) + 1);
+            $(value).css('left', + $percentage+'%');
+     
+       
+        });
+
+        $pasos.connections('update');
+    });
+    /* ----------------------------------------------  */
+
+
+}
+
+//agrega un nuevo formulario para agregar palabra-concepto-fuente
 
 function addDefinitionForm()
 {
     
-        //console.log("Contenido: " + $(".fuente").html());
+        
         formp = $(getFormPalabra());
         $("#forms_conceptos").append(formp);
         //inserta una animacion usa magic.css

@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\AbpConceptos;
 use App\AbpPlanteamiento;
 use App\AbplluviaIdeas;
+use App\AbpMetas;
+use App\AbpEstudioIndependiente;
 class AbpAlumnoController extends Controller
 {
     
@@ -124,7 +126,7 @@ class AbpAlumnoController extends Controller
 
     public function categorizacionCreate()
     {
-$IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
+        $IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
         
          if($IdeasAbp === NULL) {
              return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator');
@@ -156,15 +158,36 @@ $IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
     }
     public function metasCreate()
     {
-        return view('tecnicas.abp.metas.abpAlumnoMetasCreator');
+$MetasAbp=AbpMetas::GetMetas(1,1);
+        
+         if($MetasAbp === NULL) {
+           return view('tecnicas.abp.metas.abpAlumnoMetasCreator');
+        }
+        else{
+        //Forma de recorrer la variable <- comentado
+            foreach ($MetasAbp as $key) {
+            echo($key->Metas);
+            }
+      return view('tecnicas.abp.metas.abpAlumnoMetasCreator')->with('MetasAbp',$MetasAbp);  
+        }
     }
+
+
+        
+    
     public function metasStore()
     {
          //$id= Input::get('id');
         $metas = Input::get('metas');
+
        // $planteamientos = json_encode($planteamientos);
         foreach ($metas as $meta) {
             echo "Meta: ".$meta."<br>";
+            $NuevoAbpMeta = new AbpMetas;
+            $NuevoAbpMeta->Metas =$meta;
+            $NuevoAbpMeta->fk_idAbp =1;
+            $NuevoAbpMeta->fk_idAlumno =1;
+            $NuevoAbpMeta->save();
         }
 
     }
@@ -173,7 +196,20 @@ $IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
 
     public function estudioCreate()
     {
-        return view('tecnicas.abp.estudio_independiente.AbpAlumnoEstudioIndependienteCreator');
+        
+     $MetasAbp=AbpMetas::GetMetas(1,1);
+     $Estudio=AbpEstudioIndependiente::GetEstudio(1,1);
+        
+         if($Estudio === NULL) {
+             return view('tecnicas.abp.estudio_independiente.AbpAlumnoEstudioIndependienteCreator')->with('MetasAbp',$MetasAbp);
+        }
+        else{
+        //Forma de recorrer la variable <- comentado
+            foreach ($Estudio as $key) {
+            echo($key->EstudioIndependiente);
+            }
+       return view('tecnicas.abp.estudio_independiente.AbpAlumnoEstudioIndependienteCreator')->with('Estudio',$Estudio)->with('MetasAbp',$MetasAbp);  
+        }
     }
     public function estudioStore()
     {
@@ -182,6 +218,12 @@ $IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
 
        echo "Estudio : ".$estudio;
        echo "Fuente : ".$fuente;
+            $NuevoEstudio = new AbpEstudioIndependiente;
+            $NuevoEstudio->EstudioIndependiente =$estudio;
+            $NuevoEstudio->Fuente =$fuente;
+            $NuevoEstudio->fk_idAbp =1;
+            $NuevoEstudio->fk_idAlumno =1;
+            $NuevoEstudio->save();
 
 
     }

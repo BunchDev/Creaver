@@ -1127,8 +1127,8 @@ function sendMetas()
     form_data = new FormData();  
     $metas = $(".meta");
     
-    $.each($metas,function(key,$idea){
-        form_data.append('metas[]',$($metas).val());
+    $.each($metas,function(key,$meta){
+        form_data.append('metas[]',$($meta).val());
     });
         
            
@@ -1475,7 +1475,6 @@ $a.urlive({
     }
     ,
     imgError: function(error){
-      console.log("IMG ERROR");
       $("#linkDisplay").text('Success: Link añadido correctamente');
       $("#linkDisplay").parent().removeClass('alert-info alert-danger');
       $("#linkDisplay").parent().removeClass('alert-info alert-warning');
@@ -1489,7 +1488,6 @@ $a.urlive({
     },
   
     onSuccess: function() {
-      console.log("ON SUCESS");
       $("#linkDisplay").text('Success: Link añadido correctamente');
       $("#linkDisplay").parent().removeClass('alert-info alert-danger');
       $("#linkDisplay").parent().removeClass('alert-info alert-warning');
@@ -1522,9 +1520,7 @@ function closeUrl(element)
   $linka = $(element).parent().find('a').attr('href');
   $(element).parent().remove();
   $grid.masonry('layout');
-  console.log("Va a borrar "+ $linka);
   urls.splice(urls.indexOf($linka) );
-  console.log("ARRAY : " + urls);
 }
 function verifyLink(urlNew){
   if($.inArray(urlNew,urls) > -1)

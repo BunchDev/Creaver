@@ -200,7 +200,7 @@
 
                 <div class="gridselector">
                   
-                 <!--
+                 
                  <div class="gridselector-item">
                     <div class="selector">
                       <div class="[ form-group ]">
@@ -264,132 +264,15 @@
                     </div>
                   </div>
 
-                    <div class="gridselector-item">
-                    <div class="selector">
-                      <div class="[ form-group ]">
-                        <input type="checkbox" name="iframe" id="v4" autocomplete="off" />
-                        <div class="[ btn-group ]">
-                          <label for="v4" class="[ btn btn-default ]">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-square-o" aria-hidden="true"></i>  
-                          </label>
-                          <label for="v4" class="[ btn btn-default active ]">
-                            Agregar este vídeo
-                          </label>
-                        </div>
-                      </div>
-                    </div>
+                  
 
-                    <div class="video">
-                      <iframe src='http://www.youtube.com/embed/gXqqWbnboJ0?autoplay=0'></iframe>
-                    </div>
-                  </div>
 
-                    <div class="gridselector-item">
-                    <div class="selector">
-                      <div class="[ form-group ]">
-                        <input type="checkbox" name="iframe" id="v5" autocomplete="off" />
-                        <div class="[ btn-group ]">
-                          <label for="v5" class="[ btn btn-default ]">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-square-o" aria-hidden="true"></i>  
-                          </label>
-                          <label for="v5" class="[ btn btn-default active ]">
-                            Agregar este vídeo
-                          </label>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div class="video">
-                      <iframe src='http://www.youtube.com/embed/gXqqWbnboJ0?autoplay=0'></iframe>
-                    </div>
-                  </div>
+                  
 
-                    <div class="gridselector-item">
-                    <div class="selector">
-                      <div class="[ form-group ]">
-                        <input type="checkbox" name="iframe" id="v6" autocomplete="off" />
-                        <div class="[ btn-group ]">
-                          <label for="v6" class="[ btn btn-default ]">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-square-o" aria-hidden="true"></i>  
-                          </label>
-                          <label for="v6" class="[ btn btn-default active ]">
-                            Agregar este vídeo
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="video">
-                      <iframe src='http://www.youtube.com/embed/gXqqWbnboJ0?autoplay=0'></iframe>
-                    </div>
-                  </div>
-
-                    <div class="gridselector-item">
-                    <div class="selector">
-                      <div class="[ form-group ]">
-                        <input type="checkbox" name="iframe" id="v7" autocomplete="off" />
-                        <div class="[ btn-group ]">
-                          <label for="v7" class="[ btn btn-default ]">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-square-o" aria-hidden="true"></i>  
-                          </label>
-                          <label for="v7" class="[ btn btn-default active ]">
-                            Agregar este vídeo
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="video">
-                      <iframe src='http://www.youtube.com/embed/gXqqWbnboJ0?autoplay=0'></iframe>
-                    </div>
-                  </div>
-
-                    <div class="gridselector-item">
-                    <div class="selector">
-                      <div class="[ form-group ]">
-                        <input type="checkbox" name="iframe" id="v8" autocomplete="off" />
-                        <div class="[ btn-group ]">
-                          <label for="v8" class="[ btn btn-default ]">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-square-o" aria-hidden="true"></i>  
-                          </label>
-                          <label for="v8" class="[ btn btn-default active ]">
-                            Agregar este vídeo
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="video">
-                      <iframe src='http://www.youtube.com/embed/gXqqWbnboJ0?autoplay=0'></iframe>
-                    </div>
-                  </div>
-
-                    <div class="gridselector-item">
-                    <div class="selector">
-                      <div class="[ form-group ]">
-                        <input type="checkbox" name="iframe" id="v9" autocomplete="off" />
-                        <div class="[ btn-group ]">
-                          <label for="v9" class="[ btn btn-default ]">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-square-o" aria-hidden="true"></i>  
-                          </label>
-                          <label for="v9" class="[ btn btn-default active ]">
-                            Agregar este vídeo
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="video">
-                      <iframe src='http://www.youtube.com/embed/gXqqWbnboJ0?autoplay=0'></iframe>
-                    </div>
-                  </div>
-                  -->
+           
+                  
+                  
 
                 </div>
 

@@ -179,16 +179,27 @@ $MetasAbp=AbpMetas::GetMetas(1,1);
     {
          //$id= Input::get('id');
         $metas = Input::get('metas');
-
-       // $planteamientos = json_encode($planteamientos);
-        foreach ($metas as $meta) {
+        $errores;
+        if(count($metas)<3){
+            $errores[0]="Al menos se deben ingresar 3 metas.";
+           
+        }
+        else{
+           foreach ($metas as $meta) {
+            if($meta !== ''){
+                $errores[0]="No debe haber metas vacías";
+                 return view('tecnicas.abp.metas.abpAlumnoMetasCreator')->with('errores',$errores); 
+            }
             echo "Meta: ".$meta."<br>";
             $NuevoAbpMeta = new AbpMetas;
             $NuevoAbpMeta->Metas =$meta;
             $NuevoAbpMeta->fk_idAbp =1;
             $NuevoAbpMeta->fk_idAlumno =1;
             $NuevoAbpMeta->save();
+        } 
         }
+       // $planteamientos = json_encode($planteamientos);
+        
 
     }
 

@@ -9,6 +9,8 @@ use App\AbpConceptos;
 use App\AbpPlanteamiento;
 use App\AbplluviaIdeas;
 use App\AbpMetas;
+use App\AbpCategorizacionIdeas;
+use App\AbpDatosCategorizacion;
 use App\AbpEstudioIndependiente;
 class AbpAlumnoController extends Controller
 {
@@ -110,6 +112,7 @@ class AbpAlumnoController extends Controller
 
     public function lluviaIdeasStore(){
         //$id= Input::get('id');
+       
         $ideas = Input::get('ideas');
        // $planteamientos = json_encode($planteamientos);
         foreach ($ideas as $idea) {
@@ -127,15 +130,16 @@ class AbpAlumnoController extends Controller
     public function categorizacionCreate()
     {
         $IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
+        $categorias=AbpCategorizacionIdeas::GetCategorizacion(1,1);
         
          if($IdeasAbp === NULL) {
              return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator');
         }
         else{
         //Forma de recorrer la variable <- comentado
-            //foreach ($IdeasAbp as $key) {
-            //echo($key->Ideas);
-           // }
+            foreach ($categorias as $key) {
+            echo($key->NombreCategoria);
+            }
        return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator')->with('IdeasAbp',$IdeasAbp);  
         }
     }
@@ -154,7 +158,25 @@ class AbpAlumnoController extends Controller
         */
        
        $categorias = json_encode(Input::get('categorias'));
-       echo $categorias;
+       $categoriasp =Input::get('categorias');
+
+//if (is_array($categorias) || is_object($categorias))
+//{
+        foreach ($categoriasp as $categoria){
+            
+           
+                $NuevoAbpCat = new AbpCategorizacionIdeas;
+                $NuevoAbpCat->NombreCategoria =$categoria['name'];
+                $NuevoAbpCat->ColorCategoria =$categoria['color'];
+                $NuevoAbpCat->fk_idAbp =1;
+                $NuevoAbpCat->fk_idAlumno =1;
+                $NuevoAbpCat->save();
+                $NuevoAbpCat->RegistrarDatos($categoria['datas'],$NuevoAbpCat->idCategorizacionIdeas);
+            
+           
+        }
+//}
+       
     }
     public function metasCreate()
     {

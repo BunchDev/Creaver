@@ -12,6 +12,7 @@ use App\AbpMetas;
 use App\AbpCategorizacionIdeas;
 use App\AbpDatosCategorizacion;
 use App\AbpEstudioIndependiente;
+use App\AbpConclusion;
 class AbpAlumnoController extends Controller
 {
     
@@ -268,7 +269,22 @@ $MetasAbp=AbpMetas::GetMetas(1,1);
     public function conclusionStore()
     {
         echo "OK ";
+        $conclusion = Input::get('conclusion');
+        $archivos = Input::file('archivos');
+        $urls =json_decode( Input::get('urls'));
+      
+                $NuevaConclusion = new AbpConclusion;
+                $NuevaConclusion->conclusion =$conclusion;
+                $NuevaConclusion->fk_idAbp =1;
+                $NuevaConclusion->fk_idAlumno =1;
+                $NuevaConclusion->save();
+                $idconclusion=$NuevaConclusion->idConclusion;
+                
+                $NuevaConclusion::RegistrarArchivo($archivos,$idconclusion);
+                $NuevaConclusion::RegistrarUrl($urls,$idconclusion);
 
+              //  $NuevaConclusion->RegistrarDatos($categoria['datas'],$NuevoAbpCat->idCategorizacionIdeas);           
+        
         
     }
 

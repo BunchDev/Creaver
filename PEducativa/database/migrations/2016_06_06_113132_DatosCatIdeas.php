@@ -23,7 +23,7 @@ class DatosCatIdeas extends Migration
         //creacion de las llaves foraneas
          Schema::table('abp_DatosIdea', function($table) {
       
-            $table->foreign('fk_idCategorizacionIdeas')->references('idCategorizacionIdeas')->on('CategorizacionIdeas')->onDelete('cascade');    
+            $table->foreign('fk_idCategorizacionIdeas')->references('idCategorizacionIdeas')->on('abp_CategorizacionIdeas')->onDelete('cascade');    
         });
     }
 

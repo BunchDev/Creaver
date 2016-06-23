@@ -25,7 +25,7 @@ class AbpCategorizacionIdeas extends Model
      foreach ($arrayDatos as $Datos) {
             $NuevoAbpDatosCat = new AbpDatosCategorizacion;
             $NuevoAbpDatosCat->Idea =$Datos;
-            $NuevoAbpDatosCat->fk_idCategorizacionIdea =$idCategorizacion;
+            $NuevoAbpDatosCat->fk_idCategorizacionIdeas =$idCategorizacion;
             $NuevoAbpDatosCat->save();
         }
     }

@@ -35,6 +35,6 @@ class MaterialesResumen extends Migration
      */
     public function down()
     {
-        Schema::drop('materiales_resumen');
+        Schema::drop('material_resumen');
     }
 }

@@ -1354,7 +1354,7 @@ function enviarConclusion()
                 dataType:'text',
                 success: function(data){
                
-                    window.location.assign('./1');
+                   // window.location.assign('./1');
             
                
 

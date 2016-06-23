@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AbpDatosCategorizacion extends Model
+class abpUrlConclusion extends Model
 {
-      protected $primaryKey = 'idDatosIdea';
-	  protected $table = 'abp_datosidea';
+   
+    protected $primaryKey = 'idUrlConclusion';
+	protected $table = 'abp_urlconclusion';
     protected $fillable= [
-           'fk_idCategorizacionIdeas',
-           'Idea'
+           'fk_ideaConclusion',
+           'url'
     ];
 
    

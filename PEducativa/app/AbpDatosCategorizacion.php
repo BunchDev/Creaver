@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class AbpDatosCategorizacion extends Model
 {
@@ -19,4 +20,21 @@ class AbpDatosCategorizacion extends Model
      // return "hgoa";
      // return $this->hasMany('Estadia\Categorias','idTest');
    }
+
+       public static function GetDatosCat($id)    
+    {
+      $FechaActual = Carbon::now();
+      $FechaLimite = Carbon::create(2016, 10, 10, 22, 30, 11);
+         if($FechaActual->lt($FechaLimite)){
+      $Ideas = AbpDatosCategorizacion::where('fk_idCategorizacionIdeas', '=', $id)
+              ->select(array('Idea'))
+              ->get()
+              ->tojson();
+                $Ideas=json_decode($Ideas);
+                return $Ideas;
+          }
+           else{
+              return null;
+              }
+    }
 }

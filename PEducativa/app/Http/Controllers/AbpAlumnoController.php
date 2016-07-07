@@ -13,6 +13,7 @@ use App\AbpCategorizacionIdeas;
 use App\AbpDatosCategorizacion;
 use App\AbpEstudioIndependiente;
 use App\AbpConclusion;
+
 class AbpAlumnoController extends Controller
 {
     
@@ -130,18 +131,28 @@ class AbpAlumnoController extends Controller
 
     public function categorizacionCreate()
     {
-        $IdeasAbp=AbplluviaIdeas::GetIdeas(1,1);
+        
+        
         $categorias=AbpCategorizacionIdeas::GetCategorizacion(1,1);
         
-         if($IdeasAbp === NULL) {
+         if($categorias === NULL) {
              return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator');
         }
         else{
         //Forma de recorrer la variable <- comentado
+            $Categorizacion;
             foreach ($categorias as $key) {
-            echo($key->NombreCategoria);
+$Ideas=AbpDatosCategorizacion::GetDatosCat($key->idCategorizacionIdeas);
+$array = array(
+"Categoria" =>$key->NombreCategoria,
+"color" => $key->ColorCategoria,
+"datos" => $Ideas
+);
+$Categoria = (object) $array;
+$Categorizacion[]=$Categoria;
             }
-       return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator')->with('IdeasAbp',$IdeasAbp);  
+           
+       return view('tecnicas.abp.categorizacion_ideas.abpAlumnoCategorizacionCreator')->with('IdeasAbp',$Categorizacion);  
         }
     }
        

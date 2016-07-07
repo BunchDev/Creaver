@@ -15,10 +15,14 @@ class AbpCategorizacionIdeas extends Model
            'ColorCategoria'
     ];
 
-    public function ObtenerDatosIdeas()
+    public static function ObtenerDatosIdeas($idAlumno)
     {
-     
-    	return $this->hasMany('AbpDatosCategorizacionIdeas');
+     $Datos = new AbpCategorizacionIdeas;
+            $Datos
+            ->select('idCategorizacionIdeas', 'NombreCategoria','ColorCategoria','fk_idAbp')
+            ->where('fk_idAlumno', '=', $idAlumno)->get();
+            
+    	return  $Datos;
     }
     public function RegistrarDatos($arrayDatos,$idCategorizacion)
     {
@@ -36,7 +40,7 @@ class AbpCategorizacionIdeas extends Model
          if($FechaActual->lt($FechaLimite)){
       $Categorizacion = AbpCategorizacionIdeas::where('fk_idAlumno', '=', $idAlumno)
               ->where('fk_idAbp', '=', $idAbp)
-              ->select(array('NombreCategoria', 'ColorCategoria'))
+              ->select(array('NombreCategoria', 'ColorCategoria','idCategorizacionIdeas'))
               ->get()
               ->tojson();
                 $Categorizacion=json_decode($Categorizacion);

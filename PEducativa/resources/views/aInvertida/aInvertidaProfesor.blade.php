@@ -8,7 +8,7 @@
 {!! Html::script('scripts/masonry.pkgd.min.js')!!}
 {!! Html::script('scripts/aulainvertida.js')!!}
 {!! Html::script('scripts/vimeo.js')!!}
-{!! Html::script('https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js')!!}
+{!! Html::script('https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js')!!}
 {!! Html::style('css/aulaInvertida.css') !!}
 
 <div>
